@@ -16,7 +16,7 @@ public class Hello {
         return "hey";
     }
 
-    @GetMapping("/list_personne")
+    @GetMapping("/list_personnes")
     public String listPersonnes() {
         // Appel de la méthode list_personne() pour obtenir la liste des personnes
         PersonneModel p = new PersonneModel();

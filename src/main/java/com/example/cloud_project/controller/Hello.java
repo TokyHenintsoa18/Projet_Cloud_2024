@@ -16,23 +16,23 @@ public class Hello {
         return "hey";
     }
 
-    @GetMapping("/list")
-    public String listPersonnes() {
-        // Appel de la méthode list_personne() pour obtenir la liste des personnes
-        PersonneModel p = new PersonneModel();
-        PersonneModel[] personnes = p.list_personne();
+    // @GetMapping("/list")
+    // public String listPersonnes() {
+    //     // Appel de la méthode list_personne() pour obtenir la liste des personnes
+    //     PersonneModel p = new PersonneModel();
+    //     PersonneModel[] personnes = p.list_personne();
 
-        // Convertir la liste en format JSON
-        ObjectMapper objectMapper = new ObjectMapper();
-        String jsonResult = "";
-        try {
-            jsonResult = objectMapper.writeValueAsString(personnes);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
+    //     // Convertir la liste en format JSON
+    //     ObjectMapper objectMapper = new ObjectMapper();
+    //     String jsonResult = "";
+    //     try {
+    //         jsonResult = objectMapper.writeValueAsString(personnes);
+    //     } catch (JsonProcessingException e) {
+    //         e.printStackTrace();
+    //     }
 
-        return jsonResult;
-    }
+    //     return jsonResult;
+    // }
 
 
 }

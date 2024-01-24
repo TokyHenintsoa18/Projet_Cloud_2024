@@ -7,16 +7,16 @@ import java.util.List;
 public class PersonneModel {
     
 
-    int id_utilisateur;
+    int id_personne;
     String nom;
-    String sexe;
-    Date date;
+    String email;
+    String pwd;
     
-    public int getId_utilisateur() {
-        return id_utilisateur;
+    public int getId_personne() {
+        return id_personne;
     }
-    public void setId_utilisateur(int id_utilisateur) {
-        this.id_utilisateur = id_utilisateur;
+    public void setId_personne(int id_personne) {
+        this.id_personne = id_personne;
     }
     public String getNom() {
         return nom;
@@ -24,29 +24,32 @@ public class PersonneModel {
     public void setNom(String nom) {
         this.nom = nom;
     }
-    public String getSexe() {
-        return sexe;
+    public String getEmail() {
+        return email;
     }
-    public void setSexe(String sexe) {
-        this.sexe = sexe;
+    public void setEmail(String email) {
+        this.email = email;
     }
-    public Date getDate() {
-        return date;
+    public String getPwd() {
+        return pwd;
     }
-    public void setDate(Date date) {
-        this.date = date;
+    public void setPwd(String pwd) {
+        this.pwd = pwd;
     }
 
-    public PersonneModel(int id_utilisateur, String nom, String sexe, Date date) {
-        this.id_utilisateur = id_utilisateur;
+
+    public PersonneModel(int id_personne, String nom, String email, String pwd) {
+        this.id_personne = id_personne;
         this.nom = nom;
-        this.sexe = sexe;
-        this.date = date;
-    }
-    public PersonneModel() {
+        this.email = email;
+        this.pwd = pwd;
     }
 
-    public PersonneModel[] list_personne()
+    public PersonneModel() {
+    
+    }
+    
+    public PersonneModel[] list_user()
     {
         List<PersonneModel> resultatList = new ArrayList<>();
 
@@ -54,22 +57,22 @@ public class PersonneModel {
         {
             String url = "jdbc:postgresql://localhost:5432/culture";
             String utilisateur = "postgres";
-            String motDePasse = "123";
+            String motDePasse = "root";
             Class.forName("org.postgresql.Driver");
 
             try (Connection connection = DriverManager.getConnection(url, utilisateur, motDePasse))
             {
                 Statement stmnt = connection.createStatement();
-                ResultSet result = stmnt.executeQuery("select * from utilisateur");
+                ResultSet result = stmnt.executeQuery("select * from personne");
 
                 while (result.next()) 
                 {
-                    int id_utilisateur = result.getInt(1);
+                    int id_personne = result.getInt(1);
                     String nom = result.getString(2);
-                    String sexe = result.getString(3);
-                    Date date = result.getDate(4);
+                    String email = result.getString(3);
+                    String pwd = result.getString(4);
                     
-                    PersonneModel categorie = new PersonneModel(id_utilisateur,nom,sexe,date);
+                    PersonneModel categorie = new PersonneModel(id_personne,nom,email,pwd);
                     resultatList.add(categorie);
                 }
             }
@@ -81,7 +84,5 @@ public class PersonneModel {
         }
 
         return resultatList.toArray(new PersonneModel[resultatList.size()]);
-        
     }
-    
 }

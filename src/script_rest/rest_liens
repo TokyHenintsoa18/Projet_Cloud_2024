@@ -1,0 +1,5 @@
+(list personne)
+http://localhost:8080/Personne/listsPersonne
+(select where personne)
+http://localhost:8080/Personne/selectPersonne?nom=Hery&pwd=0000
+

@@ -28,9 +28,12 @@ CREATE TABLE utilisateurs
    id_utilisateur SERIAL,
    nom VARCHAR(100) ,
    sexe VARCHAR(1) ,
-   dtn TIMESTAMP,
+   dtn date,
+   pwd varchar(40),
    PRIMARY KEY(id_utilisateur)
 );
+
+insert into utilisateurs(nom,sexe,dtn,pwd) values('Toky','M','2023-01-01','0000');
 
 CREATE TABLE type
 (

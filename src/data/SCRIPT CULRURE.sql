@@ -54,10 +54,12 @@ CREATE TABLE type(
 CREATE TABLE Parcelle_par_terrain
 (
    id_tp SERIAL,
+   id_utilisateur INTEGER,
    id_parcelle INTEGER,
    id_terrain INTEGER,
    PRIMARY KEY(id_TP),
    FOREIGN KEY(id_parcelle) REFERENCES Parcelle(id_parcelle),
+   FOREIGN KEY(id_parcelle) REFERENCES utilisateur(id_utilisateur),
    FOREIGN KEY(id_terrain) REFERENCES Terrain(id_terrain)
 );
 

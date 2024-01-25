@@ -12,13 +12,12 @@ CREATE TABLE Terrain
    description VARCHAR(50)  NOT NULL,
    latitude bigint,
    longitude bigint,
-   id_parcelle INTEGER,
-   photo VARCHAR(100) ,
+   photo VARCHAR(100),
    prix NUMERIC(15,2),
    PRIMARY KEY(id_terrain)
 );
 
-INSERT INTO Terrain (description, latitude, longitude, id_parcelle, photo, prix) VALUES('Terrain 1', 123456789012345, 987654321098765, 1, 'photo1.jpg', 1000),
+INSERT INTO Terrain (description, latitude, longitude, photo, prix) VALUES('Terrain 1', 123456789012345, 987654321098765, 'photo1.jpg', 1000),
 
 CREATE TABLE Rendement
 (
@@ -90,4 +89,13 @@ CREATE TABLE Rendement_parcelle
    PRIMARY KEY(id_parcelle, id_rendement),
    FOREIGN KEY(id_parcelle) REFERENCES Parcelle(id_parcelle),
    FOREIGN KEY(id_rendement) REFERENCES Rendement(id_rendement)
+);
+
+CREATE TABLE Terrain_parcelle 
+(
+   id_tp SERIAL PRIMARY KEY,
+   id_terrain INTEGER,
+   id_parcelle INTEGER,
+   FOREIGN KEY(id_terrain) REFERENCES Terrain(id_terrain)
+   FOREIGN KEY(id_parcelle) REFERENCES Parcelle(id_parcelle)
 );

@@ -80,7 +80,7 @@ CREATE TABLE categorie_type_parcelle
    FOREIGN KEY(id_parcelle) REFERENCES Parcelle(id_parcelle),
    FOREIGN KEY(id_categorie) REFERENCES Categorie_culture(id_categorie),
    FOREIGN KEY(id_type) REFERENCES type_culture(id_type)
-   );
+);
 
 CREATE TABLE Rendement_parcelle
 (

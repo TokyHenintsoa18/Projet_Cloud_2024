@@ -101,7 +101,7 @@ public class TerrainModel {
                     int id_parcelle= result.getInt(5);
                     String photo= result.getString(6);
                     TerrainModel t = new TerrainModel(id_terrain,description,latitude, longitude, id_parcelle, photo);
-                    resultatList.add(t);
+                    lists.add(t);
                 }
             }
         } 
@@ -137,6 +137,7 @@ public class TerrainModel {
             e.printStackTrace();
             return false;
         }
+        return true;
     }
 
 

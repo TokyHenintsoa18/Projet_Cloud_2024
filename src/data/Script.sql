@@ -36,7 +36,7 @@ CREATE TABLE utilisateurs
 
 insert into utilisateurs(nom,sexe,dtn,pwd) values('Toky','M','2023-01-01','0000');
 
-CREATE TABLE type
+CREATE TABLE type_culture
 (
    id_type SERIAL,
    nom_type VARCHAR(50) ,
@@ -50,9 +50,7 @@ CREATE TABLE Parcelle
    dimension NUMERIC(15,2)  ,
    pieds INTEGER,
    prix NUMERIC(15,2)  ,
-   id_terrain INTEGER NOT NULL,
-   PRIMARY KEY(id_parcelle),
-   FOREIGN KEY(id_terrain) REFERENCES Terrain(id_terrain)
+   PRIMARY KEY(id_parcelle)
 );
 
 CREATE TABLE Utilisateur_parcelle
@@ -72,7 +70,7 @@ CREATE TABLE categorie_type_parcelle
    PRIMARY KEY(id_parcelle, id_categorie, id_type),
    FOREIGN KEY(id_parcelle) REFERENCES Parcelle(id_parcelle),
    FOREIGN KEY(id_categorie) REFERENCES Categorie_culture(id_categorie),
-   FOREIGN KEY(id_type) REFERENCES type(id_type)
+   FOREIGN KEY(id_type) REFERENCES type_culture(id_type)
 );
 
 CREATE TABLE Rendement_parcelle

@@ -71,7 +71,7 @@ public class PersonneController {
     public String updatePwd(@RequestParam("id_utilisateur") int id_utilisateur , @RequestParam("pwd") String pwd)
     {
         PersonneModel personne = new PersonneModel();
-        personne.updatePwd(pwd, id_utilisateur);
+        personne.update_pwd(pwd, id_utilisateur);
 
         // Convertir la liste en format JSON
         ObjectMapper objectMapper = new ObjectMapper();

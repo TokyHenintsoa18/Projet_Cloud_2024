@@ -254,7 +254,7 @@ public class PersonneModel {
         }
     }
 
-    public void updatePwd(String pwd , int id_utilisateur)
+    public void update_pwd(String pwd , int id_utilisateur)
     {
         try 
         {
@@ -281,6 +281,6 @@ public class PersonneModel {
         } 
     }
 
-    
+
 
 }

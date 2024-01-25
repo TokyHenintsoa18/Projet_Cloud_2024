@@ -225,4 +225,39 @@ public class PersonneModel {
         return p;
     }
 
+    public void insert_personne(String nom , String sexe , Date dtn , String pwd)
+    {
+        try 
+        {
+            String url = "jdbc:postgresql://localhost:5432/culture";
+            String utilisateur = "postgres";
+            String motDePasse = "root";
+            Class.forName("org.postgresql.Driver");
+            
+             try (Connection connection = DriverManager.getConnection(url, utilisateur, motDePasse))
+            {
+                PreparedStatement pstmt = connection.prepareStatement("insert into utilisateurs(nom,sexe,dtn,pwd)values(?,?,?,?)");
+                // pstmt.setInt(1, wallet);
+                // pstmt.setInt(2, wallet);
+                pstmt.setString(1,nom);
+                pstmt.setString(2, sexe);
+                pstmt.setDate(3, dtn);
+                pstmt.setString(4, pwd);
+
+                pstmt.executeUpdate();
+                System.out.println("insert personne sucessfully");
+            }
+            
+        }catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
+    }
+
+    public PersonneModel updatePwd(int id_utilisateur , String pwd)
+    {
+        PersonneModel p = null;
+        return p;
+    }
+
 }

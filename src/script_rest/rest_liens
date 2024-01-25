@@ -3,3 +3,5 @@ http://localhost:8080/Personne/listsPersonne
 (select where personne)
 http://localhost:8080/Personne/selectPersonne?nom=Hery&pwd=0000
 
+(insert personne)
+http://localhost:8080/Personne/insertPersonne?nom=Harena&sexe=F&dtn=2000-01-01&pwd=0109

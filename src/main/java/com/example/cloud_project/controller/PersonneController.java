@@ -1,4 +1,6 @@
 package com.example.cloud_project.controller;
+import java.sql.Date;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -30,7 +32,7 @@ public class PersonneController {
     }
 
     @GetMapping("Personne/selectPersonne")
-    public String selectPersonne(@RequestParam("nom") String nom, @RequestParam("pwd") String pwd) {
+    public String selectPersonneWhere(@RequestParam("nom") String nom, @RequestParam("pwd") String pwd) {
 
     PersonneModel p = new PersonneModel();
     p = p.select_personne(nom, pwd);
@@ -45,6 +47,24 @@ public class PersonneController {
     }
 
     return jsonResult;
+    }
+
+    @GetMapping("/Personne/insertPersonne")
+    public String insertPersonne(@RequestParam("nom") String nom, @RequestParam("sexe") String sexe , @RequestParam("dtn") Date dtn , @RequestParam("pwd") String pwd) 
+    {
+        PersonneModel personne = new PersonneModel();
+        personne.insert_personne(nom, sexe, dtn, pwd);
+
+        // Convertir la liste en format JSON
+        ObjectMapper objectMapper = new ObjectMapper();
+        String jsonResult = "";
+        try {
+            jsonResult = objectMapper.writeValueAsString(personne);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+
+        return jsonResult;
     }
 
 }

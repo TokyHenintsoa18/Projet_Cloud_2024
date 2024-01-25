@@ -12,7 +12,7 @@ public class TerrainModel {
     String description;
     long latitude;
     long longitude;
-    int idParcelle;
+    
     String photo;
 
 
@@ -48,14 +48,6 @@ public class TerrainModel {
         this.longitude = longitude;
     }
 
-    public int getIdParcelle() {
-        return this.idParcelle;
-    }
-
-    public void setIdParcelle(int idParcelle) {
-        this.idParcelle = idParcelle;
-    }
-
     public String getPhoto() {
         return this.photo;
     }
@@ -64,12 +56,11 @@ public class TerrainModel {
         this.photo = photo;
     }
 
-    public TerrainModel(int id_terrain, String description, long latitude, long longitude, int idParcelle, String photo) {
+    public TerrainModel(int id_terrain, String description, long latitude, long longitude, String photo) {
         this.id_terrain = id_terrain;
         this.description = description;
         this.latitude = latitude;
         this.longitude = longitude;
-        this.idParcelle = idParcelle;
         this.photo = photo;
     }
     public TerrainModel() {
@@ -98,9 +89,8 @@ public class TerrainModel {
                     String description = result.getString(2);
                     long latitude = result.getLong(3);
                     long longitude = result.getLong(4);
-                    int id_parcelle= result.getInt(5);
-                    String photo= result.getString(6);
-                    TerrainModel t = new TerrainModel(id_terrain,description,latitude, longitude, id_parcelle, photo);
+                    String photo= result.getString(5);
+                    TerrainModel t = new TerrainModel(id_terrain,description,latitude, longitude, photo);
                     lists.add(t);
                 }
             }

@@ -10,9 +10,10 @@ public class ParcelleModel {
 
     int id_parcelle;
     double dimension;
-    int pieds;
+    int nb_pieds;
     Double prix;
-    int id_terrain;
+
+   
 
     
     public int getId_parcelle() {
@@ -27,11 +28,11 @@ public class ParcelleModel {
     public void setDimension(double dimension) {
         this.dimension = dimension;
     }
-    public int getpieds() {
-        return pieds;
+    public int getnb_pieds() {
+        return nb_pieds;
     }
-    public void setpieds(int pieds) {
-        this.pieds = pieds;
+    public void setnb_pieds(int nb_pieds) {
+        this.nb_pieds = nb_pieds;
     }
     public Double getPrix() {
         return prix;
@@ -40,17 +41,12 @@ public class ParcelleModel {
         this.prix = prix;
     }
 
-    public int getId_terrain() {
-        return id_terrain;
-    }
-    public void setId_terrain(int id_terrain) {
-        this.id_terrain = id_terrain;
-    }
+    
 
-    public ParcelleModel(int id_parcelle, double dimension, int pieds, Double prix) {
+    public ParcelleModel(int id_parcelle, double dimension, int nb_pieds, Double prix) {
         this.id_parcelle = id_parcelle;
         this.dimension = dimension;
-        this.pieds = pieds;
+        this.nb_pieds = nb_pieds;
         this.prix = prix;
        
     }
@@ -77,10 +73,10 @@ public class ParcelleModel {
                 {
                     int id_parcelle = result.getInt(1);
                     Double dimension = result.getDouble(2);
-                    int pieds = result.getInt(3);
+                    int nb_pieds = result.getInt(3);
                     Double prix = result.getDouble(4);
                     
-                    ParcelleModel p = new ParcelleModel(id_parcelle,dimension,pieds,prix);
+                    ParcelleModel p = new ParcelleModel(id_parcelle,dimension,nb_pieds,prix);
                     resultatList.add(p);
                 }
             }
@@ -94,7 +90,7 @@ public class ParcelleModel {
         return resultatList.toArray(new ParcelleModel[resultatList.size()]);
     }
 
-    public void insert_parcelle(Double dimension , int pieds , Double prix)
+    public void insert_parcelle(Double dimension , int nb_pieds , Double prix)
     {
         try 
         {
@@ -105,11 +101,11 @@ public class ParcelleModel {
             
              try (Connection connection = DriverManager.getConnection(url, utilisateur, motDePasse))
             {
-                PreparedStatement pstmt = connection.prepareStatement("insert into parcelle(dimension,pieds,prix)values(?,?,?)");
+                PreparedStatement pstmt = connection.prepareStatement("insert into parcelle(dimension,nb_pieds,prix)values(?,?,?)");
                 // pstmt.setInt(1, wallet);
                 // pstmt.setInt(2, wallet);
                 pstmt.setDouble(1, dimension);
-                pstmt.setInt(2, pieds);
+                pstmt.setInt(2, nb_pieds);
                 pstmt.setDouble(3, prix);
                 
                 pstmt.executeUpdate();

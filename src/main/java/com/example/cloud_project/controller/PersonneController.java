@@ -34,11 +34,29 @@ public class PersonneController {
         return jsonResult;
     }
 
+    @GetMapping("/Personne/insertPersonne")
+    public String insertPersonne(@RequestParam("nom") String nom, @RequestParam("sexe") String sexe , @RequestParam("dtn") Date dtn,@RequestParam("email") String email , @RequestParam("pwd") String pwd) 
+    {
+        PersonneModel personne = new PersonneModel();
+        personne.insert_user(nom, sexe, dtn,email, pwd);
+
+        // Convertir la liste en format JSON
+        ObjectMapper objectMapper = new ObjectMapper();
+        String jsonResult = "";
+        try {
+            jsonResult = objectMapper.writeValueAsString(personne);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+
+        return jsonResult;
+    }
+
     @GetMapping("Personne/selectPersonne")
-    public String selectPersonneWhere(@RequestParam("nom") String nom, @RequestParam("pwd") String pwd) {
+    public String selectPersonneWhere(@RequestParam("email") String email, @RequestParam("pwd") String pwd) {
 
     PersonneModel p = new PersonneModel();
-    p = p.select_personne(nom, pwd);
+    p = p.select_user(email, pwd);
 
     // Convertir la liste en format JSON
     ObjectMapper objectMapper = new ObjectMapper();
@@ -52,23 +70,7 @@ public class PersonneController {
     return jsonResult;
     }
 
-    @GetMapping("/Personne/insertPersonne")
-    public String insertPersonne(@RequestParam("nom") String nom, @RequestParam("sexe") String sexe , @RequestParam("dtn") Date dtn , @RequestParam("pwd") String pwd) 
-    {
-        PersonneModel personne = new PersonneModel();
-        personne.insert_personne(nom, sexe, dtn, pwd);
 
-        // Convertir la liste en format JSON
-        ObjectMapper objectMapper = new ObjectMapper();
-        String jsonResult = "";
-        try {
-            jsonResult = objectMapper.writeValueAsString(personne);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
-
-        return jsonResult;
-    }
 
     @GetMapping("/Personne/updatePwd")
     public String updatePwd(@RequestParam("id_utilisateur") int id_utilisateur , @RequestParam("pwd") String pwd)

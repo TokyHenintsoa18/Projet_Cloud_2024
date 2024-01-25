@@ -32,10 +32,10 @@ public class ParcelleController {
     }
 
     @GetMapping("Parcelle/insertParcelle")
-    public String insert_parcellle(@RequestParam("dimension") Double dimension , @RequestParam("pieds") int pieds , @RequestParam("prix") Double prix)
+    public String insert_parcellle(@RequestParam("dimension") Double dimension , @RequestParam("nb_pieds") int nb_pieds , @RequestParam("prix") Double prix)
     {
         ParcelleModel insert_parcelle = new ParcelleModel();
-        insert_parcelle.insert_parcelle(dimension, pieds, prix);
+        insert_parcelle.insert_parcelle(dimension, nb_pieds, prix);
 
         // Convertir la liste en format JSON
         ObjectMapper objectMapper = new ObjectMapper();

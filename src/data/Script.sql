@@ -14,10 +14,11 @@ CREATE TABLE Terrain
    longitude bigint,
    id_parcelle INTEGER,
    photo VARCHAR(100) ,
+   prix NUMERIC(15,2),
    PRIMARY KEY(id_terrain)
 );
 
-INSERT INTO Terrain (description, latitude, longitude, id_parcelle, photo) VALUES('Terrain 1', 123456789012345, 987654321098765, 1, 'photo1.jpg'),
+INSERT INTO Terrain (description, latitude, longitude, id_parcelle, photo, prix) VALUES('Terrain 1', 123456789012345, 987654321098765, 1, 'photo1.jpg', 1000),
 
 CREATE TABLE Rendement
 (
@@ -32,11 +33,12 @@ CREATE TABLE utilisateurs
    nom VARCHAR(100) ,
    sexe VARCHAR(1) ,
    dtn date,
+   email VARCHAR(40),
    pwd varchar(40),
    PRIMARY KEY(id_utilisateur)
 );
 
-insert into utilisateurs(nom,sexe,dtn,pwd) values('Toky','M','2023-01-01','0000');
+insert into utilisateurs(nom,sexe,dtn,email,pwd) values('Toky','M','2023-01-01','Toky@example.com','0000');
 
 CREATE TABLE type_culture
 (

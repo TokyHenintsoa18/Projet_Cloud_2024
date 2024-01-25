@@ -10,7 +10,8 @@ CREATE TABLE Terrain
 (
    id_terrain SERIAL,
    description VARCHAR(50)  NOT NULL,
-   geolocalisation BIGINT,
+   latitude bigint,
+   longitude bigint,
    id_parcelle INTEGER,
    photo VARCHAR(100) ,
    PRIMARY KEY(id_terrain)

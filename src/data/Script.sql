@@ -46,12 +46,17 @@ CREATE TABLE type_culture
 
 CREATE TABLE Parcelle
 (
-   id_parcelle INTEGER,
+   id_parcelle SERIAL PRIMARY key,
    dimension NUMERIC(15,2)  ,
    pieds INTEGER,
-   prix NUMERIC(15,2)  ,
-   PRIMARY KEY(id_parcelle)
+   prix NUMERIC(15,2)
+  
 );
+
+insert into Parcelle(dimension,pieds,prix) values(50,20,1000000);
+insert into Parcelle(dimension,pieds,prix) values(20,15,200000);
+insert into Parcelle(dimension,pieds,prix) values(80,60,5000000);
+
 
 CREATE TABLE Utilisateur_parcelle
 (
@@ -71,7 +76,7 @@ CREATE TABLE categorie_type_parcelle
    FOREIGN KEY(id_parcelle) REFERENCES Parcelle(id_parcelle),
    FOREIGN KEY(id_categorie) REFERENCES Categorie_culture(id_categorie),
    FOREIGN KEY(id_type) REFERENCES type_culture(id_type)
-);
+   );
 
 CREATE TABLE Rendement_parcelle
 (

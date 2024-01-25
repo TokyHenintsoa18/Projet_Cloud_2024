@@ -1,7 +1,6 @@
 package com.example.cloud_project.Models;
 
 import java.sql.*;
-import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +10,7 @@ public class ParcelleModel {
 
     int id_parcelle;
     double dimension;
-    int pides;
+    int pieds;
     Double prix;
     int id_terrain;
 
@@ -28,11 +27,11 @@ public class ParcelleModel {
     public void setDimension(double dimension) {
         this.dimension = dimension;
     }
-    public int getPides() {
-        return pides;
+    public int getpieds() {
+        return pieds;
     }
-    public void setPides(int pides) {
-        this.pides = pides;
+    public void setpieds(int pieds) {
+        this.pieds = pieds;
     }
     public Double getPrix() {
         return prix;
@@ -48,12 +47,12 @@ public class ParcelleModel {
         this.id_terrain = id_terrain;
     }
 
-    public ParcelleModel(int id_parcelle, double dimension, int pides, Double prix, int id_terrain) {
+    public ParcelleModel(int id_parcelle, double dimension, int pieds, Double prix) {
         this.id_parcelle = id_parcelle;
         this.dimension = dimension;
-        this.pides = pides;
+        this.pieds = pieds;
         this.prix = prix;
-        this.id_terrain = id_terrain;
+       
     }
     public ParcelleModel() {
     }
@@ -80,9 +79,8 @@ public class ParcelleModel {
                     Double dimension = result.getDouble(2);
                     int pieds = result.getInt(3);
                     Double prix = result.getDouble(4);
-                    int id_terrain = result.getInt(5);
-
-                    ParcelleModel p = new ParcelleModel(id_parcelle,dimension,pieds,prix,id_terrain);
+                    
+                    ParcelleModel p = new ParcelleModel(id_parcelle,dimension,pieds,prix);
                     resultatList.add(p);
                 }
             }
@@ -94,5 +92,33 @@ public class ParcelleModel {
         }
 
         return resultatList.toArray(new ParcelleModel[resultatList.size()]);
+    }
+
+    public void insert_parcelle(Double dimension , int pieds , Double prix)
+    {
+        try 
+        {
+            String url = "jdbc:postgresql://localhost:5432/culture";
+            String utilisateur = "postgres";
+            String motDePasse = "root";
+            Class.forName("org.postgresql.Driver");
+            
+             try (Connection connection = DriverManager.getConnection(url, utilisateur, motDePasse))
+            {
+                PreparedStatement pstmt = connection.prepareStatement("insert into parcelle(dimension,pieds,prix)values(?,?,?)");
+                // pstmt.setInt(1, wallet);
+                // pstmt.setInt(2, wallet);
+                pstmt.setDouble(1, dimension);
+                pstmt.setInt(2, pieds);
+                pstmt.setDouble(3, prix);
+                
+                pstmt.executeUpdate();
+                System.out.println("insert parcelle sucessfully");
+            }
+            
+        }catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
     }
 }

@@ -30,4 +30,22 @@ public class ParcelleController {
 
         return jsonResult;
     }
+
+    @GetMapping("Parcelle/insertParcelle")
+    public String insert_parcellle(@RequestParam("dimension") Double dimension , @RequestParam("pieds") int pieds , @RequestParam("prix") Double prix)
+    {
+        ParcelleModel insert_parcelle = new ParcelleModel();
+        insert_parcelle.insert_parcelle(dimension, pieds, prix);
+
+        // Convertir la liste en format JSON
+        ObjectMapper objectMapper = new ObjectMapper();
+        String jsonResult = "";
+        try {
+            jsonResult = objectMapper.writeValueAsString(insert_parcelle);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+
+        return jsonResult;
+    }
 }

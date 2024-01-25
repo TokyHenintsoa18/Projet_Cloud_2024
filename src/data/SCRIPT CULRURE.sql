@@ -9,14 +9,15 @@ CREATE TABLE Parcelle(
 CREATE TABLE Categorie_culture(
    id_categorie SERIAL,
    rendement_par_pieds INTEGER,
-   Prix_unitaire NUMERIC(15,2)  ,
+   Prix_unitaire NUMERIC(15,2),
    PRIMARY KEY(id_categorie)
 );
 
 CREATE TABLE Terrain(
    id_terrain SERIAL,
    description VARCHAR(50)  NOT NULL,
-   geolocalisation BIGINT,
+   longitude VARCHAR(50),
+   latitude VARCHAR(50),
    id_parcelle INTEGER,
    photo VARCHAR(50) ,
    PRIMARY KEY(id_terrain)
@@ -32,7 +33,9 @@ CREATE TABLE utilisateurs(
    id_utilisateur SERIAL,
    nom VARCHAR(50) ,
    sexe VARCHAR(1) ,
-   dtn TIMESTAMP,
+   dtn DATE,
+   email VARCHAR(100),
+   pwd VARCHAR(100),
    PRIMARY KEY(id_utilisateur)
 );
 

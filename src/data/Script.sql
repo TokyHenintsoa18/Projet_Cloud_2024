@@ -2,7 +2,7 @@ CREATE TABLE Categorie_culture
 (
    id_categorie SERIAL,
    rendement_par_pieds INTEGER,
-   prix_rendement NUMERIC(15,2)  ,
+   prix_unitaire NUMERIC(15,2)  ,
    PRIMARY KEY(id_categorie)
 );
 

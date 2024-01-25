@@ -67,7 +67,7 @@ CREATE TABLE categorie_type_parcelle
 (
    id_parcelle INTEGER,
    id_categorie INTEGER,
-   id_type VARCHAR(50) ,
+   id_type INTEGER,
    PRIMARY KEY(id_parcelle, id_categorie, id_type),
    FOREIGN KEY(id_parcelle) REFERENCES Parcelle(id_parcelle),
    FOREIGN KEY(id_categorie) REFERENCES Categorie_culture(id_categorie),

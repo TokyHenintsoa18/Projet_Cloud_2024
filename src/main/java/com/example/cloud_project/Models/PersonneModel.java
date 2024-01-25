@@ -254,10 +254,33 @@ public class PersonneModel {
         }
     }
 
-    public PersonneModel updatePwd(int id_utilisateur , String pwd)
+    public void updatePwd(String pwd , int id_utilisateur)
     {
-        PersonneModel p = null;
-        return p;
+        try 
+        {
+            String url = "jdbc:postgresql://localhost:5432/culture";
+            String utilisateur = "postgres";
+            String motDePasse = "root";
+            Class.forName("org.postgresql.Driver");
+            
+             try (Connection connection = DriverManager.getConnection(url, utilisateur, motDePasse))
+            {
+                PreparedStatement pstmt = connection.prepareStatement("update utilisateurs set pwd = ? where id_utilisateur = ?");
+                
+               
+                pstmt.setString(1,pwd);
+                pstmt.setInt(2, id_utilisateur);
+
+                pstmt.executeUpdate();
+                System.out.println("update pwd sucessfully");
+            }
+            
+        }catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        } 
     }
+
+    
 
 }

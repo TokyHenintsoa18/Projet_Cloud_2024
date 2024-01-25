@@ -67,4 +67,24 @@ public class PersonneController {
         return jsonResult;
     }
 
+    @GetMapping("/Personne/updatePwd")
+    public String updatePwd(@RequestParam("id_utilisateur") int id_utilisateur , @RequestParam("pwd") String pwd)
+    {
+        PersonneModel personne = new PersonneModel();
+        personne.updatePwd(pwd, id_utilisateur);
+
+        // Convertir la liste en format JSON
+        ObjectMapper objectMapper = new ObjectMapper();
+        String jsonResult = "";
+        try {
+            jsonResult = objectMapper.writeValueAsString(personne);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+
+        return jsonResult;
+    }
+
+    
+
 }

@@ -62,9 +62,6 @@ CREATE TABLE Parcelle_par_terrain
    FOREIGN KEY(id_terrain) REFERENCES Terrain(id_terrain)
 );
 
-ALTER TABLE Parcelle
-ADD COLUMN id_utilisateur INTEGER REFERENCES utilisateurs(id_utilisateur);
-
 insert into Parcelle_par_terrain(id_parcelle,id_terrain)values(1,2);
 insert into Parcelle_par_terrain(id_parcelle,id_terrain)values(2,2);
 

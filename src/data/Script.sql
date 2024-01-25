@@ -17,7 +17,7 @@ CREATE TABLE Terrain
    PRIMARY KEY(id_terrain)
 );
 
-INSERT INTO Terrain (description, latitude, longitude, id_parcelle, photo) VALUES('Terrain 1', 123456789012345, 987654321098765, 1, 'photo1.jpg'),
+INSERT INTO Terrain (description, latitude, longitude, id_parcelle, photo) VALUES('Terrain 1', 123456789012345, 987654321098765, 1, 'photo1.jpg');
 
 CREATE TABLE Rendement
 (

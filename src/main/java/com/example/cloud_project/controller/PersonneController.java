@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.example.cloud_project.Models.PersonneModel;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import jakarta.servlet.http.HttpServletRequest;
+
 import com.example.cloud_project.Models.PersonneModel;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -85,6 +88,7 @@ public class PersonneController {
         return jsonResult;
     }
 
-    
+    // @GetMapping("/Personne/session")
+    // public String session_servlet(HttpServletRequest request , )
 
 }

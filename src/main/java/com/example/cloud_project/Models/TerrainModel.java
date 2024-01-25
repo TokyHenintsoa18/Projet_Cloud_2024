@@ -130,7 +130,7 @@ public class TerrainModel {
                     preparedStatement.setInt(4, idParcelle);
                     preparedStatement.setString(5, photo);
                     preparedStatement.executeUpdate();
-                   
+                    System.out.println("insert terrain successfully");
                 }
             }
         } catch (Exception e) {

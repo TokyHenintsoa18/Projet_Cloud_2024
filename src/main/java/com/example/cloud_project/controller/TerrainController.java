@@ -30,4 +30,22 @@ public class TerrainController {
 
         return jsonResult;
     }
+
+    @GetMapping("Terrain/insertTerrain")
+    public String insert_personne(@RequestParam("description") String description , @RequestParam("latitude") Long latitude , @RequestParam("longitude") Long longitude , @RequestParam("id_parcelle") int id_parcelle , @RequestParam("photo") String photo)
+    {
+        TerrainModel terrain = new TerrainModel();
+        terrain.insert_terrain(description, latitude, longitude, id_parcelle, photo);
+        // Convertir la liste en format JSON
+        ObjectMapper objectMapper = new ObjectMapper();
+        String jsonResult = "";
+        try {
+            jsonResult = objectMapper.writeValueAsString(terrain);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+
+        return jsonResult;
+    }
+   
 }

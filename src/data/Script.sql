@@ -16,8 +16,6 @@ CREATE TABLE Terrain
    PRIMARY KEY(id_terrain)
 );
 
-
-
 CREATE TABLE Rendement
 (
    id_rendement SERIAL,

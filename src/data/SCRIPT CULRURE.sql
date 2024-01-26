@@ -7,6 +7,10 @@ CREATE TABLE Parcelle(
 );
 --nbr_pieds/diemension = 1m2 = > 4pieds  
 insert into Parcelle(dimension,nb_pieds,prix)values(90,100,800000);
+insert into Parcelle(dimension,nb_pieds,prix)values(60,50,100000);
+insert into Parcelle(dimension,nb_pieds,prix)values(40,100,800000);
+
+
 
 CREATE TABLE Categorie_culture(
    id_categorie SERIAL,
@@ -16,6 +20,8 @@ CREATE TABLE Categorie_culture(
 );
 
 insert into categorie_culture(rendement_par_pieds,Prix_unitaire)values(2,5000);
+insert into categorie_culture(rendement_par_pieds,Prix_unitaire)values(4,2000);
+insert into categorie_culture(rendement_par_pieds,Prix_unitaire)values(1,5000);
 
 CREATE TABLE Terrain(
    id_terrain SERIAL,
@@ -45,6 +51,8 @@ CREATE TABLE utilisateurs(
 );
 
 insert into utilisateurs(nom,sexe,dtn,email,pwd)values('Toky','M','2004-01-01','tokyramanalina@gmail.com','123');
+insert into utilisateurs(nom,sexe,dtn,email,pwd)values('Henintsoa','M','2004-01-01','tokyramanalina@gmail.com','123');
+
 
 CREATE TABLE type(
    id_type SERIAL,
@@ -60,6 +68,7 @@ CREATE TABLE Parcelle_par_terrain
    id_utilisateur INTEGER,
    id_parcelle INTEGER,
    id_terrain INTEGER,
+   --id_categorie integer
    PRIMARY KEY(id_TP),
    FOREIGN KEY(id_parcelle) REFERENCES Parcelle(id_parcelle),
    FOREIGN KEY(id_terrain) REFERENCES Terrain(id_terrain)

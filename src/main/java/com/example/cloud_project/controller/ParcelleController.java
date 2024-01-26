@@ -48,4 +48,22 @@ public class ParcelleController {
 
         return jsonResult;
     }
+
+    @GetMapping("Parcelle/v_parcelle")
+    public String v_parcelle(@RequestParam("id_utilisateur") int id_utilisateur)
+    {
+        ParcelleModel p = new ParcelleModel();
+        ParcelleModel[] v_ParcelleModels = p.select_v_parcelle_where(id_utilisateur);
+
+        // Convertir la liste en format JSON
+        ObjectMapper objectMapper = new ObjectMapper();
+        String jsonResult = "";
+        try {
+            jsonResult = objectMapper.writeValueAsString(v_ParcelleModels);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+
+        return jsonResult;
+    }
 }

@@ -76,7 +76,7 @@ public class CategorieModel {
         return resultatList.toArray(new CategorieModel[resultatList.size()]);
     }
 
-    public void insert_categorie(int rendement_par_pieds, int prix_unitaire)
+    public void insert_categorie(int rendement_par_pieds, double prix_unitaire)
     {
         try 
         {
@@ -91,7 +91,7 @@ public class CategorieModel {
                 // pstmt.setInt(1, wallet);
                 // pstmt.setInt(2, wallet);
                 pstmt.setInt(1, rendement_par_pieds);
-                pstmt.setInt(2, Prix_unitaire);
+                pstmt.setDouble(2, prix_unitaire);
                 
                 pstmt.executeUpdate();
                 System.out.println("insert categorie sucessfully");
@@ -103,7 +103,7 @@ public class CategorieModel {
         }
     }
 
-    public CategorieModel select_categorie_by_id(int id_categorie, int rendement_par_pieds, int prix_unitaire) {
+    public CategorieModel select_categorie_by_id(int id_categorie, int rendement_par_pieds, double prix_unitaire) {
         CategorieModel c = null;
         
         try {
@@ -118,7 +118,7 @@ public class CategorieModel {
         
             pstmt.setInt(1, id_categorie);
             pstmt.setInt(2, rendement_par_pieds);
-            pstmt.setInt(3, prix_unitaire);
+            pstmt.setDouble(3, prix_unitaire);
         
             ResultSet result = pstmt.executeQuery();
         
@@ -135,7 +135,7 @@ public class CategorieModel {
             e.printStackTrace();
         }
         
-        return t;
+        return c;
     }
 
     public void update_categorie(int id_categorie, int new_rendement_par_pieds, int new_prix_unitaire) {

@@ -1,11 +1,11 @@
 CREATE TABLE Parcelle(
    id_parcelle SERIAL,
-   dimension NUMERIC(15,2) ,
+   dimension NUMERIC(15,2) ,--en m2
    nb_pieds INTEGER,
    prix NUMERIC(15,2)  ,
    PRIMARY KEY(id_parcelle)
 );
-
+--nbr_pieds/diemension = 1m2 = > 4pieds  
 insert into Parcelle(dimension,nb_pieds,prix)values(90,100,800000);
 
 CREATE TABLE Categorie_culture(
@@ -15,6 +15,8 @@ CREATE TABLE Categorie_culture(
    PRIMARY KEY(id_categorie)
 );
 
+insert into categorie_culture(rendement_par_pieds,Prix_unitaire)values(2,5000);
+
 CREATE TABLE Terrain(
    id_terrain SERIAL,
    description VARCHAR(50)  NOT NULL,
@@ -23,12 +25,12 @@ CREATE TABLE Terrain(
    photo VARCHAR(50) ,
    PRIMARY KEY(id_terrain)
 );
-
+ 
 insert into terrain(description,longitude,latitude,photo)values('Terrain1','47,507209','-18,910895','img1.jpg');
 
 CREATE TABLE Rendement(
    id_rendement SERIAL,
-   quantite NUMERIC(15,2) ,
+   rendement_total NUMERIC(15,2) ,
    PRIMARY KEY(id_rendement)
 );
 
@@ -46,10 +48,11 @@ insert into utilisateurs(nom,sexe,dtn,email,pwd)values('Toky','M','2004-01-01','
 
 CREATE TABLE type(
    id_type SERIAL,
-   nom_type VARCHAR(50) ,
-   id_categorie INTEGER,
+   nom_type VARCHAR(50),
    PRIMARY KEY(id_type)
 );
+
+insert into type(nom_type)values('grain');
 
 CREATE TABLE Parcelle_par_terrain
 (
@@ -62,17 +65,8 @@ CREATE TABLE Parcelle_par_terrain
    FOREIGN KEY(id_terrain) REFERENCES Terrain(id_terrain)
 );
 
-insert into Parcelle_par_terrain(id_parcelle,id_terrain)values(1,2);
-insert into Parcelle_par_terrain(id_parcelle,id_terrain)values(2,2);
+insert into Parcelle_par_terrain(id_utilisateur,id_parcelle,id_terrain)values(1,1,1);
 
-CREATE TABLE Parcelle_utilisateur(
-   id_pu SERIAL,
-   id_parcelle INTEGER,
-   id_utilisateur INTEGER,
-   PRIMARY KEY(id_pu),
-   FOREIGN KEY(id_parcelle) REFERENCES Parcelle(id_parcelle),
-   FOREIGN KEY(id_utilisateur) REFERENCES utilisateurs(id_utilisateur)
-);
 
 
 
@@ -87,8 +81,10 @@ CREATE TABLE categorie_type_parcelle(
    FOREIGN KEY(id_type) REFERENCES type(id_type)
 );
 
-CREATE TABLE Recolte(
-   id_recolte SERIAL,
+
+
+CREATE TABLE parcelle_rendement(
+   id_pr SERIAL,
    id_parcelle INTEGER,
    id_rendement INTEGER,
    Daty TIMESTAMP,

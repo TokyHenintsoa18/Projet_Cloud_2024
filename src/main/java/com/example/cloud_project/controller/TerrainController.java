@@ -50,11 +50,11 @@ public class TerrainController {
         return jsonResult;
     }
 
-    @GetMapping("Terrain/parcelle_terrain")
-    public String insert_personne(@RequestParam("id_parcelle") int id_parcelle , @RequestParam("id_terrain") int id_terrain)
+    @GetMapping("Terrain/insert_parcelle_terrain")
+    public String insert_personne(@RequestParam("id_utilisateur") int id_utilisateur,@RequestParam("id_parcelle") int id_parcelle , @RequestParam("id_terrain") int id_terrain)
     {
         TerrainModel terrain = new TerrainModel();
-       terrain.insert_parcelle_terrain(id_parcelle, id_terrain);
+       terrain.insert_parcelle_terrain(id_utilisateur,id_parcelle, id_terrain);
         // Convertir la liste en format JSON
         ObjectMapper objectMapper = new ObjectMapper();
         String jsonResult = "";

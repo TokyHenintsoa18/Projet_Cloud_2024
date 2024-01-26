@@ -11,7 +11,7 @@ public class TerrainModel {
     String description;
     long latitude;
     long longitude;
-    
+    int id_utilisateur;
     String photo;
 
 
@@ -54,6 +54,14 @@ public class TerrainModel {
     public void setPhoto(String photo) {
         this.photo = photo;
     }
+
+    public int getId_utilisateur() {
+        return id_utilisateur;
+    }
+    public void setId_utilisateur(int id_utilisateur) {
+        this.id_utilisateur = id_utilisateur;
+    }
+
 
     public TerrainModel(int id_terrain, String description, long latitude, long longitude, String photo) {
         this.id_terrain = id_terrain;
@@ -129,7 +137,7 @@ public class TerrainModel {
         return true;
     }
 
-    public void insert_parcelle_terrain(int id_parcelle , int id_terrain)
+    public void insert_parcelle_terrain(int id_utilisateur ,int id_parcelle , int id_terrain)
     {
         try 
         {
@@ -140,12 +148,12 @@ public class TerrainModel {
             
              try (Connection connection = DriverManager.getConnection(url, utilisateur, motDePasse))
             {
-                PreparedStatement pstmt = connection.prepareStatement("insert into parcelle_par_terrain(id_parcelle,id_terrain)values(?,?)");
+                PreparedStatement pstmt = connection.prepareStatement("insert into parcelle_par_terrain(id_utilisateur,id_parcelle,id_terrain)values(?,?,?)");
                 // pstmt.setInt(1, wallet);
                 // pstmt.setInt(2, wallet);
-                pstmt.setInt(1, id_parcelle);
-                pstmt.setInt(2, id_terrain);
-                
+                pstmt.setInt(1, id_utilisateur);
+                pstmt.setInt(2, id_parcelle);
+                pstmt.setInt(3, id_terrain);
                 pstmt.executeUpdate();
                 System.out.println("insert parcelle_terrain sucessfully");
             }

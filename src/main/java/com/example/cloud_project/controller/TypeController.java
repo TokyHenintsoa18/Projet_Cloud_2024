@@ -31,7 +31,7 @@ public class TypeController {
         return jsonResult;
     }
 
-    @GetMapping("Parcelle/insert_types")
+    @GetMapping("Type/insert_types")
     public String insert_type_culture(@RequestParam("nom_type") String nom_type)
     {
         TypeModel t = new TypeModel();

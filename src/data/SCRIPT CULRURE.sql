@@ -54,6 +54,7 @@ CREATE TABLE type(
 CREATE TABLE Parcelle_par_terrain
 (
    id_tp SERIAL,
+   id_utilisateur INTEGER,
    id_parcelle INTEGER,
    id_terrain INTEGER,
    PRIMARY KEY(id_TP),

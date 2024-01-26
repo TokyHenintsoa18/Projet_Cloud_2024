@@ -79,7 +79,7 @@ public TypeModel select_type_by_id(int id_type, String nom_type) {
         Class.forName("org.postgresql.Driver");
     
         try (Connection connection = DriverManager.getConnection(url, utilisateur, motDePasse)) {
-        String sql = "select * from type where id_type = ?";
+        String sql = "select * from type where id_type ="+id_type+-"";
         PreparedStatement pstmt = connection.prepareStatement(sql);
     
         pstmt.setInt(1, id_type);

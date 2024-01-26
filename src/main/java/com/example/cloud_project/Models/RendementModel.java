@@ -1,5 +1,9 @@
 package com.example.cloud_project.Models;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +18,17 @@ public class RendementModel {
     int prix_unitaire;
     int id_parcelle;
     double montant;
+    int id_terrain;
+
+    public int getId_terrain() {
+        return id_terrain;
+    }
+    public void setId_terrain(int id_terrain) {
+        this.id_terrain = id_terrain;
+    }
+
+    
+    
     
 
     public int getId_parcelle() {
@@ -99,7 +114,52 @@ public class RendementModel {
 
 
 
-    
+    public RendementModel[] select_v_parcelle_where(int id_utilisateur)
+    {
+        List<RendementModel> resultatList = new ArrayList<>();
+        
+         try{
+                 String url = "jdbc:postgresql://localhost:5432/culture";
+                String utilisateur = "postgres";
+                String motDePasse = "root";
+                Class.forName("org.postgresql.Driver");
+
+                try (Connection connection = DriverManager.getConnection(url, utilisateur, motDePasse))
+                {
+                    String sql = "select * from v_prix_rendement where id_utilisateur="+id_utilisateur+"";
+                    System.out.println(sql);
+                    PreparedStatement pstmt = connection.prepareStatement(sql);
+                   
+                    ResultSet result = pstmt.executeQuery();
+                    while (result.next()) 
+                    {
+                        int id_terrain = result.getInt(1);
+                        int id_parcelle = result.getInt(2);
+                        int id_user = result.getInt(3);
+                        double montant = result.getDouble(4);
+                        int id_categorie = result.getInt(5);
+                        
+
+                        RendementModel filtre = new RendementModel();
+                        filtre.setId_terrain(id_terrain);
+                        filtre.setId_parcelle(id_parcelle);
+                        filtre.setId_utilisateur(id_user);
+                        filtre.setMontant(montant);
+                        filtre.setId_categorie(id_categorie);
+                        resultatList.add(filtre);
+                    }
+
+                    result.close();
+                    pstmt.close();
+                    connection.close();
+                } 
+            }catch (Exception e) {
+                // TODO: handle exception
+                e.printStackTrace();
+            }
+
+        return resultatList.toArray(new RendementModel[resultatList.size()]);
+    }
 
 
 

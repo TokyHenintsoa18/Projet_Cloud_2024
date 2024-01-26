@@ -57,7 +57,7 @@ public class TypeModel {
                     String nom_type = result.getString(2);
 
                     TypeModel t = new TypeModel(id_type, nom_type);
-                    resultatList.add(p);
+                    resultatList.add(t);
                 }
             }
         } 
@@ -66,7 +66,8 @@ public class TypeModel {
             // TODO: handle exception
             e.printStackTrace();
         }
-}
+        return resultatList.toArray(new TypeModel[resultatList.size()]);
+    }
 
 public TypeModel select_type_by_id(int id_type, String nom_type) {
     TypeModel t= null;
@@ -81,7 +82,7 @@ public TypeModel select_type_by_id(int id_type, String nom_type) {
         String sql = "select * from type where id_type = ?";
         PreparedStatement pstmt = connection.prepareStatement(sql);
     
-        pstmt.setString(1, id_type);
+        pstmt.setInt(1, id_type);
         pstmt.setString(2, nom_type);
     
         ResultSet result = pstmt.executeQuery();
@@ -96,10 +97,10 @@ public TypeModel select_type_by_id(int id_type, String nom_type) {
         e.printStackTrace();
     }
     
-    return p;
+    return t;
 }
 
-public void insert_type(int id_type, String nom_type)
+public void insert_type(String nom_type)
 {
     try 
     {
@@ -112,7 +113,7 @@ public void insert_type(int id_type, String nom_type)
         {
             PreparedStatement pstmt = connection.prepareStatement("insert into type(nom)values(?)");
 
-            pstmt.setString(1,nom);
+            pstmt.setString(1,nom_type);
 
             pstmt.executeUpdate();
             System.out.println("insert type sucessfully");

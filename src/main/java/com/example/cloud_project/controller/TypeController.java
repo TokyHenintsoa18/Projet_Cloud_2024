@@ -18,7 +18,7 @@ public class TypeController {
     public String list_type_culture()
     {
         TypeModel p = new TypeModel();
-        TypeModel list_type_culture[]=p.select_parcelle();
+        TypeModel list_type_culture[]=p.list_type();
         // Convertir la liste en format JSON
         ObjectMapper objectMapper = new ObjectMapper();
         String jsonResult = "";
@@ -35,13 +35,13 @@ public class TypeController {
     public String insert_type_culture(@RequestParam("nom_type") String nom_type)
     {
         TypeModel t = new TypeModel();
-        insert_type.insert_type_culture(nom_type);
+        t.insert_type(nom_type);
 
         // Convertir la liste en format JSON
         ObjectMapper objectMapper = new ObjectMapper();
         String jsonResult = "";
         try {
-            jsonResult = objectMapper.writeValueAsString(insert_type_culture);
+            jsonResult = objectMapper.writeValueAsString(t);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }

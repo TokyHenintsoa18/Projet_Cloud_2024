@@ -96,40 +96,10 @@ public class RendementModel {
     }
     
 
+
+
+
     
-
-
-    public RendementModel[] rend_tot_parcelle(int id_utilisateur)
-    {
-        List<RendementModel> resultatList = new ArrayList<>();
-
-        ParcelleModel p = new ParcelleModel();
-        ParcelleModel[] parcelleModels = p.select_v_parcelle_where(id_utilisateur);
-
-        CategorieModel c = new CategorieModel();
-        CategorieModel[] categorie = c.list_categorie();
-
-        int echelle = 4;
-
-        for(ParcelleModel parcelleModel : parcelleModels)
-        {
-            for (CategorieModel list_categorie : categorie) {
-                double result_nb_pieds = parcelleModel.getDimension()*echelle;
-
-                Double randement_total_parcelle = list_categorie.getprix_unitaire() * result_nb_pieds;
-                 System.out.println(randement_total_parcelle);
-
-
-
-                // RendementModel rendementModel =new RendementModel();
-                
-            }
-        }
-        
-
-        return resultatList.toArray(new RendementModel[resultatList.size()]);
-    }
-
 
 
 

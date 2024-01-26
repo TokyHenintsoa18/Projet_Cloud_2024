@@ -33,6 +33,7 @@ CREATE TABLE Terrain(
 );
  
 insert into terrain(description,longitude,latitude,photo)values('Terrain1','47,507209','-18,910895','img1.jpg');
+insert into terrain(description,longitude,latitude,photo)values('Terrain2','42,5e7209','-18,910895','img2.jpg');
 
 CREATE TABLE Rendement(
    id_rendement SERIAL,
@@ -68,14 +69,16 @@ CREATE TABLE Parcelle_par_terrain
    id_utilisateur INTEGER,
    id_parcelle INTEGER,
    id_terrain INTEGER,
-   --id_categorie integer
+   id_categorie integer references categorie_culture(id_categorie),
    PRIMARY KEY(id_TP),
    FOREIGN KEY(id_parcelle) REFERENCES Parcelle(id_parcelle),
    FOREIGN KEY(id_terrain) REFERENCES Terrain(id_terrain)
 );
 
-insert into Parcelle_par_terrain(id_utilisateur,id_parcelle,id_terrain)values(1,1,1);
-
+insert into Parcelle_par_terrain(id_utilisateur,id_parcelle,id_terrain,id_categorie)values(1,1,1,1);
+insert into Parcelle_par_terrain(id_utilisateur,id_parcelle,id_terrain,id_categorie)values(1,1,1,2);
+insert into Parcelle_par_terrain(id_utilisateur,id_parcelle,id_terrain,id_categorie)values(1,2,1,1);
+insert into Parcelle_par_terrain(id_utilisateur,id_parcelle,id_terrain,id_categorie)values(2,1,1,1);
 
 
 

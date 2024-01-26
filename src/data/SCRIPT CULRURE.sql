@@ -88,7 +88,7 @@ CREATE TABLE parcelle_rendement(
    id_parcelle INTEGER,
    id_rendement INTEGER,
    Daty TIMESTAMP,
-   PRIMARY KEY(id_recolte),
+   PRIMARY KEY(id_pr),
    FOREIGN KEY(id_parcelle) REFERENCES Parcelle(id_parcelle),
    FOREIGN KEY(id_rendement) REFERENCES Rendement(id_rendement)
 );

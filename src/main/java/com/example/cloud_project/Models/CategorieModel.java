@@ -127,6 +127,7 @@ public class CategorieModel {
                 c.setId_categorie(result.getInt(1));
                 c.setRendement_par_pieds(result.getInt(2));
                 c.setprix_unitaire(result.getInt(3));
+                System.out.println("select categorie by id sucessfully");
 
             }
             }
@@ -135,5 +136,33 @@ public class CategorieModel {
         }
         
         return t;
+    }
+
+    public void update_categorie(int id_categorie, int new_rendement_par_pieds, int new_prix_unitaire) {
+        try {
+            String url = "jdbc:postgresql://localhost:5432/culture";
+            String utilisateur = "postgres";
+            String motDePasse = "root";
+            Class.forName("org.postgresql.Driver");
+
+            try (Connection connection = DriverManager.getConnection(url, utilisateur, motDePasse)) {
+                String sql = "UPDATE Categorie_culture SET rendement_par_pieds = ?, Prix_unitaire = ? WHERE id_categorie = ?";
+                PreparedStatement pstmt = connection.prepareStatement(sql);
+
+                pstmt.setInt(1, new_rendement_par_pieds);
+                pstmt.setInt(2, new_prix_unitaire);
+                pstmt.setInt(3, id_categorie);
+
+                int rowsUpdated = pstmt.executeUpdate();
+
+                if (rowsUpdated > 0) {
+                    System.out.println("update categorie successfully");
+                } else {
+                    System.out.println("tsy mety");
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

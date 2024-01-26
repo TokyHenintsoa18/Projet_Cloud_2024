@@ -45,4 +45,21 @@ public class CategorieController {
 
         return jsonResult;
     }
+
+    @GetMapping("Categorie/updateCategorie")
+    public String update_categorie_culture(@RequestParam("id_categorie") int id_categorie, @RequestParam("new_rendement_par_pieds") int new_rendement_par_pieds, @RequestParam("new_prix_unitaire") int new_prix_unitaire) {
+
+        CategorieModel c = new CategorieModel();
+        c.update_categorie(id_categorie, new_rendement_par_pieds, new_prix_unitaire);
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        String jsonResult = "";
+        try {
+            jsonResult = objectMapper.writeValueAsString(c);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+
+        return jsonResult;
+    }
 }

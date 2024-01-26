@@ -1,7 +1,6 @@
 package com.example.cloud_project.Models;
 
 import java.sql.*;
-import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -129,6 +128,34 @@ public class TerrainModel {
         }
         return true;
     }
+
+    public void insert_parcelle_terrain(int id_parcelle , int id_terrain)
+    {
+        try 
+        {
+            String url = "jdbc:postgresql://localhost:5432/culture";
+            String utilisateur = "postgres";
+            String motDePasse = "root";
+            Class.forName("org.postgresql.Driver");
+            
+             try (Connection connection = DriverManager.getConnection(url, utilisateur, motDePasse))
+            {
+                PreparedStatement pstmt = connection.prepareStatement("insert into parcelle_par_terrain(id_parcelle,id_terrain)values(?,?)");
+                // pstmt.setInt(1, wallet);
+                // pstmt.setInt(2, wallet);
+                pstmt.setInt(1, id_parcelle);
+                pstmt.setInt(2, id_terrain);
+                
+                pstmt.executeUpdate();
+                System.out.println("insert parcelle_terrain sucessfully");
+            }
+            
+        }catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
+    }
+
 
 
 }

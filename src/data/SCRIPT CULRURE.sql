@@ -74,6 +74,7 @@ CREATE TABLE Parcelle_utilisateur(
 );
 
 
+
 CREATE TABLE categorie_type_parcelle(
    id_CTP SERIAL,
    id_parcelle INTEGER,

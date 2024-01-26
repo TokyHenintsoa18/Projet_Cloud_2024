@@ -117,4 +117,32 @@ public class ParcelleModel {
             e.printStackTrace();
         }
     }
+
+    public void insert_categorie_parcelle(int id_parcelle , int id_categorie , int id_type)
+    {
+        try 
+        {
+            String url = "jdbc:postgresql://localhost:5432/culture";
+            String utilisateur = "postgres";
+            String motDePasse = "root";
+            Class.forName("org.postgresql.Driver");
+            
+             try (Connection connection = DriverManager.getConnection(url, utilisateur, motDePasse))
+            {
+                PreparedStatement pstmt = connection.prepareStatement("");
+                // pstmt.setInt(1, wallet);
+                // pstmt.setInt(2, wallet);
+                // pstmt.setDouble(1, dimension);
+                // pstmt.setInt(2, nb_pieds);
+                // pstmt.setDouble(3, prix);
+                
+                pstmt.executeUpdate();
+                System.out.println("insert CATEGORIE_PARCELLE sucessfully");
+            }
+            
+        }catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
+    }
 }

@@ -1,6 +1,8 @@
 package com.example.cloud_project.controller;
 
 import org.springframework.web.bind.annotation.RestController;
+
+
 import java.sql.Date;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,6 +38,23 @@ public class TerrainController {
     {
         TerrainModel terrain = new TerrainModel();
         terrain.insert_terrain(description, latitude, longitude, id_parcelle, photo);
+        // Convertir la liste en format JSON
+        ObjectMapper objectMapper = new ObjectMapper();
+        String jsonResult = "";
+        try {
+            jsonResult = objectMapper.writeValueAsString(terrain);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+
+        return jsonResult;
+    }
+
+    @GetMapping("Terrain/parcelle_terrain")
+    public String insert_personne(@RequestParam("id_parcelle") int id_parcelle , @RequestParam("id_terrain") int id_terrain)
+    {
+        TerrainModel terrain = new TerrainModel();
+       terrain.insert_parcelle_terrain(id_parcelle, id_terrain);
         // Convertir la liste en format JSON
         ObjectMapper objectMapper = new ObjectMapper();
         String jsonResult = "";

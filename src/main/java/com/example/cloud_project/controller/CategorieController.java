@@ -25,7 +25,7 @@ public class CategorieController {
        return ResponseEntity.ok().body(list_cat);
     }
 
-    @GetMapping("/api/categorie/insertCategorie")
+    @PostMapping("/api/categorie/insertCategorie")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<CategorieModel> insertCategorie(
             @RequestParam int rendementParPieds,

@@ -83,7 +83,7 @@ public class CategorieModel {
         return resultatList.toArray(new CategorieModel[resultatList.size()]);
     }
 
-    public void insert_categorie(int rendement_par_pieds, double prix_unitaire)
+    public void insert_categorie(int rendement_par_pieds, double prix_unitaire , String nom_categorie)
     {
         try 
         {

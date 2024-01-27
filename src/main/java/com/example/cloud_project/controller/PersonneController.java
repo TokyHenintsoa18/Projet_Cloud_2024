@@ -55,7 +55,6 @@ public class PersonneController {
     public void updatePwd(String pwd, int id_utilisateur) {
     // Update the password
         PersonneModel p = new PersonneModel();
-
         p.update_pwd(pwd, id_utilisateur);
     }
 

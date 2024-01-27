@@ -27,10 +27,10 @@ public class CategorieController {
 
     @PostMapping("Categorie/insertCategorie")
     @ResponseStatus(HttpStatus.OK)
-    public void insert_categorie_culture(@RequestParam("rendement_par_pieds") int rendement_par_pieds , @RequestParam("prix_unitaire") int prix_unitaire)
+    public void insert_categorie_culture(@RequestParam("rendement_par_pieds") int rendement_par_pieds , @RequestParam("prix_unitaire") int prix_unitaire , @RequestParam("nom_categorie") String nom_categorie)
     {
         CategorieModel c = new CategorieModel();
-        c.insert_categorie(rendement_par_pieds, prix_unitaire);
+        c.insert_categorie(rendement_par_pieds, prix_unitaire,nom_categorie);
     }
 
     @PostMapping("Categorie/updateCategorie")

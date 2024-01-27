@@ -9,6 +9,7 @@ public class CategorieModel {
     int id_categorie;
     int rendement_par_pieds;
     int prix_unitaire;
+    String nom_categorie;
     
     public int getId_categorie() {
         return id_categorie;
@@ -29,10 +30,18 @@ public class CategorieModel {
         this.prix_unitaire = prix_unitaire;
     }
 
-    public CategorieModel(int id_categorie, int rendement_par_pieds, int prix_unitaire) {
+    public String getNom_categorie() {
+        return nom_categorie;
+    }
+    public void setNom_categorie(String nom_categorie) {
+        this.nom_categorie = nom_categorie;
+    }
+
+    public CategorieModel(int id_categorie, int rendement_par_pieds, int prix_unitaire,String nom_categorie) {
         this.id_categorie = id_categorie;
         this.rendement_par_pieds = rendement_par_pieds;
         this.prix_unitaire = prix_unitaire;
+        this.nom_categorie = nom_categorie;
     }
     public CategorieModel() {
 
@@ -56,8 +65,9 @@ public class CategorieModel {
                     int id_categorie = result.getInt(1);
                     int rendement_par_pieds = result.getInt(2);
                     int prix_unitaire = result.getInt(3);
+                    String nom_categorie = result.getString(4);
                     
-                    CategorieModel p = new CategorieModel(id_categorie,rendement_par_pieds,prix_unitaire);
+                    CategorieModel p = new CategorieModel(id_categorie,rendement_par_pieds,prix_unitaire,nom_categorie);
                     resultatList.add(p);
                 }
                 result.close();
@@ -81,11 +91,12 @@ public class CategorieModel {
                 Conn c = new Conn();
                 Connection conn = c.getConnex();
                 
-                PreparedStatement pstmt = conn.prepareStatement("insert into Categorie_culture(rendement_par_pieds,Prix_unitaire)values(?,?)");
+                PreparedStatement pstmt = conn.prepareStatement("insert into Categorie_culture(rendement_par_pieds,Prix_unitaire,nom_categorie)values(?,?,?)");
                 // pstmt.setInt(1, wallet);
                 // pstmt.setInt(2, wallet);
                 pstmt.setInt(1, rendement_par_pieds);
                 pstmt.setDouble(2, prix_unitaire);
+                pstmt.setString(3, nom_categorie);
                 
                 pstmt.executeUpdate();
                 System.out.println("insert categorie sucessfully");
@@ -97,7 +108,7 @@ public class CategorieModel {
         }
     }
 
-    public CategorieModel select_categorie_by_id(int id_categorie, int rendement_par_pieds, double prix_unitaire) {
+    public CategorieModel select_categorie_by_id(int id_categorie) {
         CategorieModel cat = null;
         
         try {
@@ -109,8 +120,7 @@ public class CategorieModel {
             PreparedStatement pstmt = conn.prepareStatement(sql);
         
             pstmt.setInt(1, id_categorie);
-            pstmt.setInt(2, rendement_par_pieds);
-            pstmt.setDouble(3, prix_unitaire);
+            
         
             ResultSet result = pstmt.executeQuery();
         
@@ -119,6 +129,7 @@ public class CategorieModel {
                 cat.setId_categorie(result.getInt(1));
                 cat.setRendement_par_pieds(result.getInt(2));
                 cat.setprix_unitaire(result.getInt(3));
+                cat.setNom_categorie(result.getString(4));
                 System.out.println("select categorie by id sucessfully");
 
             }
@@ -131,13 +142,13 @@ public class CategorieModel {
         return cat;
     }
 
-    public void update_categorie(int id_categorie, int new_rendement_par_pieds, int new_prix_unitaire) {
+    public void update_categorie(int id_categorie, int new_rendement_par_pieds, int new_prix_unitaire , String nom_categorie) {
         try {
             
 
             Conn c = new Conn();
             Connection conn = c.getConnex();
-                String sql = "UPDATE Categorie_culture SET rendement_par_pieds = ?, Prix_unitaire = ? WHERE id_categorie = ?";
+                String sql = "UPDATE Categorie_culture SET rendement_par_pieds = "+new_rendement_par_pieds+", Prix_unitaire = "+new_prix_unitaire+", nom_categorie="+nom_categorie+" WHERE id_categorie = "+id_categorie+"";
                 PreparedStatement pstmt = conn.prepareStatement(sql);
 
                 pstmt.setInt(1, new_rendement_par_pieds);

@@ -20,6 +20,8 @@ public class RendementModel {
     double montant;
     int id_terrain;
     int id_type;
+    String nom_categorie;
+    String nom_type;
 
     public int getId_terrain() {
         return id_terrain;
@@ -94,25 +96,20 @@ public class RendementModel {
         this.montant = montant;
     }
 
-    public RendementModel(int id_categorie, int rendement_par_pieds, int prix_unitaire) {
-        this.id_categorie = id_categorie;
-        this.rendement_par_pieds = rendement_par_pieds;
-        this.prix_unitaire = prix_unitaire;
+    public String getNom_categorie() {
+        return nom_categorie;
     }
-    public RendementModel(int id_parcelle, int dimension, int nb_pieds, int prix) {
-        this.id_parcelle = id_parcelle;
-        this.dimension = dimension;
-        this.nb_pieds = nb_pieds;
-        this.prix = prix;
-    }
-   
-    public RendementModel(int id_utilisateur, int nb_pieds, int id_parcelle, double montant) {
-        this.id_utilisateur = id_utilisateur;
-        this.nb_pieds = nb_pieds;
-        this.id_parcelle = id_parcelle;
-        this.montant = montant;
+    public void setNom_categorie(String nom_categorie) {
+        this.nom_categorie = nom_categorie;
     }
 
+    public String getNom_type() {
+        return nom_type;
+    }
+    public void setNom_type(String nom_type) {
+        this.nom_type = nom_type;
+    }
+    
     public RendementModel() {
     }
     
@@ -142,17 +139,24 @@ public class RendementModel {
                         int id_terrain = result.getInt(1);
                         int id_parcelle = result.getInt(2);
                         int id_user = result.getInt(3);
-                        double montant = result.getDouble(4);
-                        int id_categorie = result.getInt(5);
-                        int id_type = result.getInt(6);
+                        int nb_pieds = result.getInt(4);
+                        double montant = result.getDouble(5);
+                        int id_categorie = result.getInt(6);
+                        String nom_categorie = result.getString(7);
+                        int id_type = result.getInt(8);
+                        String nom_type = result.getString(9);
+
 
                         RendementModel filtre = new RendementModel();
                         filtre.setId_terrain(id_terrain);
                         filtre.setId_parcelle(id_parcelle);
                         filtre.setId_utilisateur(id_user);
+                        filtre.setNb_pieds(nb_pieds);
                         filtre.setMontant(montant);
                         filtre.setId_categorie(id_categorie);
+                        filtre.setNom_categorie(nom_categorie);
                         filtre.setId_type(id_type);
+                        filtre.setNom_type(nom_type);
                         resultatList.add(filtre);
                     }
 

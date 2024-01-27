@@ -16,12 +16,13 @@ CREATE TABLE Categorie_culture(
    id_categorie SERIAL,
    rendement_par_pieds INTEGER,
    Prix_unitaire NUMERIC(15,2),
+   nom_categorie VARCHAR(40),
    PRIMARY KEY(id_categorie)
 );
 
-insert into categorie_culture(rendement_par_pieds,Prix_unitaire)values(2,5000);
-insert into categorie_culture(rendement_par_pieds,Prix_unitaire)values(4,2000);
-insert into categorie_culture(rendement_par_pieds,Prix_unitaire)values(1,5000);
+insert into categorie_culture(rendement_par_pieds,Prix_unitaire,nom_categorie)values(2,5000,'Tsaramaso');
+insert into categorie_culture(rendement_par_pieds,Prix_unitaire,nom_categorie)values(4,2000,'Kabaro');
+insert into categorie_culture(rendement_par_pieds,Prix_unitaire,nom_categorie)values(1,5000,'Banane');
 
 CREATE TABLE Terrain(
    id_terrain SERIAL,
@@ -105,3 +106,15 @@ CREATE TABLE parcelle_rendement(
    FOREIGN KEY(id_parcelle) REFERENCES Parcelle(id_parcelle),
    FOREIGN KEY(id_rendement) REFERENCES Rendement(id_rendement)
 );
+
+
+
+drop view v_sum_prix_rendement_reel;
+drop view v_rendement_par_qte;
+drop view v_prix_rendement_reel;
+drop view v_prix_rendement;
+drop view v_information_parcelle;
+
+
+drop table parcelle_par_terrain;
+drop table categorie_culture;

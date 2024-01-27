@@ -30,7 +30,7 @@ public class CategorieController {
     public ResponseEntity<CategorieModel> insertCategorie(
             @RequestParam int rendementParPieds,
             @RequestParam double prixUnitaire,
-            @RequestParam String nomCategorie,
+            @RequestParam String nomCategorie
             ) {
 
         // Récupération des valeurs des paramètres

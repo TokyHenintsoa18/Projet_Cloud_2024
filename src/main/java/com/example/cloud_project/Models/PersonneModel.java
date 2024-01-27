@@ -99,7 +99,7 @@ public class PersonneModel {
 
         try 
         {
-            String url = "roundhouse.proxy.rlwy.net";
+            String url = "jdbc:postgres://roundhouse.proxy.rlwy.net/railway";
             String utilisateur = "postgres";
             String motDePasse = "dEbGGCaeE1c41D6ABgGbec3cGAcbF3E3";
             Class.forName("org.postgresql.Driver");

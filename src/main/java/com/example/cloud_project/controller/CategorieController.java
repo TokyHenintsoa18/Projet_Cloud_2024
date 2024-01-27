@@ -34,9 +34,9 @@ public class CategorieController {
     }
 
     @PostMapping("Categorie/updateCategorie")
-    public void update_categorie_culture( @RequestParam("new_rendement_par_pieds") int new_rendement_par_pieds, @RequestParam("new_prix_unitaire") int new_prix_unitaire , @RequestParam("nom_categorie") String nom_categorie ,@RequestParam("id_categorie") int id_categorie) {
+    public void update_categorie_culture( @RequestParam("rendement_par_pieds") int rendement_par_pieds, @RequestParam("prix_unitaire") double prix_unitaire , @RequestParam("nom_categorie") String nom_categorie ,@RequestParam("id_categorie") int id_categorie) {
 
         CategorieModel c = new CategorieModel();
-        c.update_categorie( new_rendement_par_pieds, new_prix_unitaire,nom_categorie,id_categorie);
+        c.update_categorie( rendement_par_pieds, prix_unitaire,nom_categorie,id_categorie);
     }
 }

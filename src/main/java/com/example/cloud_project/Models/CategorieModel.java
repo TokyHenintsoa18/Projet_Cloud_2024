@@ -8,7 +8,7 @@ public class CategorieModel {
 
     int id_categorie;
     int rendement_par_pieds;
-    int prix_unitaire;
+    double prix_unitaire;
     String nom_categorie;
     
     public int getId_categorie() {
@@ -23,13 +23,13 @@ public class CategorieModel {
     public void setRendement_par_pieds(int rendement_par_pieds) {
         this.rendement_par_pieds = rendement_par_pieds;
     }
-    public int getprix_unitaire() {
+    
+    public double getPrix_unitaire() {
         return prix_unitaire;
     }
-    public void setprix_unitaire(int prix_unitaire) {
+    public void setPrix_unitaire(double prix_unitaire) {
         this.prix_unitaire = prix_unitaire;
     }
-
     public String getNom_categorie() {
         return nom_categorie;
     }
@@ -128,7 +128,7 @@ public class CategorieModel {
                 cat = new CategorieModel();
                 cat.setId_categorie(result.getInt(1));
                 cat.setRendement_par_pieds(result.getInt(2));
-                cat.setprix_unitaire(result.getInt(3));
+                cat.setPrix_unitaire(result.getInt(3));
                 cat.setNom_categorie(result.getString(4));
                 System.out.println("select categorie by id sucessfully");
 
@@ -142,30 +142,28 @@ public class CategorieModel {
         return cat;
     }
 
-    public void update_categorie(int new_rendement_par_pieds, int new_prix_unitaire , String nom_categorie,int id_categorie) {
-        try {
+    public void update_categorie(int rendement_par_pieds, double prix_unitaire , String nom_categorie,int id_categorie) {
+        try 
+        {
             
-
             Conn c = new Conn();
             Connection conn = c.getConnex();
-                String sql = "UPDATE Categorie_culture SET rendement_par_pieds = "+new_rendement_par_pieds+", Prix_unitaire = "+new_prix_unitaire+", nom_categorie="+nom_categorie+" WHERE id_categorie = "+id_categorie+"";
-                PreparedStatement pstmt = conn.prepareStatement(sql);
+            
+            PreparedStatement pstmt = conn.prepareStatement("update categorie_culture set rendement_par_pieds=?,prix_unitaire=?,nom_categorie=? where id_categorie=?");
+            
+            pstmt.setInt(1,rendement_par_pieds);
+            pstmt.setDouble(2, prix_unitaire);
+            pstmt.setString(3, nom_categorie);
+            pstmt.setInt(4, id_categorie);
 
-                pstmt.setInt(1, new_rendement_par_pieds);
-                pstmt.setInt(2, new_prix_unitaire);
-                pstmt.setInt(3, id_categorie);
-
-                int rowsUpdated = pstmt.executeUpdate();
-
-                if (rowsUpdated > 0) {
-                    System.out.println("update categorie successfully");
-                    conn.close();
-                } else {
-                    System.out.println("tsy mety");
-                }
+            pstmt.executeUpdate();
+            System.out.println("update pwd sucessfully");
+            conn.close();
+            
             
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+    
 }

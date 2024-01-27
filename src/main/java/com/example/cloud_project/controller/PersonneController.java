@@ -51,11 +51,12 @@ public class PersonneController {
     }
 
     @PostMapping("Personne/updatePwd")
-    @ResponseStatus(HttpStatus.OK)
-    public void updatePwd(String pwd, int id_utilisateur) {
-    // Update the password
-        PersonneModel p = new PersonneModel();
-        p.update_pwd(pwd, id_utilisateur);
+    public ResponseEntity<Void> updatePwd(String pwd, int id_utilisateur) {
+        // Met à jour le mot de passe
+        PersonneModel personne = new PersonneModel();
+        personne.update_pwd(pwd, id_utilisateur);
+
+        return new ResponseEntity<>(HttpStatus.OK); // Ou un code d'état personnalisé
     }
 
     // @GetMapping("/Personne/session")

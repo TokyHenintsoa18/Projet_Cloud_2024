@@ -25,25 +25,18 @@ public class CategorieController {
        return ResponseEntity.ok().body(list_cat);
     }
 
-    @PostMapping("/api/categorie/insertCategorie")
+    @PostMapping("/api/categorie/insert")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<CategorieModel> insertCategorie(
             @RequestParam int rendementParPieds,
             @RequestParam double prixUnitaire,
-            @RequestParam String nomCategorie
-            ) {
-
-        // Récupération des valeurs des paramètres
+            @RequestParam String nomCategorie) {
+       
         CategorieModel categorie = new CategorieModel();
         categorie.setRendement_par_pieds(rendementParPieds);
         categorie.setPrix_unitaire(prixUnitaire);
         categorie.setNom_categorie(nomCategorie);
-        
-
-        // Appel de la fonction `update_categorie()`
         categorie.insert_categorie(rendementParPieds, prixUnitaire, nomCategorie);
-
-        // Retour de la catégorie mise à jour
         return ResponseEntity.ok(categorie);
     }
 

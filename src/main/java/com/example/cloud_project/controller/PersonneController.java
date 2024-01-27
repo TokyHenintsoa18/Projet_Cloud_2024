@@ -1,6 +1,7 @@
 package com.example.cloud_project.controller;
 import java.sql.Date;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -17,21 +18,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class PersonneController {
     
     @GetMapping("Personne/listsPersonne")
-    public String listPersonnes() {
-        // Appel de la méthode list_personne() pour obtenir la liste des personnes
-        PersonneModel p = new PersonneModel();
-        PersonneModel[] personnes = p.list_user();
+    public ResponseEntity<PersonneModel[]> listPersonnes() {
+    // Get the list of personnes
+    PersonneModel p = new PersonneModel();
+    PersonneModel[] personnes = p.list_user();
 
-        // Convertir la liste en format JSON
-        ObjectMapper objectMapper = new ObjectMapper();
-        String jsonResult = "";
-        try {
-            jsonResult = objectMapper.writeValueAsString(personnes);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
-
-        return jsonResult;
+    // Return a ResponseEntity with the JSON response
+    return ResponseEntity.ok().body(personnes);
     }
 
     @GetMapping("/Personne/insertPersonne")

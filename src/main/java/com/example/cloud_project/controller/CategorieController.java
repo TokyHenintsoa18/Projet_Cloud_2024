@@ -33,7 +33,7 @@ public class CategorieController {
         c.insert_categorie(rendement_par_pieds, prix_unitaire,nom_categorie);
     }
 
-    @PostMapping("/api/categories/update")
+    @GetMapping("/api/categories/update")
     public ResponseEntity<CategorieModel> updateCategorie(
             @RequestParam int rendementParPieds,
             @RequestParam double prixUnitaire,

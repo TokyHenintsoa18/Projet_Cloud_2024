@@ -1,5 +1,6 @@
 package com.example.cloud_project.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +18,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @RestController
 public class CategorieController {
     
+    @Autowired
+    private CategorieModel categorieRepository;
+
     @GetMapping("Categorie/list_categorie")
     public ResponseEntity<CategorieModel[]> listCategories()
     {
@@ -25,18 +29,22 @@ public class CategorieController {
        return ResponseEntity.ok().body(list_cat);
     }
 
-    @PostMapping("/api/categorie/insert")
-    @ResponseStatus(HttpStatus.OK)
+    @PostMapping("/api/categories/insert")
     public ResponseEntity<CategorieModel> insertCategorie(
             @RequestParam int rendementParPieds,
             @RequestParam double prixUnitaire,
             @RequestParam String nomCategorie) {
-       
+
+        // Récupération des valeurs des paramètres
         CategorieModel categorie = new CategorieModel();
         categorie.setRendement_par_pieds(rendementParPieds);
         categorie.setPrix_unitaire(prixUnitaire);
         categorie.setNom_categorie(nomCategorie);
-        categorie.insert_categorie(rendementParPieds, prixUnitaire, nomCategorie);
+
+        // Appel de la fonction `insert_categorie()`
+        categorieRepository.insert_categorie(rendementParPieds,prixUnitaire,nomCategorie);
+
+        // Retour de la catégorie insérée
         return ResponseEntity.ok(categorie);
     }
 

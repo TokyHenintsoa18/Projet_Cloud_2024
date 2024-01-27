@@ -137,7 +137,7 @@ public class TerrainModel {
         return true;
     }
 
-    public void insert_parcelle_terrain(int id_utilisateur ,int id_parcelle , int id_terrain)
+    public void insert_parcelle_terrain(int id_utilisateur ,int id_parcelle , int id_terrain , int id_categorie)
     {
         try 
         {
@@ -148,12 +148,13 @@ public class TerrainModel {
             
              try (Connection connection = DriverManager.getConnection(url, utilisateur, motDePasse))
             {
-                PreparedStatement pstmt = connection.prepareStatement("insert into parcelle_par_terrain(id_utilisateur,id_parcelle,id_terrain)values(?,?,?)");
+                PreparedStatement pstmt = connection.prepareStatement("insert into parcelle_par_terrain(id_utilisateur,id_parcelle,id_terrain,id_categorie)values(?,?,?,?)");
                 // pstmt.setInt(1, wallet);
                 // pstmt.setInt(2, wallet);
                 pstmt.setInt(1, id_utilisateur);
                 pstmt.setInt(2, id_parcelle);
                 pstmt.setInt(3, id_terrain);
+                pstmt.setInt(4, id_categorie);
                 pstmt.executeUpdate();
                 System.out.println("insert parcelle_terrain sucessfully");
             }

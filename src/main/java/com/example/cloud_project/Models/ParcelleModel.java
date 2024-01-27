@@ -8,11 +8,16 @@ import java.util.List;
 public class ParcelleModel {
     
 
+
     int id_parcelle;
     double dimension;
     int nb_pieds;
     Double prix;
-
+    int id_tp;
+    int id_utilisateur;
+    String nom;
+    int id_terrain;
+        
    
 
     
@@ -28,12 +33,6 @@ public class ParcelleModel {
     public void setDimension(double dimension) {
         this.dimension = dimension;
     }
-    public int getnb_pieds() {
-        return nb_pieds;
-    }
-    public void setnb_pieds(int nb_pieds) {
-        this.nb_pieds = nb_pieds;
-    }
     public Double getPrix() {
         return prix;
     }
@@ -41,7 +40,36 @@ public class ParcelleModel {
         this.prix = prix;
     }
 
-    
+    public int getNb_pieds() {
+        return nb_pieds;
+    }
+    public void setNb_pieds(int nb_pieds) {
+        this.nb_pieds = nb_pieds;
+    }
+    public int getId_tp() {
+        return id_tp;
+    }
+    public void setId_tp(int id_tp) {
+        this.id_tp = id_tp;
+    }
+    public int getId_utilisateur() {
+        return id_utilisateur;
+    }
+    public void setId_utilisateur(int id_utilisateur) {
+        this.id_utilisateur = id_utilisateur;
+    }
+    public String getNom() {
+        return nom;
+    }
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+    public int getId_terrain() {
+        return id_terrain;
+    }
+    public void setId_terrain(int id_terrain) {
+        this.id_terrain = id_terrain;
+    }
 
     public ParcelleModel(int id_parcelle, double dimension, int nb_pieds, Double prix) {
         this.id_parcelle = id_parcelle;
@@ -50,6 +78,18 @@ public class ParcelleModel {
         this.prix = prix;
        
     }
+
+    public ParcelleModel(int id_parcelle, double dimension, int nb_pieds, int id_tp, int id_utilisateur, String nom,
+    int id_terrain) {
+this.id_parcelle = id_parcelle;
+this.dimension = dimension;
+this.nb_pieds = nb_pieds;
+this.id_tp = id_tp;
+this.id_utilisateur = id_utilisateur;
+this.nom = nom;
+this.id_terrain = id_terrain;
+}
+
     public ParcelleModel() {
     }
 
@@ -90,6 +130,9 @@ public class ParcelleModel {
         return resultatList.toArray(new ParcelleModel[resultatList.size()]);
     }
 
+    
+
+    
     public void insert_parcelle(Double dimension , int nb_pieds , Double prix)
     {
         try 
@@ -145,4 +188,5 @@ public class ParcelleModel {
             e.printStackTrace();
         }
     }
+    
 }

@@ -6,24 +6,24 @@ import java.sql.Date;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.example.cloud_project.Models.ParcelleModel;
+import com.example.cloud_project.Models.TypeModel;
 import com.example.cloud_project.Models.PersonneModel;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.example.cloud_project.Models.PersonneModel;
 @RestController
-public class ParcelleController {
+public class TypeController {
     
-    @GetMapping("Parcelle/listsParcelle")
-    public String list_parcelle()
+    @GetMapping("Type/list_types")
+    public String list_type_culture()
     {
-        ParcelleModel p = new ParcelleModel();
-        ParcelleModel list_parcelle[]=p.select_parcelle();
+        TypeModel p = new TypeModel();
+        TypeModel list_type_culture[]=p.list_type();
         // Convertir la liste en format JSON
         ObjectMapper objectMapper = new ObjectMapper();
         String jsonResult = "";
         try {
-            jsonResult = objectMapper.writeValueAsString(list_parcelle);
+            jsonResult = objectMapper.writeValueAsString(list_type_culture);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
@@ -31,17 +31,17 @@ public class ParcelleController {
         return jsonResult;
     }
 
-    @GetMapping("Parcelle/insertParcelle")
-    public String insert_parcellle(@RequestParam("dimension") Double dimension , @RequestParam("nb_pieds") int nb_pieds , @RequestParam("prix") Double prix)
+    @GetMapping("Type/insert_types")
+    public String insert_type_culture(@RequestParam("nom_type") String nom_type)
     {
-        ParcelleModel insert_parcelle = new ParcelleModel();
-        insert_parcelle.insert_parcelle(dimension, nb_pieds, prix);
+        TypeModel t = new TypeModel();
+        t.insert_type(nom_type);
 
         // Convertir la liste en format JSON
         ObjectMapper objectMapper = new ObjectMapper();
         String jsonResult = "";
         try {
-            jsonResult = objectMapper.writeValueAsString(insert_parcelle);
+            jsonResult = objectMapper.writeValueAsString(t);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
@@ -49,5 +49,4 @@ public class ParcelleController {
         return jsonResult;
     }
 
-    
 }

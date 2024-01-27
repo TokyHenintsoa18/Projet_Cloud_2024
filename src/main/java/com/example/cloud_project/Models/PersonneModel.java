@@ -99,9 +99,9 @@ public class PersonneModel {
 
         try 
         {
-            String url = "jdbc:postgresql://localhost:5432/culture";
+            String url = "jdbc:postgres://roundhouse.proxy.rlwy.net/railway";
             String utilisateur = "postgres";
-            String motDePasse = "root";
+            String motDePasse = "dEbGGCaeE1c41D6ABgGbec3cGAcbF3E3";
             Class.forName("org.postgresql.Driver");
 
             try (Connection connection = DriverManager.getConnection(url, utilisateur, motDePasse))

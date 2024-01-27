@@ -17,14 +17,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class PersonneController {
     
-    @GetMapping("Personne/listePersonne")
+    @GetMapping("Personne/listsPersonne")
     public ResponseEntity<PersonneModel[]> listPersonnes() {
-    // Get the list of personnes
-    PersonneModel p = new PersonneModel();
-    PersonneModel[] personnes = p.list_user();
+        // Get the list of personnes
+        PersonneModel p = new PersonneModel();
+        PersonneModel[] personnes = p.list_user();
 
-    // Return a ResponseEntity with the JSON response
-    return ResponseEntity.ok().body(personnes);
+        // Return a ResponseEntity with the JSON response
+        return ResponseEntity.ok().body(personnes);
     }
 
     @GetMapping("/Personne/insertPersonne")

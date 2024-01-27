@@ -13,7 +13,7 @@ public class TerrainModel {
     long longitude;
     int id_utilisateur;
     String photo;
-
+    int id_type;
 
     public int getId_terrain() {
         return this.id_terrain;
@@ -60,6 +60,13 @@ public class TerrainModel {
     }
     public void setId_utilisateur(int id_utilisateur) {
         this.id_utilisateur = id_utilisateur;
+    }
+
+    public int getId_type() {
+        return id_type;
+    }
+    public void setId_type(int id_type) {
+        this.id_type = id_type;
     }
 
 
@@ -144,13 +151,14 @@ public class TerrainModel {
             Connection conn = c.getConnex();
             
             
-                PreparedStatement pstmt = conn.prepareStatement("insert into parcelle_par_terrain(id_utilisateur,id_parcelle,id_terrain,id_categorie)values(?,?,?,?)");
+                PreparedStatement pstmt = conn.prepareStatement("insert into parcelle_par_terrain(id_utilisateur,id_parcelle,id_terrain,id_categorie,id_type)values(?,?,?,?,?)");
                 // pstmt.setInt(1, wallet);
                 // pstmt.setInt(2, wallet);
                 pstmt.setInt(1, id_utilisateur);
                 pstmt.setInt(2, id_parcelle);
                 pstmt.setInt(3, id_terrain);
                 pstmt.setInt(4, id_categorie);
+                pstmt.setInt(5,id_type);
                 pstmt.executeUpdate();
                 System.out.println("insert parcelle_terrain sucessfully");
             

@@ -70,15 +70,16 @@ CREATE TABLE Parcelle_par_terrain
    id_parcelle INTEGER,
    id_terrain INTEGER,
    id_categorie integer references categorie_culture(id_categorie),
+   id_type integer references type(id_type),
    PRIMARY KEY(id_TP),
    FOREIGN KEY(id_parcelle) REFERENCES Parcelle(id_parcelle),
    FOREIGN KEY(id_terrain) REFERENCES Terrain(id_terrain)
 );
 
-insert into Parcelle_par_terrain(id_utilisateur,id_parcelle,id_terrain,id_categorie)values(1,1,1,1);
-insert into Parcelle_par_terrain(id_utilisateur,id_parcelle,id_terrain,id_categorie)values(1,1,1,2);
-insert into Parcelle_par_terrain(id_utilisateur,id_parcelle,id_terrain,id_categorie)values(1,2,1,1);
-insert into Parcelle_par_terrain(id_utilisateur,id_parcelle,id_terrain,id_categorie)values(2,1,1,1);
+insert into Parcelle_par_terrain(id_utilisateur,id_parcelle,id_terrain,id_categorie,id_type)values(1,1,1,1,1);
+insert into Parcelle_par_terrain(id_utilisateur,id_parcelle,id_terrain,id_categorie,id_type)values(1,1,1,2,1);
+insert into Parcelle_par_terrain(id_utilisateur,id_parcelle,id_terrain,id_categorie,id_type)values(1,2,1,1,2);
+insert into Parcelle_par_terrain(id_utilisateur,id_parcelle,id_terrain,id_categorie,id_type)values(2,1,1,1,2);
 
 
 

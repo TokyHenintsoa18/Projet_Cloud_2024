@@ -38,9 +38,20 @@ insert into terrain(description,longitude,latitude,photo)values('Terrain2','42,5
 
 CREATE TABLE Rendement(
    id_rendement SERIAL,
-   rendement_total NUMERIC(15,2) ,
+   nombre_rendement int,
    PRIMARY KEY(id_rendement)
 );
+
+insert into rendement(nombre_rendement)values(1);
+insert into rendement(nombre_rendement)values(1);
+insert into rendement(nombre_rendement)values(1);
+insert into rendement(nombre_rendement)values(1);
+insert into rendement(nombre_rendement)values(1);
+insert into rendement(nombre_rendement)values(1);
+insert into rendement(nombre_rendement)values(1);
+insert into rendement(nombre_rendement)values(1);
+insert into rendement(nombre_rendement)values(1);
+insert into rendement(nombre_rendement)values(1);
 
 CREATE TABLE utilisateurs(
    id_utilisateur SERIAL,

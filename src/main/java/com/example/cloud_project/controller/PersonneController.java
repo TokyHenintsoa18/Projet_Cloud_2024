@@ -1,9 +1,12 @@
 package com.example.cloud_project.controller;
 import java.sql.Date;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.example.cloud_project.Models.PersonneModel;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -27,60 +30,35 @@ public class PersonneController {
         return ResponseEntity.ok().body(personnes);
     }
 
-    @GetMapping("/Personne/insertPersonne")
-    public String insertPersonne(@RequestParam("nom") String nom, @RequestParam("sexe") String sexe , @RequestParam("dtn") Date dtn,@RequestParam("email") String email , @RequestParam("pwd") String pwd) 
+    @PostMapping("/Personne/insertPersonne")
+    @ResponseStatus(HttpStatus.OK)
+    public void insert_personne(String nom , String sexe , Date dtn , String email , String pwd)
     {
-        PersonneModel personne = new PersonneModel();
-        personne.insert_user(nom, sexe, dtn,email, pwd);
-
-        // Convertir la liste en format JSON
-        ObjectMapper objectMapper = new ObjectMapper();
-        String jsonResult = "";
-        try {
-            jsonResult = objectMapper.writeValueAsString(personne);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
-
-        return jsonResult;
+        PersonneModel p = new PersonneModel();
+        p.insert_user(nom, sexe, dtn, email, pwd);
     }
 
     @GetMapping("Personne/selectPersonne")
-    public String selectPersonneWhere(@RequestParam("email") String email, @RequestParam("pwd") String pwd) {
-
-    PersonneModel p = new PersonneModel();
-    p = p.select_user(email, pwd);
-
-    // Convertir la liste en format JSON
-    ObjectMapper objectMapper = new ObjectMapper();
-    String jsonResult = "";
-    try {
-        jsonResult = objectMapper.writeValueAsString(p);
-    } catch (JsonProcessingException e) {
-        e.printStackTrace();
-    }
-
-    return jsonResult;
-    }
-
-
-
-    @GetMapping("/Personne/updatePwd")
-    public String updatePwd(@RequestParam("id_utilisateur") int id_utilisateur , @RequestParam("pwd") String pwd)
+    public ResponseEntity<PersonneModel> listPersonnes(@RequestParam("email") String email, @RequestParam("pwd") String pwd) 
     {
-        PersonneModel personne = new PersonneModel();
-        personne.update_pwd(pwd, id_utilisateur);
 
-        // Convertir la liste en format JSON
-        ObjectMapper objectMapper = new ObjectMapper();
-        String jsonResult = "";
-        try {
-            jsonResult = objectMapper.writeValueAsString(personne);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
+        PersonneModel p = new PersonneModel();
+        p = p.select_user(email, pwd);
 
-        return jsonResult;
+        
+        return ResponseEntity.ok().body(p);
+        
+    }
+
+
+
+    @PostMapping("Personne/updatePwd")
+    @ResponseStatus(HttpStatus.OK)
+    public void updatePwd(String pwd, int id_utilisateur) {
+    // Update the password
+        PersonneModel p = new PersonneModel();
+
+        p.update_pwd(pwd, id_utilisateur);
     }
 
     // @GetMapping("/Personne/session")

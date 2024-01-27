@@ -99,14 +99,10 @@ this.id_terrain = id_terrain;
 
         try 
         {
-            String url = "jdbc:postgresql://localhost:5432/culture";
-            String utilisateur = "postgres";
-            String motDePasse = "root";
-            Class.forName("org.postgresql.Driver");
-
-            try (Connection connection = DriverManager.getConnection(url, utilisateur, motDePasse))
-            {
-                Statement stmnt = connection.createStatement();
+            Conn c = new Conn();
+            Connection conn = c.getConnex();
+            
+                Statement stmnt = conn.createStatement();
                 ResultSet result = stmnt.executeQuery("select * from parcelle");
 
                 while (result.next()) 
@@ -119,7 +115,10 @@ this.id_terrain = id_terrain;
                     ParcelleModel p = new ParcelleModel(id_parcelle,dimension,nb_pieds,prix);
                     resultatList.add(p);
                 }
-            }
+
+                result.close();
+                conn.close();
+            
         } 
         catch (Exception e) 
         {
@@ -137,14 +136,11 @@ this.id_terrain = id_terrain;
     {
         try 
         {
-            String url = "jdbc:postgresql://localhost:5432/culture";
-            String utilisateur = "postgres";
-            String motDePasse = "root";
-            Class.forName("org.postgresql.Driver");
+            Conn c = new Conn();
+            Connection conn = c.getConnex();
             
-             try (Connection connection = DriverManager.getConnection(url, utilisateur, motDePasse))
-            {
-                PreparedStatement pstmt = connection.prepareStatement("insert into parcelle(dimension,nb_pieds,prix)values(?,?,?)");
+            
+                PreparedStatement pstmt = conn.prepareStatement("insert into parcelle(dimension,nb_pieds,prix)values(?,?,?)");
                 // pstmt.setInt(1, wallet);
                 // pstmt.setInt(2, wallet);
                 pstmt.setDouble(1, dimension);
@@ -152,8 +148,9 @@ this.id_terrain = id_terrain;
                 pstmt.setDouble(3, prix);
                 
                 pstmt.executeUpdate();
+                conn.close();
                 System.out.println("insert parcelle sucessfully");
-            }
+            
             
         }catch (Exception e) {
             // TODO: handle exception
@@ -161,32 +158,5 @@ this.id_terrain = id_terrain;
         }
     }
 
-    public void insert_categorie_parcelle(int id_parcelle , int id_categorie , int id_type)
-    {
-        try 
-        {
-            String url = "jdbc:postgresql://localhost:5432/culture";
-            String utilisateur = "postgres";
-            String motDePasse = "root";
-            Class.forName("org.postgresql.Driver");
-            
-             try (Connection connection = DriverManager.getConnection(url, utilisateur, motDePasse))
-            {
-                PreparedStatement pstmt = connection.prepareStatement("");
-                // pstmt.setInt(1, wallet);
-                // pstmt.setInt(2, wallet);
-                // pstmt.setDouble(1, dimension);
-                // pstmt.setInt(2, nb_pieds);
-                // pstmt.setDouble(3, prix);
-                
-                pstmt.executeUpdate();
-                System.out.println("insert CATEGORIE_PARCELLE sucessfully");
-            }
-            
-        }catch (Exception e) {
-            // TODO: handle exception
-            e.printStackTrace();
-        }
-    }
     
 }

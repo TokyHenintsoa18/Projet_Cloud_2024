@@ -1,8 +1,6 @@
 package com.example.cloud_project.Models;
 
 import java.sql.*;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,14 +44,11 @@ public class CategorieModel {
 
         try 
         {
-            String url = "jdbc:postgresql://localhost:5432/culture";
-            String utilisateur = "postgres";
-            String motDePasse = "root";
-            Class.forName("org.postgresql.Driver");
+                Conn c = new Conn();
+                Connection conn = c.getConnex();
 
-            try (Connection connection = DriverManager.getConnection(url, utilisateur, motDePasse))
-            {
-                Statement stmnt = connection.createStatement();
+            
+                Statement stmnt = conn.createStatement();
                 ResultSet result = stmnt.executeQuery("select * from Categorie_culture");
 
                 while (result.next()) 
@@ -65,7 +60,9 @@ public class CategorieModel {
                     CategorieModel p = new CategorieModel(id_categorie,rendement_par_pieds,prix_unitaire);
                     resultatList.add(p);
                 }
-            }
+                result.close();
+            stmnt.close();
+            
         } 
         catch (Exception e) 
         {
@@ -80,14 +77,11 @@ public class CategorieModel {
     {
         try 
         {
-            String url = "jdbc:postgresql://localhost:5432/culture";
-            String utilisateur = "postgres";
-            String motDePasse = "root";
-            Class.forName("org.postgresql.Driver");
             
-             try (Connection connection = DriverManager.getConnection(url, utilisateur, motDePasse))
-            {
-                PreparedStatement pstmt = connection.prepareStatement("insert into Categorie_culture(rendement_par_pieds,Prix_unitaire)values(?,?)");
+                Conn c = new Conn();
+                Connection conn = c.getConnex();
+                
+                PreparedStatement pstmt = conn.prepareStatement("insert into Categorie_culture(rendement_par_pieds,Prix_unitaire)values(?,?)");
                 // pstmt.setInt(1, wallet);
                 // pstmt.setInt(2, wallet);
                 pstmt.setInt(1, rendement_par_pieds);
@@ -95,7 +89,7 @@ public class CategorieModel {
                 
                 pstmt.executeUpdate();
                 System.out.println("insert categorie sucessfully");
-            }
+                conn.close();
             
         }catch (Exception e) {
             // TODO: handle exception
@@ -104,17 +98,15 @@ public class CategorieModel {
     }
 
     public CategorieModel select_categorie_by_id(int id_categorie, int rendement_par_pieds, double prix_unitaire) {
-        CategorieModel c = null;
+        CategorieModel cat = null;
         
         try {
-            String url = "jdbc:postgresql://localhost:5432/culture";
-            String utilisateur = "postgres";
-            String motDePasse = "root";
-            Class.forName("org.postgresql.Driver");
+            
         
-            try (Connection connection = DriverManager.getConnection(url, utilisateur, motDePasse)) {
+            Conn c = new Conn();
+            Connection conn = c.getConnex();
             String sql = "select * from Categorie_culture where id_categorie ="+id_categorie+"";
-            PreparedStatement pstmt = connection.prepareStatement(sql);
+            PreparedStatement pstmt = conn.prepareStatement(sql);
         
             pstmt.setInt(1, id_categorie);
             pstmt.setInt(2, rendement_par_pieds);
@@ -123,31 +115,30 @@ public class CategorieModel {
             ResultSet result = pstmt.executeQuery();
         
             if (result.next()) {
-                c = new CategorieModel();
-                c.setId_categorie(result.getInt(1));
-                c.setRendement_par_pieds(result.getInt(2));
-                c.setprix_unitaire(result.getInt(3));
+                cat = new CategorieModel();
+                cat.setId_categorie(result.getInt(1));
+                cat.setRendement_par_pieds(result.getInt(2));
+                cat.setprix_unitaire(result.getInt(3));
                 System.out.println("select categorie by id sucessfully");
 
             }
-            }
+            conn.close();
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
         
-        return c;
+        return cat;
     }
 
     public void update_categorie(int id_categorie, int new_rendement_par_pieds, int new_prix_unitaire) {
         try {
-            String url = "jdbc:postgresql://localhost:5432/culture";
-            String utilisateur = "postgres";
-            String motDePasse = "root";
-            Class.forName("org.postgresql.Driver");
+            
 
-            try (Connection connection = DriverManager.getConnection(url, utilisateur, motDePasse)) {
+            Conn c = new Conn();
+            Connection conn = c.getConnex();
                 String sql = "UPDATE Categorie_culture SET rendement_par_pieds = ?, Prix_unitaire = ? WHERE id_categorie = ?";
-                PreparedStatement pstmt = connection.prepareStatement(sql);
+                PreparedStatement pstmt = conn.prepareStatement(sql);
 
                 pstmt.setInt(1, new_rendement_par_pieds);
                 pstmt.setInt(2, new_prix_unitaire);
@@ -157,10 +148,11 @@ public class CategorieModel {
 
                 if (rowsUpdated > 0) {
                     System.out.println("update categorie successfully");
+                    conn.close();
                 } else {
                     System.out.println("tsy mety");
                 }
-            }
+            
         } catch (Exception e) {
             e.printStackTrace();
         }

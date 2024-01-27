@@ -99,14 +99,10 @@ public class PersonneModel {
 
         try 
         {
-            String url = "jdbc:postgres://roundhouse.proxy.rlwy.net/railway";
-            String utilisateur = "postgres";
-            String motDePasse = "dEbGGCaeE1c41D6ABgGbec3cGAcbF3E3";
-            Class.forName("org.postgresql.Driver");
-
-            try (Connection connection = DriverManager.getConnection(url, utilisateur, motDePasse))
-            {
-                Statement stmnt = connection.createStatement();
+            
+                Conn c = new Conn();
+                Connection conn = c.getConnex();
+                Statement stmnt = conn.createStatement();
                 ResultSet result = stmnt.executeQuery("select * from utilisateurs");
 
                 while (result.next()) 
@@ -124,7 +120,11 @@ public class PersonneModel {
                     PersonneModel p = new PersonneModel(id_utilisateur,nom,sexe,formattedDtn,email,pwd);
                     resultatList.add(p);
                 }
-            }
+            
+            result.close();
+            stmnt.close();
+            
+            
         } 
         catch (Exception e) 
         {
@@ -139,14 +139,11 @@ public class PersonneModel {
     {
         try 
         {
-            String url = "jdbc:postgresql://localhost:5432/culture";
-            String utilisateur = "postgres";
-            String motDePasse = "root";
-            Class.forName("org.postgresql.Driver");
-            
-             try (Connection connection = DriverManager.getConnection(url, utilisateur, motDePasse))
-            {
-                PreparedStatement pstmt = connection.prepareStatement("insert into utilisateurs(nom,sexe,dtn,email,pwd)values(?,?,?,?,?)");
+                Conn c = new Conn();
+                Connection conn = c.getConnex();
+               
+           
+                PreparedStatement pstmt = conn.prepareStatement("insert into utilisateurs(nom,sexe,dtn,email,pwd)values(?,?,?,?,?)");
 
                 pstmt.setString(1,nom);
                 pstmt.setString(2, sexe);
@@ -156,7 +153,9 @@ public class PersonneModel {
 
                 pstmt.executeUpdate();
                 System.out.println("insert personne sucessfully");
-            }
+
+                conn.close();
+            
             
         }catch (Exception e) {
             // TODO: handle exception
@@ -168,14 +167,12 @@ public class PersonneModel {
         PersonneModel p = null;
         
         try {
-            String url = "jdbc:postgresql://localhost:5432/culture";
-            String utilisateur = "postgres";
-            String motDePasse = "root";
-            Class.forName("org.postgresql.Driver");
-        
-            try (Connection connection = DriverManager.getConnection(url, utilisateur, motDePasse)) {
+            
+            Conn c = new Conn();
+            Connection conn = c.getConnex();
+           
             String sql = "select * from utilisateurs where email = ? and pwd = ?";
-            PreparedStatement pstmt = connection.prepareStatement(sql);
+            PreparedStatement pstmt = conn.prepareStatement(sql);
         
             pstmt.setString(1, nom);
             pstmt.setString(2, pwd);
@@ -195,7 +192,9 @@ public class PersonneModel {
                 p.setEmail(result.getString(5));
                 p.setPwd(result.getString(6));
             }
-            }
+
+            conn.close();
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -207,22 +206,19 @@ public class PersonneModel {
     {
         try 
         {
-            String url = "jdbc:postgresql://localhost:5432/culture";
-            String utilisateur = "postgres";
-            String motDePasse = "root";
-            Class.forName("org.postgresql.Driver");
             
-             try (Connection connection = DriverManager.getConnection(url, utilisateur, motDePasse))
-            {
-                PreparedStatement pstmt = connection.prepareStatement("update utilisateurs set pwd = ? where id_utilisateur = ?");
+            Conn c = new Conn();
+            Connection conn = c.getConnex();
+            
+            PreparedStatement pstmt = conn.prepareStatement("update utilisateurs set pwd = ? where id_utilisateur = ?");
                 
                
-                pstmt.setString(1,pwd);
-                pstmt.setInt(2, id_utilisateur);
+            pstmt.setString(1,pwd);
+            pstmt.setInt(2, id_utilisateur);
 
-                pstmt.executeUpdate();
-                System.out.println("update pwd sucessfully");
-            }
+            pstmt.executeUpdate();
+            System.out.println("update pwd sucessfully");
+            conn.close();
             
         }catch (Exception e) {
             // TODO: handle exception

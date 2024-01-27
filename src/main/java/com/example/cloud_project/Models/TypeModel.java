@@ -41,14 +41,12 @@ public class TypeModel {
 
         try 
         {
-            String url = "jdbc:postgresql://localhost:5432/culture";
-            String utilisateur = "postgres";
-            String motDePasse = "root";
-            Class.forName("org.postgresql.Driver");
+            Conn c = new Conn();
+            Connection conn = c.getConnex();
+            
 
-            try (Connection connection = DriverManager.getConnection(url, utilisateur, motDePasse))
-            {
-                Statement stmnt = connection.createStatement();
+            
+                Statement stmnt = conn.createStatement();
                 ResultSet result = stmnt.executeQuery("select * from type");
 
                 while (result.next()) 
@@ -59,7 +57,10 @@ public class TypeModel {
                     TypeModel t = new TypeModel(id_type, nom_type);
                     resultatList.add(t);
                 }
-            }
+
+                result.close();
+                conn.close();
+            
         } 
         catch (Exception e) 
         {
@@ -73,14 +74,12 @@ public TypeModel select_type_by_id(int id_type, String nom_type) {
     TypeModel t= null;
     
     try {
-        String url = "jdbc:postgresql://localhost:5432/culture";
-        String utilisateur = "postgres";
-        String motDePasse = "root";
-        Class.forName("org.postgresql.Driver");
-    
-        try (Connection connection = DriverManager.getConnection(url, utilisateur, motDePasse)) {
+        Conn c = new Conn();
+        Connection conn = c.getConnex();
+        
+       
         String sql = "select * from type where id_type ="+id_type+"";
-        PreparedStatement pstmt = connection.prepareStatement(sql);
+        PreparedStatement pstmt = conn.prepareStatement(sql);
     
         pstmt.setInt(1, id_type);
         pstmt.setString(2, nom_type);
@@ -92,7 +91,7 @@ public TypeModel select_type_by_id(int id_type, String nom_type) {
             t.setId_type(result.getInt(1));
             t.setNom_type(result.getString(2));
         }
-        }
+        conn.close();
     } catch (Exception e) {
         e.printStackTrace();
     }
@@ -104,20 +103,19 @@ public void insert_type(String nom_type)
 {
     try 
     {
-        String url = "jdbc:postgresql://localhost:5432/culture";
-        String utilisateur = "postgres";
-        String motDePasse = "root";
-        Class.forName("org.postgresql.Driver");
+        Conn c = new Conn();
+        Connection conn = c.getConnex();
         
-         try (Connection connection = DriverManager.getConnection(url, utilisateur, motDePasse))
-        {
-            PreparedStatement pstmt = connection.prepareStatement("insert into type(nom)values(?)");
+        
+            PreparedStatement pstmt = conn.prepareStatement("insert into type(nom)values(?)");
 
             pstmt.setString(1,nom_type);
 
             pstmt.executeUpdate();
             System.out.println("insert type sucessfully");
-        }
+
+            conn.close();
+        
         
     }catch (Exception e) {
         // TODO: handle exception

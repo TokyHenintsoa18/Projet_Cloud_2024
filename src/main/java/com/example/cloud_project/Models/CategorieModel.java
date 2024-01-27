@@ -142,7 +142,7 @@ public class CategorieModel {
         return cat;
     }
 
-    public void update_categorie(int id_categorie, int new_rendement_par_pieds, int new_prix_unitaire , String nom_categorie) {
+    public void update_categorie(int new_rendement_par_pieds, int new_prix_unitaire , String nom_categorie,int id_categorie) {
         try {
             
 

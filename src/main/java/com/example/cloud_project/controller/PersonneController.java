@@ -50,8 +50,6 @@ public class PersonneController {
         
     }
 
-
-
     @PostMapping("Personne/updatePwd")
     @ResponseStatus(HttpStatus.OK)
     public void updatePwd(String pwd, int id_utilisateur) {

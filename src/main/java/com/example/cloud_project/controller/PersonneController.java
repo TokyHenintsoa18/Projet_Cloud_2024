@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class PersonneController {
     
-    @GetMapping("Personne/listsPersonne")
+    @GetMapping("Personne/listePersonne")
     public ResponseEntity<PersonneModel[]> listPersonnes() {
     // Get the list of personnes
     PersonneModel p = new PersonneModel();

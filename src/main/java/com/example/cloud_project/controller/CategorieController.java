@@ -33,10 +33,24 @@ public class CategorieController {
         c.insert_categorie(rendement_par_pieds, prix_unitaire,nom_categorie);
     }
 
-    @PostMapping("Categorie/updateCategorie")
-    public String  update_categorie_culture( @RequestParam("rendement_par_pieds") int rendement_par_pieds, @RequestParam("prix_unitaire") double prix_unitaire , @RequestParam("nom_categorie") String nom_categorie ,@RequestParam("id_categorie") int id_categorie) {
+    @PostMapping("/api/categories/update")
+    public ResponseEntity<CategorieModel> updateCategorie(
+            @RequestParam int rendementParPieds,
+            @RequestParam double prixUnitaire,
+            @RequestParam String nomCategorie,
+            @RequestParam int idCategorie) {
 
-        CategorieModel c = new CategorieModel();
-        c.update_categorie( rendement_par_pieds, prix_unitaire,nom_categorie,id_categorie);
+        // Récupération des valeurs des paramètres
+        CategorieModel categorie = new CategorieModel();
+        categorie.setRendement_par_pieds(rendementParPieds);
+        categorie.setPrix_unitaire(prixUnitaire);
+        categorie.setNom_categorie(nomCategorie);
+        categorie.setId_categorie(idCategorie);
+
+        // Appel de la fonction `update_categorie()`
+        categorie.update_categorie(rendementParPieds, prixUnitaire, nomCategorie, idCategorie);
+
+        // Retour de la catégorie mise à jour
+        return ResponseEntity.ok(categorie);
     }
 }

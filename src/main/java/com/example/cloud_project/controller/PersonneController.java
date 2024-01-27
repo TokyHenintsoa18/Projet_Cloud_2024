@@ -51,7 +51,7 @@ public class PersonneController {
     }
 
     @PostMapping("Personne/updatePwd")
-    public ResponseEntity<Void> updatePwd(String pwd, int id_utilisateur) {
+    public ResponseEntity<Void> updatePwd(@RequestParam("pwd") String pwd, @RequestParam("id_utilisateur") int id_utilisateur) {
         // Met à jour le mot de passe
         PersonneModel personne = new PersonneModel();
         personne.update_pwd(pwd, id_utilisateur);

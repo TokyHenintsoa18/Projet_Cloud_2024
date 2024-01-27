@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.example.cloud_project.Models.TerrainModel;
-import com.example.cloud_project.Models.CategorieModel;
 import com.example.cloud_project.Models.PersonneModel;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -37,25 +36,11 @@ public class TerrainController {
         terrain.insert_terrain(description, latitude, longitude, id_parcelle, photo);
     }
 
-    @PostMapping("/api/categories/update")
-    public ResponseEntity<CategorieModel> updateCategorie(
-            @RequestParam int rendementParPieds,
-            @RequestParam double prixUnitaire,
-            @RequestParam String nomCategorie,
-            @RequestParam int idCategorie) {
-
-        // Récupération des valeurs des paramètres
-        CategorieModel categorie = new CategorieModel();
-        categorie.setRendement_par_pieds(rendementParPieds);
-        categorie.setPrix_unitaire(prixUnitaire);
-        categorie.setNom_categorie(nomCategorie);
-        categorie.setId_categorie(idCategorie);
-
-        // Appel de la fonction `update_categorie()`
-        categorie.update_categorie(rendementParPieds, prixUnitaire, nomCategorie, idCategorie);
-
-        // Retour de la catégorie mise à jour
-        return ResponseEntity.ok(categorie);
+    @PostMapping("Terrain/insert_parcelle_terrain")
+    public void insert_personne(@RequestParam("id_utilisateur") int id_utilisateur,@RequestParam("id_parcelle") int id_parcelle , @RequestParam("id_terrain") int id_terrain , @RequestParam("id_categorie") int id_categorie)
+    {
+        TerrainModel terrain = new TerrainModel();
+       terrain.insert_parcelle_terrain(id_utilisateur,id_parcelle, id_terrain ,id_categorie);
     }
    
 }

@@ -19,6 +19,7 @@ public class RendementModel {
     int id_parcelle;
     double montant;
     int id_terrain;
+    int id_type;
 
     public int getId_terrain() {
         return id_terrain;
@@ -27,7 +28,12 @@ public class RendementModel {
         this.id_terrain = id_terrain;
     }
 
-    
+    public int getId_type() {
+        return id_type;
+    }
+    public void setId_type(int id_type) {
+        this.id_type = id_type;
+    }
     
     
 
@@ -138,7 +144,7 @@ public class RendementModel {
                         int id_user = result.getInt(3);
                         double montant = result.getDouble(4);
                         int id_categorie = result.getInt(5);
-                        
+                        int id_type = result.getInt(6);
 
                         RendementModel filtre = new RendementModel();
                         filtre.setId_terrain(id_terrain);
@@ -146,6 +152,7 @@ public class RendementModel {
                         filtre.setId_utilisateur(id_user);
                         filtre.setMontant(montant);
                         filtre.setId_categorie(id_categorie);
+                        filtre.setId_type(id_type);
                         resultatList.add(filtre);
                     }
 

@@ -3,8 +3,12 @@ package com.example.cloud_project.controller;
 import org.springframework.web.bind.annotation.RestController;
 import java.sql.Date;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.example.cloud_project.Models.TypeModel;
 import com.example.cloud_project.Models.PersonneModel;
@@ -15,38 +19,19 @@ import com.example.cloud_project.Models.PersonneModel;
 public class TypeController {
     
     @GetMapping("Type/list_types")
-    public String list_type_culture()
+    public ResponseEntity<TypeModel[]> list_type_culture()
     {
         TypeModel p = new TypeModel();
         TypeModel list_type_culture[]=p.list_type();
-        // Convertir la liste en format JSON
-        ObjectMapper objectMapper = new ObjectMapper();
-        String jsonResult = "";
-        try {
-            jsonResult = objectMapper.writeValueAsString(list_type_culture);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
-
-        return jsonResult;
+        return ResponseEntity.ok().body(list_type_culture);
     }
 
-    @GetMapping("Type/insert_types")
-    public String insert_type_culture(@RequestParam("nom_type") String nom_type)
+    @PostMapping("Type/insert_types")
+    @ResponseStatus(HttpStatus.OK)
+    public void insert_type_culture(@RequestParam("nom_type") String nom_type)
     {
         TypeModel t = new TypeModel();
         t.insert_type(nom_type);
-
-        // Convertir la liste en format JSON
-        ObjectMapper objectMapper = new ObjectMapper();
-        String jsonResult = "";
-        try {
-            jsonResult = objectMapper.writeValueAsString(t);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
-
-        return jsonResult;
     }
 
 }

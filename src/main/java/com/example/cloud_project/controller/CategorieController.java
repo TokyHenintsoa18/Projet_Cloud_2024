@@ -5,7 +5,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,15 +27,23 @@ public class CategorieController {
        return ResponseEntity.ok().body(list_cat);
     }
 
-    @PostMapping("/api/insert_categorie")
+    @GetMapping("/api/categories/insert_categorie")
     public ResponseEntity<CategorieModel> insertCategorie(
-        @RequestBody InsertController insertCategorie) {
-        CategorieModel categorieService = new CategorieModel();
-        categorieService.insert_categorie(
-            insertCategorie.getRendementParPieds(),
-            insertCategorie.getPrixUnitaire(),
-            insertCategorie.getNomCategorie());
-        return ResponseEntity.ok(categorieService);
+            @RequestParam int rendementParPieds,
+            @RequestParam double prixUnitaire,
+            @RequestParam String nomCategorie) {
+
+        // Récupération des valeurs des paramètres
+        CategorieModel categorie = new CategorieModel();
+        categorie.setRendement_par_pieds(rendementParPieds);
+        categorie.setPrix_unitaire(prixUnitaire);
+        categorie.setNom_categorie(nomCategorie);
+
+        // Appel de la fonction `update_categorie()`
+        categorie.insert_categorie(rendementParPieds, prixUnitaire, nomCategorie);
+
+        // Retour de la catégorie mise à jour
+        return ResponseEntity.ok(categorie);
     }
 
     @GetMapping("/api/categories/update_categorie")

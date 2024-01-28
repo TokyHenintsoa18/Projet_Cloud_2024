@@ -74,6 +74,8 @@ CREATE TABLE type(
 );
 
 insert into type(nom_type)values('grain');
+insert into type(nom_type)values('grain1');
+insert into type(nom_type)values('grain2');
 
 CREATE TABLE Parcelle_par_terrain
 (
@@ -126,12 +128,4 @@ insert into parcelle_rendement(id_parcelle,id_rendement,id_terrain,daty)values(2
 
 
 
-drop view v_sum_prix_rendement_reel;
-drop view v_rendement_par_qte;
-drop view v_prix_rendement_reel;
-drop view v_prix_rendement;
-drop view v_information_parcelle;
 
-
-drop table parcelle_par_terrain;
-drop table categorie_culture;

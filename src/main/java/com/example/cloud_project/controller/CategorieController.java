@@ -27,7 +27,7 @@ public class CategorieController {
        return ResponseEntity.ok().body(list_cat);
     }
 
-    @GetMapping("/api/categories/insert_categorie")
+    @PostMapping("/api/categories/insert_categorie")
     public ResponseEntity<CategorieModel> insertCategorie(
             @RequestParam int rendementParPieds,
             @RequestParam double prixUnitaire,

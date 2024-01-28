@@ -23,6 +23,14 @@ public class RendementModel {
     String nom_categorie;
     String nom_type;
     int sum_montant;
+    String nom;
+
+    public String getNom() {
+        return nom;
+    }
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
 
     public int getSum_montant() {
         return sum_montant;
@@ -145,18 +153,20 @@ public class RendementModel {
                         int id_terrain = result.getInt(1);
                         int id_parcelle = result.getInt(2);
                         int id_user = result.getInt(3);
-                        int nb_pieds = result.getInt(4);
-                        double montant = result.getDouble(5);
-                        int id_categorie = result.getInt(6);
-                        String nom_categorie = result.getString(7);
-                        int id_type = result.getInt(8);
-                        String nom_type = result.getString(9);
+                        String nom = result.getString(4);
+                        int nb_pieds = result.getInt(5);
+                        double montant = result.getDouble(6);
+                        int id_categorie = result.getInt(7);
+                        String nom_categorie = result.getString(8);
+                        int id_type = result.getInt(9);
+                        String nom_type = result.getString(10);
 
 
                         RendementModel filtre = new RendementModel();
                         filtre.setId_terrain(id_terrain);
                         filtre.setId_parcelle(id_parcelle);
                         filtre.setId_utilisateur(id_user);
+                        filtre.setNom(nom);
                         filtre.setNb_pieds(nb_pieds);
                         filtre.setMontant(montant);
                         filtre.setId_categorie(id_categorie);
@@ -196,12 +206,14 @@ public class RendementModel {
                     {
                         
                         int id_user = result.getInt(1);
-                        int sum_montant = result.getInt(2);
+                        String nom = result.getString(2);
+                        int sum_montant = result.getInt(3);
 
 
                         RendementModel filtre = new RendementModel();
                         
                         filtre.setId_utilisateur(id_user);
+                        filtre.setNom(nom);
                         filtre.setMontant(sum_montant);
                         resultatList.add(filtre);
                     }
@@ -238,14 +250,16 @@ public class RendementModel {
                         
                         int id_terrain = result.getInt(1);
                         int id_user = result.getInt(2);
-                        int sum_montant = result.getInt(3);
+                        String nom = result.getString(3);
+                        int sum_montant = result.getInt(4);
 
                         RendementModel filtre = new RendementModel();
                         
                         filtre.setId_utilisateur(id_terrain);
                         filtre.setId_utilisateur(id_user);
+                        filtre.setNom(nom);
                         filtre.setSum_montant(sum_montant);
-                        
+
                         resultatList.add(filtre);
                     }
 

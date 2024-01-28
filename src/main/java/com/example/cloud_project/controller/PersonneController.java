@@ -62,7 +62,7 @@ public class PersonneController {
         
     }
 
-    @PostMapping("Personne/updatePwd")
+    @GetMapping("Personne/updatePwd")
     public ResponseEntity<PersonneModel> updatePwd(
         @RequestParam String pwd, 
         @RequestParam int id_utilisateur) {

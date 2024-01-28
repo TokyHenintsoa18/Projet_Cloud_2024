@@ -46,7 +46,7 @@ public class CategorieController {
         return ResponseEntity.ok(categorie);
     }
 
-    @PostMapping("/api/categories/update_categorie")
+    @GetMapping("/api/categories/update_categorie")
     public ResponseEntity<CategorieModel> updateCategorie(
             @RequestParam int rendementParPieds,
             @RequestParam double prixUnitaire,

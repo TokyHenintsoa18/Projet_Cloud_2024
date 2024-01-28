@@ -72,7 +72,7 @@ public class PersonneController {
 
         return new ResponseEntity<>(HttpStatus.OK); 
     }
-
+//
     @GetMapping("/api/login")
     public String login(@RequestParam String email, @RequestParam String pwd, HttpSession session) {
         

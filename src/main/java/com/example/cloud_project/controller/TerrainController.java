@@ -64,7 +64,7 @@ public class TerrainController {
         terrain.setId_categorie(id_categorie);
         terrain.setId_type(id_type);
     
-       terrain.insert_parcelle_terrain(loggedInUserId,id_parcelle, id_terrain ,id_categorie,id_type);
+       terrain.insert_parcelle_terrain(id_utilisateur,id_parcelle, id_terrain ,id_categorie,id_type);
        return ResponseEntity.ok(terrain);
     }
    

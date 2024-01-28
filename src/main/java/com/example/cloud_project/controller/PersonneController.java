@@ -83,7 +83,7 @@ public class PersonneController {
         return "Connecté avec succès!";
     }
 
-    @GetMapping("api/logout")
+    @GetMapping("/api/logout")
     public String logout(HttpSession session) {
         // Supprimez l'id_utilisateur de la personne connectée de la session lors de la déconnexion
         session.invalidate();

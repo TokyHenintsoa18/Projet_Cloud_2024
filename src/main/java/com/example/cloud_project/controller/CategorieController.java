@@ -18,10 +18,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @RestController
 public class CategorieController {
     
-    @Autowired
-    private CategorieModel categorieRepository;
 
-    @GetMapping("Categorie/list_categorie")
+    @GetMapping("api/Categorie/list_categorie")
     public ResponseEntity<CategorieModel[]> listCategories()
     {
        CategorieModel categorie = new CategorieModel();
@@ -29,7 +27,7 @@ public class CategorieController {
        return ResponseEntity.ok().body(list_cat);
     }
 
-    @PostMapping("/api/categories/insert")
+    @GetMapping("/api/categories/insert_categorie")
     public ResponseEntity<CategorieModel> insertCategorie(
             @RequestParam int rendementParPieds,
             @RequestParam double prixUnitaire,
@@ -41,14 +39,14 @@ public class CategorieController {
         categorie.setPrix_unitaire(prixUnitaire);
         categorie.setNom_categorie(nomCategorie);
 
-        // Appel de la fonction `insert_categorie()`
-        categorieRepository.insert_categorie(rendementParPieds,prixUnitaire,nomCategorie);
+        // Appel de la fonction `update_categorie()`
+        categorie.insert_categorie(rendementParPieds, prixUnitaire, nomCategorie);
 
-        // Retour de la catégorie insérée
+        // Retour de la catégorie mise à jour
         return ResponseEntity.ok(categorie);
     }
 
-    @PostMapping("/api/categories/update")
+    @PostMapping("/api/categories/update_categorie")
     public ResponseEntity<CategorieModel> updateCategorie(
             @RequestParam int rendementParPieds,
             @RequestParam double prixUnitaire,

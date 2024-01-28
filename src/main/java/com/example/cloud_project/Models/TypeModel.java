@@ -107,7 +107,7 @@ public void insert_type(String nom_type)
         Connection conn = c.getConnex();
         
         
-            PreparedStatement pstmt = conn.prepareStatement("insert into type(nom)values(?)");
+            PreparedStatement pstmt = conn.prepareStatement("insert into type(nom_type)values(?)");
 
             pstmt.setString(1,nom_type);
 

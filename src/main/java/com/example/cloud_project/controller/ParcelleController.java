@@ -19,7 +19,7 @@ import com.example.cloud_project.Models.PersonneModel;
 @RestController
 public class ParcelleController {
     
-    @GetMapping("Parcelle/listsParcelle")
+    @GetMapping("/api/Parcelle/lists_parcelle")
     public ResponseEntity<ParcelleModel[]> listParcelles()
     {
         ParcelleModel p = new ParcelleModel();
@@ -27,12 +27,51 @@ public class ParcelleController {
         return ResponseEntity.ok().body(list_parcelle);
     }
 
-    @PostMapping("Parcelle/insertParcelle")
-    @ResponseStatus(HttpStatus.OK)
-    public void insert_parcellle(@RequestParam("dimension") Double dimension , @RequestParam("nb_pieds") int nb_pieds , @RequestParam("prix") Double prix)
+    @GetMapping("/api/Parcelle/information_parcelle_par_terrain_utilisateur")
+    public ResponseEntity<ParcelleModel[]> v_information_parcelle_par_terrain_par_utilisateur(
+        @RequestParam int id_utlisateur){
+        ParcelleModel p = new ParcelleModel();
+        ParcelleModel stat[]=p.v_information_parcelle_par_terrain_par_utilisateur(id_utlisateur);
+        return ResponseEntity.ok().body(stat);
+    }
+
+    @GetMapping("/api/Parcelle/information_parcelle_par_terrain_parcelle")
+    public ResponseEntity<ParcelleModel[]> v_information_parcelle_par_terrain_par_parcelle(
+        @RequestParam int id_parcelle){
+        ParcelleModel p = new ParcelleModel();
+        ParcelleModel stat[]=p.v_information_parcelle_par_terrain_par_parcelle(id_parcelle);
+        return ResponseEntity.ok().body(stat);
+    }
+
+    @GetMapping("/api/Parcelle/information_parcelle_par_terrain_categorie")
+    public ResponseEntity<ParcelleModel[]> v_information_parcelle_par_terrain_par_categorie(
+        @RequestParam int id_categorie){
+        ParcelleModel p = new ParcelleModel();
+        ParcelleModel stat[]=p.v_information_parcelle_par_terrain_par_categorie(id_categorie);
+        return ResponseEntity.ok().body(stat);
+    }
+
+    @GetMapping("/api/Parcelle/stat_parcelle")
+    public ResponseEntity<ParcelleModel[]> stat_parcelle()
     {
-        ParcelleModel insert_parcelle = new ParcelleModel();
-        insert_parcelle.insert_parcelle(dimension, nb_pieds, prix);
+        ParcelleModel p = new ParcelleModel();
+        ParcelleModel stat[]=p.stat_parcelle();
+        return ResponseEntity.ok().body(stat);
+    }
+
+    @GetMapping("/api/Parcelle/insert_parcelle")
+    public ResponseEntity<ParcelleModel> insert_parcelle(
+        @RequestParam Double dimension , 
+        @RequestParam int nb_pieds , 
+        @RequestParam Double prix)
+    {
+        ParcelleModel parcelle = new ParcelleModel();
+        parcelle.setDimension(dimension);
+        parcelle.setNb_pieds(nb_pieds);
+        parcelle.setPrix(prix);
+
+        parcelle.insert_parcelle(dimension, nb_pieds, prix);
+        return ResponseEntity.ok(parcelle);
     }
 
     

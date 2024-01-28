@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.example.cloud_project.Models.TypeModel;
+import com.example.cloud_project.Models.CategorieModel;
 import com.example.cloud_project.Models.PersonneModel;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -18,7 +19,7 @@ import com.example.cloud_project.Models.PersonneModel;
 @RestController
 public class TypeController {
     
-    @GetMapping("Type/list_types")
+    @GetMapping("/api/Type/list_types")
     public ResponseEntity<TypeModel[]> list_type_culture()
     {
         TypeModel p = new TypeModel();
@@ -26,12 +27,16 @@ public class TypeController {
         return ResponseEntity.ok().body(list_type_culture);
     }
 
-    @PostMapping("Type/insert_types")
-    @ResponseStatus(HttpStatus.OK)
-    public void insert_type_culture(@RequestParam("nom_type") String nom_type)
+    @GetMapping("/api/Type/insert_types")
+   
+    public  ResponseEntity<TypeModel> insert_type_culture(
+        @RequestParam String nom_type)
     {
         TypeModel t = new TypeModel();
+        t.setNom_type(nom_type);
+
         t.insert_type(nom_type);
+        return ResponseEntity.ok(t);
     }
 
 }

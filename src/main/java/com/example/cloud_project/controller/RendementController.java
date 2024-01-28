@@ -11,14 +11,36 @@ import com.example.cloud_project.Models.RendementModel;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import jakarta.servlet.http.HttpSession;
+
 @RestController
 public class RendementController {
     
-    @GetMapping("Rendement/v_prix_rendement")
-    public ResponseEntity<RendementModel[]> insert_parcellle(@RequestParam("id_utilisateur") int id_utilisateur)
+    @GetMapping("/api/Rendement/v_prix_rendement_prevision")
+    public ResponseEntity<RendementModel[]> select_v_parcelle_where(@RequestParam("id_utilisateur") int id_utilisateur,HttpSession session)
     {
+        Integer loggedInUserId = (Integer) session.getAttribute("loggedInUserId");
         RendementModel r = new RendementModel();
-        RendementModel rend_Model[] = r.select_v_parcelle_where(id_utilisateur);
+        RendementModel rend_Model[] = r.v_prix_rendement_prevision_where(loggedInUserId);
         return ResponseEntity.ok().body(rend_Model);
     }
+    @GetMapping("/api/Rendement/v_sum_prix_rendement_prevision")
+    public ResponseEntity<RendementModel[]> v_sum_prix_rendement_prevision(@RequestParam("id_utilisateur") int id_utilisateur,HttpSession session)
+    {
+        Integer loggedInUserId = (Integer) session.getAttribute("loggedInUserId");
+        RendementModel r = new RendementModel();
+        RendementModel rend_Model[] = r.v_sum_prix_rendement_prevision(loggedInUserId);
+        return ResponseEntity.ok().body(rend_Model);
+    }
+
+    @GetMapping("/api/Rendement/v_rendement_par_qte")
+    public ResponseEntity<RendementModel[]> v_rendement_par_qte(@RequestParam("id_utilisateur") int id_utilisateur,HttpSession session)
+    {
+        Integer loggedInUserId = (Integer) session.getAttribute("loggedInUserId");
+        RendementModel r = new RendementModel();
+        RendementModel rend_Model[] = r.v_sum_prix_rendement_prevision(loggedInUserId);
+        return ResponseEntity.ok().body(rend_Model);
+    }
+
+
 }

@@ -43,15 +43,15 @@ CREATE TABLE Rendement(
 );
 
 insert into rendement(nombre_rendement)values(1);
-insert into rendement(nombre_rendement)values(1);
-insert into rendement(nombre_rendement)values(1);
-insert into rendement(nombre_rendement)values(1);
-insert into rendement(nombre_rendement)values(1);
-insert into rendement(nombre_rendement)values(1);
-insert into rendement(nombre_rendement)values(1);
-insert into rendement(nombre_rendement)values(1);
-insert into rendement(nombre_rendement)values(1);
-insert into rendement(nombre_rendement)values(1);
+insert into rendement(nombre_rendement)values(2);
+insert into rendement(nombre_rendement)values(3);
+insert into rendement(nombre_rendement)values(4);
+insert into rendement(nombre_rendement)values(5);
+insert into rendement(nombre_rendement)values(6);
+insert into rendement(nombre_rendement)values(7);
+insert into rendement(nombre_rendement)values(8);
+insert into rendement(nombre_rendement)values(9);
+insert into rendement(nombre_rendement)values(10);
 
 CREATE TABLE utilisateurs(
    id_utilisateur SERIAL,
@@ -91,7 +91,7 @@ CREATE TABLE Parcelle_par_terrain
 insert into Parcelle_par_terrain(id_utilisateur,id_parcelle,id_terrain,id_categorie,id_type)values(1,1,1,1,1);
 insert into Parcelle_par_terrain(id_utilisateur,id_parcelle,id_terrain,id_categorie,id_type)values(1,1,1,2,1);
 insert into Parcelle_par_terrain(id_utilisateur,id_parcelle,id_terrain,id_categorie,id_type)values(1,2,1,1,2);
-insert into Parcelle_par_terrain(id_utilisateur,id_parcelle,id_terrain,id_categorie,id_type)values(2,1,1,1,2);
+insert into Parcelle_par_terrain(id_utilisateur,id_parcelle,id_terrain,id_categorie,id_type)values(2,1,2,1,2);
 
 
 
@@ -112,11 +112,17 @@ CREATE TABLE parcelle_rendement(
    id_pr SERIAL,
    id_parcelle INTEGER,
    id_rendement INTEGER,
+   id_terrain integer,
    Daty TIMESTAMP,
    PRIMARY KEY(id_pr),
    FOREIGN KEY(id_parcelle) REFERENCES Parcelle(id_parcelle),
    FOREIGN KEY(id_rendement) REFERENCES Rendement(id_rendement)
 );
+
+
+insert into parcelle_rendement(id_parcelle,id_rendement,id_terrain,daty)values(1,6,1,'2024-01-28');
+insert into parcelle_rendement(id_parcelle,id_rendement,id_terrain,daty)values(1,10,2,'2024-01-28');
+insert into parcelle_rendement(id_parcelle,id_rendement,id_terrain,daty)values(2,6,1,'2024-01-28');
 
 
 

@@ -14,6 +14,22 @@ public class TerrainModel {
     int id_utilisateur;
     String photo;
     int id_type;
+    int id_parcelle;
+    int id_categorie;
+
+
+    public int getId_categorie() {
+        return id_categorie;
+    }
+    public void setId_categorie(int id_categorie) {
+        this.id_categorie = id_categorie;
+    }
+    public int getId_parcelle() {
+        return id_parcelle;
+    }
+    public void setId_parcelle(int id_parcelle) {
+        this.id_parcelle = id_parcelle;
+    }
 
     public int getId_terrain() {
         return this.id_terrain;
@@ -117,19 +133,19 @@ public class TerrainModel {
         return lists.toArray(new TerrainModel[lists.size()]);
     }
 
-    public void insert_terrain(String description, long latitude, long longitude, int idParcelle, String photo) {
+    public void insert_terrain(String description, String latitude, String longitude, String photo) {
         try {
                 Conn c = new Conn();
                 Connection conn = c.getConnex();
 
             
-                String query = "INSERT INTO terrain (description, latitude, longitude, id_parcelle, photo) VALUES (?, ?, ?, ?, ?)";
+                String query = "INSERT INTO terrain (description, latitude, longitude, photo) VALUES (?, ?,  ?, ?)";
                 try (PreparedStatement preparedStatement = conn.prepareStatement(query)) {
                     preparedStatement.setString(1, description);
-                    preparedStatement.setLong(2, latitude);
-                    preparedStatement.setLong(3, longitude);
-                    preparedStatement.setInt(4, idParcelle);
-                    preparedStatement.setString(5, photo);
+                    preparedStatement.setString(2, latitude);
+                    preparedStatement.setString(3, longitude);
+                    preparedStatement.setString(4, photo);
+                    
                     preparedStatement.executeUpdate();
                     System.out.println("insert terrain successfully");
                 }
@@ -142,7 +158,7 @@ public class TerrainModel {
        
     }
 
-    public void insert_parcelle_terrain(int id_utilisateur ,int id_parcelle , int id_terrain , int id_categorie)
+    public void insert_parcelle_terrain(int id_utilisateur ,int id_parcelle , int id_terrain , int id_categorie , int id_type)
     {
         try 
         {

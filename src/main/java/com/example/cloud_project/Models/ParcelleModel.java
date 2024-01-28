@@ -6,8 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ParcelleModel {
-    
-
 
     int id_parcelle;
     double dimension;
@@ -16,11 +14,74 @@ public class ParcelleModel {
     int id_tp;
     int id_utilisateur;
     String nom;
+    double stat_parcelle;
     int id_terrain;
-        
-   
-
+    int id_categorie;
+    String nom_categorie;
+    int id_type;
+    String nom_type;
+    int rendement_par_pieds;
+    Double prix_unitaire;
+    double prix_parcelle;
     
+    public double getPrix_parcelle() {
+        return prix_parcelle;
+    }
+
+    public void setPrix_parcelle(double prix_parcelle) {
+        this.prix_parcelle = prix_parcelle;
+    }
+
+    public Double getPrix_unitaire() {
+        return prix_unitaire;
+    }
+
+    public void setPrix_unitaire(Double prix_unitaire) {
+        this.prix_unitaire = prix_unitaire;
+    }
+
+    public int getRendement_par_pieds() {
+        return rendement_par_pieds;
+    }
+    public void setRendement_par_pieds(int rendement_par_pieds) {
+        this.rendement_par_pieds = rendement_par_pieds;
+    }
+
+    public String getNom_type() {
+        return nom_type;
+    }
+    public void setNom_type(String nom_type) {
+        this.nom_type = nom_type;
+    }
+
+    public int getId_type() {
+        return id_type;
+    }
+    public void setId_type(int id_type) {
+        this.id_type = id_type;
+    }
+
+    public String getNom_categorie() {
+        return nom_categorie;
+    }
+    public void setNom_categorie(String nom_categorie) {
+        this.nom_categorie = nom_categorie;
+    }
+    
+   public double getStat_parcelle() {
+       return stat_parcelle;
+   }
+   public void setStat_parcelle(double stat_parcelle) {
+       this.stat_parcelle = stat_parcelle;
+   }
+
+   public int getId_categorie() {
+       return id_categorie;
+   }
+   public void setId_categorie(int id_categorie) {
+       this.id_categorie = id_categorie;
+   }
+
     public int getId_parcelle() {
         return id_parcelle;
     }
@@ -81,14 +142,21 @@ public class ParcelleModel {
 
     public ParcelleModel(int id_parcelle, double dimension, int nb_pieds, int id_tp, int id_utilisateur, String nom,
     int id_terrain) {
-this.id_parcelle = id_parcelle;
-this.dimension = dimension;
-this.nb_pieds = nb_pieds;
-this.id_tp = id_tp;
-this.id_utilisateur = id_utilisateur;
-this.nom = nom;
-this.id_terrain = id_terrain;
+    this.id_parcelle = id_parcelle;
+    this.dimension = dimension;
+    this.nb_pieds = nb_pieds;
+    this.id_tp = id_tp;
+    this.id_utilisateur = id_utilisateur;
+    this.nom = nom;
+    this.id_terrain = id_terrain;
 }
+
+
+    public ParcelleModel(double stat_parcelle, int id_terrain) {
+        this.stat_parcelle = stat_parcelle;
+        this.id_terrain = id_terrain;
+    }
+
 
     public ParcelleModel() {
     }
@@ -129,7 +197,222 @@ this.id_terrain = id_terrain;
         return resultatList.toArray(new ParcelleModel[resultatList.size()]);
     }
 
-    
+    public ParcelleModel[] stat_parcelle()
+    {
+        List<ParcelleModel> resultatList = new ArrayList<>();
+
+        try 
+        {
+            Conn c = new Conn();
+            Connection conn = c.getConnex();
+            
+                Statement stmnt = conn.createStatement();
+                ResultSet result = stmnt.executeQuery("select * from stat_parcelle");
+
+                while (result.next()) 
+                {
+                    double stat_parcelle = result.getDouble(1);
+                    int id_terrain = result.getInt(2);
+                    
+                    ParcelleModel p = new ParcelleModel(stat_parcelle,id_terrain);
+                    resultatList.add(p);
+                }
+
+                result.close();
+                conn.close();
+            
+        } 
+        catch (Exception e) 
+        {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
+
+        return resultatList.toArray(new ParcelleModel[resultatList.size()]);
+    }
+
+    public ParcelleModel[] v_information_parcelle_par_terrain_par_utilisateur(int id_utilisateur)
+    {
+        List<ParcelleModel> resultatList = new ArrayList<>();
+        
+         try{
+                 
+                    Conn c = new Conn();
+                    Connection conn = c.getConnex();
+                        
+                    String sql = "select * from v_information_parcelle_par_terrain where id_utilisateur="+id_utilisateur+"";
+                    System.out.println(sql);
+                    PreparedStatement pstmt = conn.prepareStatement(sql);
+                   
+                    ResultSet result = pstmt.executeQuery();
+                    while (result.next()) 
+                    {
+                        
+                        int id_tp = result.getInt(1);
+                        int id_user = result.getInt(2);
+                        int id_parcelle = result.getInt(3);
+                        int id_terrain = result.getInt(4);
+                        int id_categorie = result.getInt(5);
+                        String nom_categorie = result.getString(6);
+                        int id_type = result.getInt(7);
+                        String nom_tpye = result.getString(8);
+                        int rendement_par_pieds = result.getInt(9);
+                        double prix_unitaire = result.getDouble(10);
+                        double dimension = result.getDouble(11);
+                        int nb_pieds = result.getInt(12);
+                        double prix_parcelle = result.getDouble(13);
+
+                        ParcelleModel parcelle = new ParcelleModel();
+                        parcelle.setId_tp(id_tp);
+                        parcelle.setId_utilisateur(id_user);
+                        parcelle.setId_parcelle(id_parcelle);
+                        parcelle.setId_terrain(id_terrain);
+                        parcelle.setId_categorie(id_categorie);
+                        parcelle.setNom_categorie(nom_categorie);
+                        parcelle.setId_type(id_type);
+                        parcelle.setNom_type(nom_tpye);
+                        parcelle.setRendement_par_pieds(rendement_par_pieds);
+                        parcelle.setPrix_unitaire(prix_unitaire);
+                        parcelle.setDimension(dimension);
+                        parcelle.setNb_pieds(nb_pieds);
+                        parcelle.setPrix_parcelle(prix_parcelle);
+
+                        resultatList.add(parcelle);
+                    }
+
+                    result.close();
+                    pstmt.close();
+                    conn.close();
+                
+            }catch (Exception e) {
+                // TODO: handle exception
+                e.printStackTrace();
+            }
+
+        return resultatList.toArray(new ParcelleModel[resultatList.size()]);
+    }
+
+    public ParcelleModel[] v_information_parcelle_par_terrain_par_parcelle(int id_parcelle)
+    {
+        List<ParcelleModel> resultatList = new ArrayList<>();
+        
+         try{
+                 
+                    Conn c = new Conn();
+                    Connection conn = c.getConnex();
+                        
+                    String sql = "select * from v_information_parcelle_par_terrain where id_parcelle="+id_parcelle+"";
+                    System.out.println(sql);
+                    PreparedStatement pstmt = conn.prepareStatement(sql);
+                   
+                    ResultSet result = pstmt.executeQuery();
+                    while (result.next()) 
+                    {
+                        
+                        int id_tp = result.getInt(1);
+                        int id_user = result.getInt(2);
+                        int id_parcelles = result.getInt(3);
+                        int id_terrain = result.getInt(4);
+                        int id_categorie = result.getInt(5);
+                        String nom_categorie = result.getString(6);
+                        int id_type = result.getInt(7);
+                        String nom_tpye = result.getString(8);
+                        int rendement_par_pieds = result.getInt(9);
+                        double prix_unitaire = result.getDouble(10);
+                        double dimension = result.getDouble(11);
+                        int nb_pieds = result.getInt(12);
+                        double prix_parcelle = result.getDouble(13);
+
+                        ParcelleModel parcelle = new ParcelleModel();
+                        parcelle.setId_tp(id_tp);
+                        parcelle.setId_utilisateur(id_user);
+                        parcelle.setId_parcelle(id_parcelles);
+                        parcelle.setId_terrain(id_terrain);
+                        parcelle.setId_categorie(id_categorie);
+                        parcelle.setNom_categorie(nom_categorie);
+                        parcelle.setId_type(id_type);
+                        parcelle.setNom_type(nom_tpye);
+                        parcelle.setRendement_par_pieds(rendement_par_pieds);
+                        parcelle.setPrix_unitaire(prix_unitaire);
+                        parcelle.setDimension(dimension);
+                        parcelle.setNb_pieds(nb_pieds);
+                        parcelle.setPrix_parcelle(prix_parcelle);
+
+                        resultatList.add(parcelle);
+                    }
+
+                    result.close();
+                    pstmt.close();
+                    conn.close();
+                
+            }catch (Exception e) {
+                // TODO: handle exception
+                e.printStackTrace();
+            }
+
+        return resultatList.toArray(new ParcelleModel[resultatList.size()]);
+    }
+
+    public ParcelleModel[] v_information_parcelle_par_terrain_par_categorie(int id_categorie)
+    {
+        List<ParcelleModel> resultatList = new ArrayList<>();
+        
+         try{
+                 
+                    Conn c = new Conn();
+                    Connection conn = c.getConnex();
+                        
+                    String sql = "select * from v_information_parcelle_par_terrain where id_categorie="+id_categorie+"";
+                    System.out.println(sql);
+                    PreparedStatement pstmt = conn.prepareStatement(sql);
+                   
+                    ResultSet result = pstmt.executeQuery();
+                    while (result.next()) 
+                    {
+                        
+                        int id_tp = result.getInt(1);
+                        int id_user = result.getInt(2);
+                        int id_parcelles = result.getInt(3);
+                        int id_terrain = result.getInt(4);
+                        int id_categories = result.getInt(5);
+                        String nom_categorie = result.getString(6);
+                        int id_type = result.getInt(7);
+                        String nom_tpye = result.getString(8);
+                        int rendement_par_pieds = result.getInt(9);
+                        double prix_unitaire = result.getDouble(10);
+                        double dimension = result.getDouble(11);
+                        int nb_pieds = result.getInt(12);
+                        double prix_parcelle = result.getDouble(13);
+
+                        ParcelleModel parcelle = new ParcelleModel();
+                        parcelle.setId_tp(id_tp);
+                        parcelle.setId_utilisateur(id_user);
+                        parcelle.setId_parcelle(id_parcelles);
+                        parcelle.setId_terrain(id_terrain);
+                        parcelle.setId_categorie(id_categories);
+                        parcelle.setNom_categorie(nom_categorie);
+                        parcelle.setId_type(id_type);
+                        parcelle.setNom_type(nom_tpye);
+                        parcelle.setRendement_par_pieds(rendement_par_pieds);
+                        parcelle.setPrix_unitaire(prix_unitaire);
+                        parcelle.setDimension(dimension);
+                        parcelle.setNb_pieds(nb_pieds);
+                        parcelle.setPrix_parcelle(prix_parcelle);
+
+                        resultatList.add(parcelle);
+                    }
+
+                    result.close();
+                    pstmt.close();
+                    conn.close();
+                
+            }catch (Exception e) {
+                // TODO: handle exception
+                e.printStackTrace();
+            }
+
+        return resultatList.toArray(new ParcelleModel[resultatList.size()]);
+    }
 
     
     public void insert_parcelle(Double dimension , int nb_pieds , Double prix)

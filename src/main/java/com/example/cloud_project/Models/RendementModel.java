@@ -22,6 +22,15 @@ public class RendementModel {
     int id_type;
     String nom_categorie;
     String nom_type;
+    int sum_montant;
+
+    public int getSum_montant() {
+        return sum_montant;
+    }
+
+    public void setSum_montant(int sum_montant) {
+        this.sum_montant = sum_montant;
+    }
 
     public int getId_terrain() {
         return id_terrain;
@@ -117,21 +126,18 @@ public class RendementModel {
 
 
 
-    public RendementModel[] select_v_parcelle_where(int id_utilisateur)
+    public RendementModel[] v_prix_rendement_prevision_where(int id_utilisateur)
     {
         List<RendementModel> resultatList = new ArrayList<>();
         
          try{
-                 String url = "jdbc:postgresql://localhost:5432/culture";
-                String utilisateur = "postgres";
-                String motDePasse = "root";
-                Class.forName("org.postgresql.Driver");
-
-                try (Connection connection = DriverManager.getConnection(url, utilisateur, motDePasse))
-                {
-                    String sql = "select * from v_prix_rendement where id_utilisateur="+id_utilisateur+"";
+                 
+                    Conn c = new Conn();
+                    Connection conn = c.getConnex();
+                        
+                    String sql = "select * from v_prix_rendement_prevision where id_utilisateur="+id_utilisateur+"";
                     System.out.println(sql);
-                    PreparedStatement pstmt = connection.prepareStatement(sql);
+                    PreparedStatement pstmt = conn.prepareStatement(sql);
                    
                     ResultSet result = pstmt.executeQuery();
                     while (result.next()) 
@@ -162,8 +168,8 @@ public class RendementModel {
 
                     result.close();
                     pstmt.close();
-                    connection.close();
-                } 
+                    conn.close();
+                
             }catch (Exception e) {
                 // TODO: handle exception
                 e.printStackTrace();
@@ -171,6 +177,91 @@ public class RendementModel {
 
         return resultatList.toArray(new RendementModel[resultatList.size()]);
     }
+
+    public RendementModel[] v_sum_prix_rendement_prevision(int id_utilisateur)
+    {
+        List<RendementModel> resultatList = new ArrayList<>();
+        
+         try{
+                 
+                    Conn c = new Conn();
+                    Connection conn = c.getConnex();
+                        
+                    String sql = "select * from v_sum_prix_rendement_prevision where id_utilisateur="+id_utilisateur+"";
+                    System.out.println(sql);
+                    PreparedStatement pstmt = conn.prepareStatement(sql);
+                   
+                    ResultSet result = pstmt.executeQuery();
+                    while (result.next()) 
+                    {
+                        
+                        int id_user = result.getInt(1);
+                        int sum_montant = result.getInt(2);
+
+
+                        RendementModel filtre = new RendementModel();
+                        
+                        filtre.setId_utilisateur(id_user);
+                        filtre.setMontant(sum_montant);
+                        resultatList.add(filtre);
+                    }
+
+                    result.close();
+                    pstmt.close();
+                    conn.close();
+                
+            }catch (Exception e) {
+                // TODO: handle exception
+                e.printStackTrace();
+            }
+
+        return resultatList.toArray(new RendementModel[resultatList.size()]);
+    }
+
+
+    public RendementModel[] v_rendement_par_qte(int id_utilisateur)
+    {
+        List<RendementModel> resultatList = new ArrayList<>();
+        
+         try{
+                 
+                    Conn c = new Conn();
+                    Connection conn = c.getConnex();
+                        
+                    String sql = "select * from v_rendement_par_qte where id_utilisateur="+id_utilisateur+"";
+                    System.out.println(sql);
+                    PreparedStatement pstmt = conn.prepareStatement(sql);
+                   
+                    ResultSet result = pstmt.executeQuery();
+                    while (result.next()) 
+                    {
+                        
+                        int id_terrain = result.getInt(1);
+                        int id_user = result.getInt(2);
+                        int sum_montant = result.getInt(3);
+
+                        RendementModel filtre = new RendementModel();
+                        
+                        filtre.setId_utilisateur(id_terrain);
+                        filtre.setId_utilisateur(id_user);
+                        filtre.setSum_montant(sum_montant);
+                        
+                        resultatList.add(filtre);
+                    }
+
+                    result.close();
+                    pstmt.close();
+                    conn.close();
+                
+            }catch (Exception e) {
+                // TODO: handle exception
+                e.printStackTrace();
+            }
+
+        return resultatList.toArray(new RendementModel[resultatList.size()]);
+    }
+
+
 
 
 

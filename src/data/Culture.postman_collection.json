@@ -1,0 +1,706 @@
+{
+	"info": {
+		"_postman_id": "6a6b7d18-22b2-4728-b5bf-6137bf2efe61",
+		"name": "Culture",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30870957"
+	},
+	"item": [
+		{
+			"name": "Personne",
+			"item": [
+				{
+					"name": "Personne list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://projetcloud2024-production.up.railway.app/api/Categorie/list_categorie",
+							"protocol": "http",
+							"host": [
+								"projetcloud2024-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"api",
+								"Categorie",
+								"list_categorie"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "select personne where",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://projetcloud2024-production.up.railway.app/api/Personne/selectPersonnewhere?email=rak@gmail.com&pwd=bbbb",
+							"protocol": "http",
+							"host": [
+								"projetcloud2024-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"api",
+								"Personne",
+								"selectPersonnewhere"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "rak@gmail.com"
+								},
+								{
+									"key": "pwd",
+									"value": "bbbb"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "insert personne",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://projetcloud2024-production.up.railway.app/api/Personne/insertPersonne?nom=rakoto&sexe=F&dtn=1998-01-01&email=rak@gmail.com&pwd=aaaa",
+							"protocol": "http",
+							"host": [
+								"projetcloud2024-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"api",
+								"Personne",
+								"insertPersonne"
+							],
+							"query": [
+								{
+									"key": "nom",
+									"value": "rakoto"
+								},
+								{
+									"key": "sexe",
+									"value": "F"
+								},
+								{
+									"key": "dtn",
+									"value": "1998-01-01"
+								},
+								{
+									"key": "email",
+									"value": "rak@gmail.com"
+								},
+								{
+									"key": "pwd",
+									"value": "aaaa"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update pwd personne",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://projetcloud2024-production.up.railway.app/api/Personne/updatePwd?pwd=bbbb&id_utilisateur=4",
+							"protocol": "http",
+							"host": [
+								"projetcloud2024-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"api",
+								"Personne",
+								"updatePwd"
+							],
+							"query": [
+								{
+									"key": "pwd",
+									"value": "bbbb"
+								},
+								{
+									"key": "id_utilisateur",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://projetcloud2024-production.up.railway.app/api/login?email=rak@gmail.com&pwd=aaaa",
+							"protocol": "http",
+							"host": [
+								"projetcloud2024-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"api",
+								"login"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "rak@gmail.com"
+								},
+								{
+									"key": "pwd",
+									"value": "aaaa"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "log out",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://projetcloud2024-production.up.railway.app/api/logout",
+							"protocol": "http",
+							"host": [
+								"projetcloud2024-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"api",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Categorie",
+			"item": [
+				{
+					"name": "select categorie",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://projetcloud2024-production.up.railway.app/api/Categorie/list_categorie",
+							"protocol": "http",
+							"host": [
+								"projetcloud2024-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"api",
+								"Categorie",
+								"list_categorie"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "insert categorie",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://projetcloud2024-production.up.railway.app/api/categories/insert_categorie?rendementParPieds=30&prixUnitaire=3444&nomCategorie=cat22",
+							"protocol": "http",
+							"host": [
+								"projetcloud2024-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"api",
+								"categories",
+								"insert_categorie"
+							],
+							"query": [
+								{
+									"key": "rendementParPieds",
+									"value": "30"
+								},
+								{
+									"key": "prixUnitaire",
+									"value": "3444"
+								},
+								{
+									"key": "nomCategorie",
+									"value": "cat22"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://projetcloud2024-production.up.railway.app/api/categories/update_categorie?rendementParPieds=900&prixUnitaire=1010&nomCategorie=cat10&idCategorie=1",
+							"protocol": "http",
+							"host": [
+								"projetcloud2024-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"api",
+								"categories",
+								"update_categorie"
+							],
+							"query": [
+								{
+									"key": "rendementParPieds",
+									"value": "900"
+								},
+								{
+									"key": "prixUnitaire",
+									"value": "1010"
+								},
+								{
+									"key": "nomCategorie",
+									"value": "cat10"
+								},
+								{
+									"key": "idCategorie",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Parcelle",
+			"item": [
+				{
+					"name": "list parcelle",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://projetcloud2024-production.up.railway.app/api/Parcelle/lists_parcelle",
+							"protocol": "http",
+							"host": [
+								"projetcloud2024-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"api",
+								"Parcelle",
+								"lists_parcelle"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "parcelle_par_terrain_user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://projetcloud2024-production.up.railway.app/api/Parcelle/information_parcelle_par_terrain_utilisateur?id_utlisateur=1",
+							"protocol": "http",
+							"host": [
+								"projetcloud2024-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"api",
+								"Parcelle",
+								"information_parcelle_par_terrain_utilisateur"
+							],
+							"query": [
+								{
+									"key": "id_utlisateur",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "parcelle_par_terrain_par_parcelle",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://projetcloud2024-production.up.railway.app/api/Parcelle/information_parcelle_par_terrain_parcelle?id_parcelle=1",
+							"protocol": "http",
+							"host": [
+								"projetcloud2024-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"api",
+								"Parcelle",
+								"information_parcelle_par_terrain_parcelle"
+							],
+							"query": [
+								{
+									"key": "id_parcelle",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "parcelle_terrain_par_categorie",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://projetcloud2024-production.up.railway.app/api/Parcelle/information_parcelle_par_terrain_categorie?id_categorie=1",
+							"protocol": "http",
+							"host": [
+								"projetcloud2024-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"api",
+								"Parcelle",
+								"information_parcelle_par_terrain_categorie"
+							],
+							"query": [
+								{
+									"key": "id_categorie",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "stat parcelle",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://projetcloud2024-production.up.railway.app/api/Parcelle/stat_parcelle",
+							"protocol": "http",
+							"host": [
+								"projetcloud2024-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"api",
+								"Parcelle",
+								"stat_parcelle"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "insert parcelle",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://projetcloud2024-production.up.railway.app/api/Parcelle/insert_parcelle?dimension=900&nb_pieds=80&prix=90",
+							"protocol": "http",
+							"host": [
+								"projetcloud2024-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"api",
+								"Parcelle",
+								"insert_parcelle"
+							],
+							"query": [
+								{
+									"key": "dimension",
+									"value": "900"
+								},
+								{
+									"key": "nb_pieds",
+									"value": "80"
+								},
+								{
+									"key": "prix",
+									"value": "90"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "rendement",
+			"item": [
+				{
+					"name": "v_prix_rendement_prevision",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://projetcloud2024-production.up.railway.app/api/Rendement/v_prix_rendement_prevision?id_utilisateur=1",
+							"protocol": "http",
+							"host": [
+								"projetcloud2024-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"api",
+								"Rendement",
+								"v_prix_rendement_prevision"
+							],
+							"query": [
+								{
+									"key": "id_utilisateur",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "v_sum_prix_rendement_prevision",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://projetcloud2024-production.up.railway.app/api/Rendement/v_sum_prix_rendement_prevision?id_utilisateur=1",
+							"protocol": "http",
+							"host": [
+								"projetcloud2024-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"api",
+								"Rendement",
+								"v_sum_prix_rendement_prevision"
+							],
+							"query": [
+								{
+									"key": "id_utilisateur",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "v_rendement_par_qte",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://projetcloud2024-production.up.railway.app/api/Rendement/v_rendement_par_qte?id_utilisateur=1",
+							"protocol": "http",
+							"host": [
+								"projetcloud2024-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"api",
+								"Rendement",
+								"v_rendement_par_qte"
+							],
+							"query": [
+								{
+									"key": "id_utilisateur",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Terrain",
+			"item": [
+				{
+					"name": "list terrain",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://projetcloud2024-production.up.railway.app/api/Terrain/listsTerrain",
+							"protocol": "http",
+							"host": [
+								"projetcloud2024-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"api",
+								"Terrain",
+								"listsTerrain"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "insert terrain",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://projetcloud2024-production.up.railway.app/api/Terrain/insert_parcelle_terrain?id_utilisateur=3&id_parcelle=1&id_terrain=2&id_categorie=1&id_type=1",
+							"protocol": "http",
+							"host": [
+								"projetcloud2024-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"api",
+								"Terrain",
+								"insert_parcelle_terrain"
+							],
+							"query": [
+								{
+									"key": "id_utilisateur",
+									"value": "3"
+								},
+								{
+									"key": "id_parcelle",
+									"value": "1"
+								},
+								{
+									"key": "id_terrain",
+									"value": "2"
+								},
+								{
+									"key": "id_categorie",
+									"value": "1"
+								},
+								{
+									"key": "id_type",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Type culture",
+			"item": [
+				{
+					"name": "list type culture",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://projetcloud2024-production.up.railway.app/api/Type/list_types",
+							"protocol": "http",
+							"host": [
+								"projetcloud2024-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"api",
+								"Type",
+								"list_types"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "insert type culture",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://projetcloud2024-production.up.railway.app/api/Type/insert_types?nom_type=type44",
+							"protocol": "http",
+							"host": [
+								"projetcloud2024-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"api",
+								"Type",
+								"insert_types"
+							],
+							"query": [
+								{
+									"key": "nom_type",
+									"value": "type44"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

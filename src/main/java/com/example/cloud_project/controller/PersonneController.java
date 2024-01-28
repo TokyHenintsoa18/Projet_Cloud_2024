@@ -50,7 +50,7 @@ public class PersonneController {
         return ResponseEntity.ok(p);
     }
 
-    @GetMapping("/api/Personne/selectPersonne")
+    @GetMapping("/api/Personne/selectPersonnewhere")
     public ResponseEntity<PersonneModel> listPersonnes(@RequestParam String email, @RequestParam String pwd) 
     {
 

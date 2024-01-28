@@ -75,7 +75,7 @@ public class PersonneController {
         return new ResponseEntity<>(HttpStatus.OK); 
     }
 
-    @PostMapping("api/login")
+    @GetMapping("api/login")
     public String login(@RequestParam String email, @RequestParam String pwd, HttpSession session) {
         
         PersonneModel user = new PersonneModel();
@@ -85,7 +85,7 @@ public class PersonneController {
         return "Connecté avec succès!";
     }
 
-    @PostMapping("api/logout")
+    @GetMapping("api/logout")
     public String logout(HttpSession session) {
         // Supprimez l'id_utilisateur de la personne connectée de la session lors de la déconnexion
         session.invalidate();

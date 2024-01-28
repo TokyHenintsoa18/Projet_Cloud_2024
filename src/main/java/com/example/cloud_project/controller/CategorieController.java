@@ -28,18 +28,15 @@ public class CategorieController {
        return ResponseEntity.ok().body(list_cat);
     }
 
-    @PostMapping("/api/categories/insert_categorie")
+    @PostMapping("/api/insert_categorie")
     public ResponseEntity<CategorieModel> insertCategorie(
-            @RequestBody InsertController insertCategorie) {
-
-        // Récupération des valeurs des paramètres
-        CategorieModel categorie = new CategorieModel();
-        
-        // Appel de la fonction `update_categorie()`
-        categorie.insert_categorie(insertCategorie.getRendementParPieds(), insertCategorie.getPrixUnitaire(), insertCategorie.getNomCategorie());
-
-        // Retour de la catégorie mise à jour
-        return ResponseEntity.ok(categorie);
+        @RequestBody InsertController insertCategorie) {
+        CategorieModel categorieService = new CategorieModel();
+        categorieService.insert_categorie(
+            insertCategorie.getRendementParPieds(),
+            insertCategorie.getPrixUnitaire(),
+            insertCategorie.getNomCategorie());
+        return ResponseEntity.ok(categorieService);
     }
 
     @GetMapping("/api/categories/update_categorie")

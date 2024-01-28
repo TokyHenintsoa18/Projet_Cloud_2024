@@ -53,13 +53,9 @@ public class PersonneController {
     @GetMapping("/api/Personne/selectPersonnewhere")
     public ResponseEntity<PersonneModel> listPersonnes(@RequestParam String email, @RequestParam String pwd) 
     {
-
         PersonneModel p = new PersonneModel();
         p = p.select_user(email, pwd);
-
-        
-        return ResponseEntity.ok().body(p);
-        
+        return ResponseEntity.ok().body(p); 
     }
 
     @GetMapping("/api/Personne/updatePwd")
@@ -75,7 +71,7 @@ public class PersonneController {
         return new ResponseEntity<>(HttpStatus.OK); 
     }
 
-    @GetMapping("api/login")
+    @PostMapping("api/login")
     public String login(@RequestParam String email, @RequestParam String pwd, HttpSession session) {
         
         PersonneModel user = new PersonneModel();

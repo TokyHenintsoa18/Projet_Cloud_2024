@@ -15,6 +15,9 @@ import com.example.cloud_project.Models.ParcelleModel;
 import com.example.cloud_project.Models.PersonneModel;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import jakarta.servlet.http.HttpSession;
+
 import com.example.cloud_project.Models.PersonneModel;
 @RestController
 public class ParcelleController {
@@ -29,9 +32,11 @@ public class ParcelleController {
 
     @GetMapping("/api/Parcelle/information_parcelle_par_terrain_utilisateur")
     public ResponseEntity<ParcelleModel[]> v_information_parcelle_par_terrain_par_utilisateur(
-        @RequestParam int id_utlisateur){
+        @RequestParam int id_utlisateur,
+        HttpSession session){
         ParcelleModel p = new ParcelleModel();
-        ParcelleModel stat[]=p.v_information_parcelle_par_terrain_par_utilisateur(id_utlisateur);
+        Integer loggedInUserId = (Integer) session.getAttribute("loggedInUserId");
+        ParcelleModel stat[]=p.v_information_parcelle_par_terrain_par_utilisateur(loggedInUserId);
         return ResponseEntity.ok().body(stat);
     }
 

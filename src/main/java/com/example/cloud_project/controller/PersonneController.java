@@ -51,7 +51,7 @@ public class PersonneController {
     }
 
     @GetMapping("/api/Personne/selectPersonne")
-    public ResponseEntity<PersonneModel> listPersonnes(@RequestParam("email") String email, @RequestParam("pwd") String pwd) 
+    public ResponseEntity<PersonneModel> listPersonnes(@RequestParam String email, @RequestParam String pwd) 
     {
 
         PersonneModel p = new PersonneModel();

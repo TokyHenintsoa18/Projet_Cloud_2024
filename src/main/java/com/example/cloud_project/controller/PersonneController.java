@@ -61,12 +61,14 @@ public class PersonneController {
     @GetMapping("/api/Personne/updatePwd")
     public ResponseEntity<PersonneModel> updatePwd(
         @RequestParam String pwd, 
-        @RequestParam int id_utilisateur) {
+        @RequestParam int id_utilisateur,
+        HttpSession session) {
         // Met à jour le mot de passe
         PersonneModel personne = new PersonneModel();
+        Integer loggedInUserId = (Integer) session.getAttribute("loggedInUserId");
         personne.setPwd(pwd);
         personne.setId_utilisateur(id_utilisateur);
-        personne.update_pwd(pwd, id_utilisateur);
+        personne.update_pwd(pwd, loggedInUserId);
 
         return new ResponseEntity<>(HttpStatus.OK); 
     }

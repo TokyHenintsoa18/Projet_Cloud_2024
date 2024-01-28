@@ -6,9 +6,9 @@ import java.sql.SQLException;
 
 public class Conn {
     public Connection getConnex() {
-        String url = "jdbc:postgresql://viaduct.proxy.rlwy.net:55455/railway";
+        String url = "jdbc:postgresql://roundhouse.proxy.rlwy.net:40490/railway";
         String username = "postgres";
-        String password = "1GGFDC1ff11B46BBFFA2b6AdabAfa1bb";
+        String password = "4FAACgcdgbFaGEDbgd**56-4*4fC634b";
         Connection conn = null;
 
         try {    

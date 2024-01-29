@@ -34,7 +34,7 @@ public class PersonneController {
         return ResponseEntity.ok().body(personnes);
     }
     @CrossOrigin(origins = "*")
-    @GetMapping("/api/Personne/insertPersonne")  
+    @PostMapping("/api/Personne/insertPersonne")  
     public ResponseEntity<PersonneModel> insert_personne(
         String nom , 
         String sexe , 
@@ -60,7 +60,7 @@ public class PersonneController {
         return ResponseEntity.ok().body(p); 
     }
     @CrossOrigin(origins = "*")
-    @GetMapping("/api/Personne/updatePwd")
+    @PostMapping("/api/Personne/updatePwd")
     public ResponseEntity<PersonneModel> updatePwd(
         @RequestParam String pwd, 
         @RequestParam int id_utilisateur,
@@ -76,7 +76,7 @@ public class PersonneController {
     }
 //
     @CrossOrigin(origins = "*")
-    @GetMapping("/api/login")
+    @PostMapping("/api/login")
     public String login(@RequestParam String email, @RequestParam String pwd, HttpSession session) {
         
         PersonneModel user = new PersonneModel();

@@ -40,7 +40,7 @@ public class TerrainController {
         @RequestParam String longitude , 
         @RequestParam String photo)
     {
-        TerrainModel terrain = new TerrainModel();
+        TerrainModel terrain = new TerrainModel();  
         terrain.setDescription(description);
         terrain.setLatitude(latitude);
         terrain.setLongitude(longitude);

@@ -228,7 +228,35 @@
 					"name": "insert categorie",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "http://projetcloud2024-production.up.railway.app/api/insert_categorie?rendementParPieds=3000&prixUnitaire=99999&nomCategorie=TestCategorie",
+							"protocol": "http",
+							"host": [
+								"projetcloud2024-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"api",
+								"insert_categorie"
+							],
+							"query": [
+								{
+									"key": "rendementParPieds",
+									"value": "3000"
+								},
+								{
+									"key": "prixUnitaire",
+									"value": "99999"
+								},
+								{
+									"key": "nomCategorie",
+									"value": "TestCategorie"
+								}
+							]
+						}
 					},
 					"response": []
 				}
@@ -589,6 +617,47 @@
 								{
 									"key": "id_type",
 									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "insert terrain",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://projetcloud2024-production.up.railway.app/api/Terrain/insertTerrain?description=Terrain test&latitude=2093487&longitude=230984&photo=img4.png",
+							"protocol": "http",
+							"host": [
+								"projetcloud2024-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"api",
+								"Terrain",
+								"insertTerrain"
+							],
+							"query": [
+								{
+									"key": "description",
+									"value": "Terrain test"
+								},
+								{
+									"key": "latitude",
+									"value": "2093487"
+								},
+								{
+									"key": "longitude",
+									"value": "230984"
+								},
+								{
+									"key": "photo",
+									"value": "img4.png"
 								}
 							]
 						}

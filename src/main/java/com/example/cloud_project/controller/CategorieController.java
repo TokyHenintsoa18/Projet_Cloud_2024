@@ -29,7 +29,7 @@ public class CategorieController {
        return ResponseEntity.ok().body(list_cat);
     }
 //
-    @PostMapping("categories/insert_categorie")
+    @GetMapping("categories/insert_categorie")
     public ResponseEntity<CategorieModel> insertCategorie(
             @RequestParam int rendementParPieds,
             @RequestParam double prixUnitaire,
@@ -48,7 +48,7 @@ public class CategorieController {
         return ResponseEntity.ok(categorie);
     }
 
-    @PostMapping("categories/update_categorie")
+    @GetMapping("categories/update_categorie")
     public ResponseEntity<CategorieModel> updateCategorie(
             @RequestParam int rendementParPieds,
             @RequestParam double prixUnitaire,

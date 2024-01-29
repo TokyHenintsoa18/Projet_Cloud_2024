@@ -75,6 +75,7 @@ public class PersonneController {
         return new ResponseEntity<>(HttpStatus.OK); 
     }
 //
+    @CrossOrigin(origins = "*")
     @GetMapping("/api/login")
     public String login(@RequestParam String email, @RequestParam String pwd, HttpSession session) {
         
@@ -85,6 +86,7 @@ public class PersonneController {
         return "Connecté avec succès!";
     }
 
+    @CrossOrigin(origins = "*")
     @GetMapping("/api/logout")
     public String logout(HttpSession session) {
         // Supprimez l'id_utilisateur de la personne connectée de la session lors de la déconnexion

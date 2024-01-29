@@ -15,7 +15,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://projetcloud2024-production.up.railway.app/api/Personne/selectPersonnewhere?email=rak@gmail.com&pwd=cccc",
+							"raw": "https://projetcloud2024-production.up.railway.app/api/Personne/selectPersonnewhere?email=fan@gmail.com&pwd=1234",
 							"protocol": "https",
 							"host": [
 								"projetcloud2024-production",
@@ -31,11 +31,11 @@
 							"query": [
 								{
 									"key": "email",
-									"value": "rak@gmail.com"
+									"value": "fan@gmail.com"
 								},
 								{
 									"key": "pwd",
-									"value": "cccc"
+									"value": "1234"
 								}
 							]
 						}
@@ -49,7 +49,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nom\":\"Rakoto\",\r\n    \"sexe\":\"M\",\r\n    \"dtn\":\"2002-01-01\",\r\n    \"email\":\"rakoto@gmail.com\",\r\n    \"pwd\":\"1003\"\r\n}",
+							"raw": "{\r\n    \"nom\":\"Rasoaritany\",\r\n    \"sexe\":\"M\",\r\n    \"dtn\":\"2002-01-01\",\r\n    \"email\":\"Rasoaritany@gmail.com\",\r\n    \"pwd\":\"1003\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -81,7 +81,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"pwd\":\"2001\",\r\n    \"id_utilisateur\":8\r\n}",
+							"raw": "{\r\n    \"pwd\":\"2001\",\r\n    \"id_utilisateur\":6\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -89,12 +89,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/Personne/updatePwd",
-							"protocol": "http",
+							"raw": "https://projetcloud2024-production.up.railway.app/api/Personne/updatePwd",
+							"protocol": "https",
 							"host": [
-								"localhost"
+								"projetcloud2024-production",
+								"up",
+								"railway",
+								"app"
 							],
-							"port": "8080",
 							"path": [
 								"api",
 								"Personne",
@@ -163,8 +165,8 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://projetcloud2024-production.up.railway.app/api/Personne/listsPersonne",
-							"protocol": "http",
+							"raw": "https://projetcloud2024-production.up.railway.app/api/Personne/listsPersonne",
+							"protocol": "https",
 							"host": [
 								"projetcloud2024-production",
 								"up",

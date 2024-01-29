@@ -45,11 +45,11 @@
 				{
 					"name": "insert personne",
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "http://projetcloud2024-production.up.railway.app/api/Personne/insertPersonne?nom=rakoto&sexe=F&dtn=1998-01-01&email=rak@gmail.com&pwd=aaaa",
-							"protocol": "http",
+							"raw": "https://projetcloud2024-production.up.railway.app/api/Personne/insertPersonne?nom=huranus&sexe=F&dtn=2000-01-01&email=F@gmail.com&pwd=Natana ralambs",
+							"protocol": "https",
 							"host": [
 								"projetcloud2024-production",
 								"up",
@@ -64,7 +64,7 @@
 							"query": [
 								{
 									"key": "nom",
-									"value": "rakoto"
+									"value": "huranus"
 								},
 								{
 									"key": "sexe",
@@ -72,15 +72,15 @@
 								},
 								{
 									"key": "dtn",
-									"value": "1998-01-01"
+									"value": "2000-01-01"
 								},
 								{
 									"key": "email",
-									"value": "rak@gmail.com"
+									"value": "F@gmail.com"
 								},
 								{
 									"key": "pwd",
-									"value": "aaaa"
+									"value": "Natana ralambs"
 								}
 							]
 						}
@@ -90,11 +90,11 @@
 				{
 					"name": "update pwd personne",
 					"request": {
-						"method": "GET",
+						"method": "PUT",
 						"header": [],
 						"url": {
-							"raw": "http://projetcloud2024-production.up.railway.app/api/Personne/updatePwd?pwd=bbbb&id_utilisateur=4",
-							"protocol": "http",
+							"raw": "https://projetcloud2024-production.up.railway.app/api/Personne/updatePwd?pwd=pid&id_utilisateur=8",
+							"protocol": "https",
 							"host": [
 								"projetcloud2024-production",
 								"up",
@@ -109,11 +109,11 @@
 							"query": [
 								{
 									"key": "pwd",
-									"value": "bbbb"
+									"value": "pid"
 								},
 								{
 									"key": "id_utilisateur",
-									"value": "4"
+									"value": "8"
 								}
 							]
 						}
@@ -123,11 +123,11 @@
 				{
 					"name": "login",
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "http://projetcloud2024-production.up.railway.app/api/login?email=rak@gmail.com&pwd=aaaa",
-							"protocol": "http",
+							"raw": "https://projetcloud2024-production.up.railway.app/api/login?email=F@gmail.com&pwd=Natana ralambs",
+							"protocol": "https",
 							"host": [
 								"projetcloud2024-production",
 								"up",
@@ -141,11 +141,11 @@
 							"query": [
 								{
 									"key": "email",
-									"value": "rak@gmail.com"
+									"value": "F@gmail.com"
 								},
 								{
 									"key": "pwd",
-									"value": "aaaa"
+									"value": "Natana ralambs"
 								}
 							]
 						}
@@ -155,11 +155,11 @@
 				{
 					"name": "log out",
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "http://projetcloud2024-production.up.railway.app/api/logout",
-							"protocol": "http",
+							"raw": "https://projetcloud2024-production.up.railway.app/api/logout",
+							"protocol": "https",
 							"host": [
 								"projetcloud2024-production",
 								"up",
@@ -227,11 +227,11 @@
 				{
 					"name": "insert categorie",
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "http://projetcloud2024-production.up.railway.app/api/insert_categorie?rendementParPieds=3000&prixUnitaire=99999&nomCategorie=TestCategorie",
-							"protocol": "http",
+							"raw": "https://projetcloud2024-production.up.railway.app/api/insert_categorie?rendementParPieds=3000&prixUnitaire=99999&nomCategorie=TestCategorie1",
+							"protocol": "https",
 							"host": [
 								"projetcloud2024-production",
 								"up",
@@ -253,7 +253,7 @@
 								},
 								{
 									"key": "nomCategorie",
-									"value": "TestCategorie"
+									"value": "TestCategorie1"
 								}
 							]
 						}
@@ -401,11 +401,11 @@
 				{
 					"name": "insert parcelle",
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "http://projetcloud2024-production.up.railway.app/api/Parcelle/insert_parcelle?dimension=900&nb_pieds=80&prix=90",
-							"protocol": "http",
+							"raw": "https://projetcloud2024-production.up.railway.app/api/Parcelle/insert_parcelle?dimension=9000&nb_pieds=80&prix=90",
+							"protocol": "https",
 							"host": [
 								"projetcloud2024-production",
 								"up",
@@ -420,7 +420,7 @@
 							"query": [
 								{
 									"key": "dimension",
-									"value": "900"
+									"value": "9000"
 								},
 								{
 									"key": "nb_pieds",
@@ -626,11 +626,11 @@
 				{
 					"name": "insert terrain",
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "http://projetcloud2024-production.up.railway.app/api/Terrain/insertTerrain?description=Terrarin 7&latitude=589034&longitude=23948&photo=img.png",
-							"protocol": "http",
+							"raw": "https://projetcloud2024-production.up.railway.app/api/Terrain/insertTerrain?description=Terrarin 7&latitude=589034&longitude=23948&photo=img.png",
+							"protocol": "https",
 							"host": [
 								"projetcloud2024-production",
 								"up",
@@ -695,11 +695,11 @@
 				{
 					"name": "insert type culture",
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "http://projetcloud2024-production.up.railway.app/api/Type/insert_types?nom_type=type44",
-							"protocol": "http",
+							"raw": "https://projetcloud2024-production.up.railway.app/api/Type/insert_types?nom_type=type44",
+							"protocol": "https",
 							"host": [
 								"projetcloud2024-production",
 								"up",

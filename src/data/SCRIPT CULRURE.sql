@@ -129,3 +129,4 @@ insert into parcelle_rendement(id_parcelle,id_rendement,id_terrain,daty)values(2
 
 
 
+ 

@@ -126,7 +126,7 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "https://projetcloud2024-production.up.railway.app/api/login?email=F@gmail.com&pwd=Natana ralambs",
+							"raw": "https://projetcloud2024-production.up.railway.app/api/login?email=F@gmail.com&pwd=0000",
 							"protocol": "https",
 							"host": [
 								"projetcloud2024-production",
@@ -145,7 +145,7 @@
 								},
 								{
 									"key": "pwd",
-									"value": "Natana ralambs"
+									"value": "0000"
 								}
 							]
 						}

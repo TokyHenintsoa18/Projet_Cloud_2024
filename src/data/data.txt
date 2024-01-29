@@ -1,5 +1,5 @@
-DATABASE_URL=postgres://viaduct.proxy.rlwy.net:55455/railway
+DATABASE_URL=postgres://monorail.proxy.rlwy.net:41602/railway
 PGDATA=/var/lib/postgresql/data/pgdata
 POSTGRES_DB=railway
-POSTGRES_PASSWORD=1GGFDC1ff11B46BBFFA2b6AdabAfa1bb
+POSTGRES_PASSWORD=*b-5CfE6CC*faGD3dFA-gAFBe-f53f1g
 POSTGRES_USER=postgres

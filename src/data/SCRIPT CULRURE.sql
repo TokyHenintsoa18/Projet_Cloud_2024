@@ -64,7 +64,7 @@ CREATE TABLE utilisateurs(
 );
 
 insert into utilisateurs(nom,sexe,dtn,email,pwd)values('Toky','M','2004-01-01','tokyramanalina@gmail.com','123');
-insert into utilisateurs(nom,sexe,dtn,email,pwd)values('Henintsoa','M','2004-01-01','tokyramanalina@gmail.com','123');
+insert into utilisateurs(nom,sexe,dtn,email,pwd)values('Henintsoa','M','2004-01-01','henintsoa@gmail.com','123');
 
 
 CREATE TABLE type(

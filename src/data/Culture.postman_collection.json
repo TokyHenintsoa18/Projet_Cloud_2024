@@ -10,29 +10,6 @@
 			"name": "Personne",
 			"item": [
 				{
-					"name": "Personne list",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://projetcloud2024-production.up.railway.app/api/Categorie/list_categorie",
-							"protocol": "http",
-							"host": [
-								"projetcloud2024-production",
-								"up",
-								"railway",
-								"app"
-							],
-							"path": [
-								"api",
-								"Categorie",
-								"list_categorie"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "select personne where",
 					"request": {
 						"method": "GET",
@@ -192,6 +169,29 @@
 							"path": [
 								"api",
 								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Personne list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://projetcloud2024-production.up.railway.app/api/Personne/listsPersonne",
+							"protocol": "http",
+							"host": [
+								"projetcloud2024-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"api",
+								"Personne",
+								"listsPersonne"
 							]
 						}
 					},

@@ -77,7 +77,7 @@ public class ParcelleController {
     }
 
     @CrossOrigin(origins = "*")
-    @GetMapping("/api/Parcelle/insert_parcelle")
+    @PostMapping("/api/Parcelle/insert_parcelle")
     public ResponseEntity<ParcelleModel> insert_parcelle(
         @RequestParam Double dimension , 
         @RequestParam int nb_pieds , 

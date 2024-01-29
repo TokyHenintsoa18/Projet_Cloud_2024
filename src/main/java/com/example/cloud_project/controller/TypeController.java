@@ -29,7 +29,7 @@ public class TypeController {
         return ResponseEntity.ok().body(list_type_culture);
     }
     @CrossOrigin(origins = "*")
-    @GetMapping("/api/Type/insert_types")
+    @PostMapping("/api/Type/insert_types")
    
     public  ResponseEntity<TypeModel> insert_type_culture(
         @RequestParam String nom_type)

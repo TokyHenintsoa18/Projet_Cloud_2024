@@ -33,7 +33,7 @@ public class TerrainController {
         return ResponseEntity.ok().body(list_terrain);
     }
     @CrossOrigin(origins = "*")
-    @GetMapping("/api/Terrain/insertTerrain")
+    @PostMapping("/api/Terrain/insertTerrain")
     public ResponseEntity<TerrainModel> insertTerrain(
         @RequestParam String description , 
         @RequestParam String latitude , 
@@ -49,7 +49,7 @@ public class TerrainController {
         return ResponseEntity.ok(terrain);
     }
     @CrossOrigin(origins = "*")
-    @GetMapping("/api/Terrain/insert_parcelle_terrain")
+    @PostMapping("/api/Terrain/insert_parcelle_terrain")
     public ResponseEntity<TerrainModel> insert_parcelle_terrain(
         @RequestParam int id_utilisateur,
         @RequestParam int id_parcelle , 

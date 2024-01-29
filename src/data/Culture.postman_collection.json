@@ -629,7 +629,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://projetcloud2024-production.up.railway.app/api/Terrain/insertTerrain?description=Terrain test&latitude=2093487&longitude=230984&photo=img4.png",
+							"raw": "http://projetcloud2024-production.up.railway.app/api/Terrain/insertTerrain?description=Terrarin 7&latitude=589034&longitude=23948&photo=img.png",
 							"protocol": "http",
 							"host": [
 								"projetcloud2024-production",
@@ -645,19 +645,19 @@
 							"query": [
 								{
 									"key": "description",
-									"value": "Terrain test"
+									"value": "Terrarin 7"
 								},
 								{
 									"key": "latitude",
-									"value": "2093487"
+									"value": "589034"
 								},
 								{
 									"key": "longitude",
-									"value": "230984"
+									"value": "23948"
 								},
 								{
 									"key": "photo",
-									"value": "img4.png"
+									"value": "img.png"
 								}
 							]
 						}

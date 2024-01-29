@@ -40,12 +40,12 @@ public class CategorieController {
     public ResponseEntity<CategorieModel> insertCategorie(@RequestBody CategorieModel categorie) {
 
         // Vous pouvez accéder aux propriétés directement depuis l'objet categorie
-        int rendementParPieds = categorie.getRendement_par_pieds();
+        int rendement_par_pieds = categorie.getRendement_par_pieds();
         Double prix_unitaire = categorie.getPrix_unitaire();
-        String nomCategorie = categorie.getNom_categorie();
+        String nom_categorie = categorie.getNom_categorie();
 
         // Appel de la fonction `update_categorie()`
-        categorie.insert_categorie(rendementParPieds, prix_unitaire, nomCategorie);
+        categorie.insert_categorie(rendement_par_pieds, prix_unitaire, nom_categorie);
 
         // Retour de la catégorie mise à jour
         return ResponseEntity.ok(categorie);

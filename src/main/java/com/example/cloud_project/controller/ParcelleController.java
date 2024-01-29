@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
@@ -78,15 +79,11 @@ public class ParcelleController {
 
     @CrossOrigin(origins = "*")
     @PostMapping("/api/Parcelle/insert_parcelle")
-    public ResponseEntity<ParcelleModel> insert_parcelle(
-        @RequestParam Double dimension , 
-        @RequestParam int nb_pieds , 
-        @RequestParam Double prix)
+    public ResponseEntity<ParcelleModel> insert_parcelle(@RequestBody ParcelleModel parcelle)
     {
-        ParcelleModel parcelle = new ParcelleModel();
-        parcelle.setDimension(dimension);
-        parcelle.setNb_pieds(nb_pieds);
-        parcelle.setPrix(prix);
+        double dimension = parcelle.getDimension();
+        int nb_pieds = parcelle.getNb_pieds();
+        double prix = parcelle.getPrix();
 
         parcelle.insert_parcelle(dimension, nb_pieds, prix);
         return ResponseEntity.ok(parcelle);

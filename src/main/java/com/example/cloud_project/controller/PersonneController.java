@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
@@ -36,21 +37,15 @@ public class PersonneController {
     }
     @CrossOrigin(origins = "*")
     @PostMapping("/api/Personne/insertPersonne")  
-    public ResponseEntity<PersonneModel> insert_personne(
-        String nom , 
-        String sexe , 
-        Date dtn , 
-        String email , 
-        String pwd){
-        PersonneModel p = new PersonneModel();
-        p.setNom(nom);
-        p.setSexe(sexe);
-        p.setDtn(dtn);
-        p.setEmail(email);
-        p.setPwd(pwd);
-
-        p.insert_user(nom, sexe, dtn, email, pwd);
-        return ResponseEntity.ok(p);
+    public ResponseEntity<PersonneModel> insert_personne(@RequestBody PersonneModel personne){
+        
+        String nom = personne.getNom();
+        String sexe = personne.getSexe();
+        Date dtn = personne.getDtn();
+        String email = personne.getEmail();
+        String pwd = personne.getPwd();
+        personne.insert_user(nom, sexe, dtn, email, pwd);
+        return ResponseEntity.ok(personne);
     }
     @CrossOrigin(origins = "*")
     @GetMapping("/api/Personne/selectPersonnewhere")
@@ -62,15 +57,10 @@ public class PersonneController {
     }
     @CrossOrigin(origins = "*")
     @PutMapping("/api/Personne/updatePwd")
-    public ResponseEntity<PersonneModel> updatePwd(
-        @RequestParam String pwd, 
-        @RequestParam int id_utilisateur,
-        HttpSession session) {
+    public ResponseEntity<PersonneModel> updatePwd(@RequestBody PersonneModel personne,HttpSession session) {
         // Met à jour le mot de passe
-        PersonneModel personne = new PersonneModel();
+        String pwd = personne.getPwd();
         Integer loggedInUserId = (Integer) session.getAttribute("loggedInUserId");
-        personne.setPwd(pwd);
-        personne.setId_utilisateur(id_utilisateur);
         personne.update_pwd(pwd, loggedInUserId);
 
         return new ResponseEntity<>(HttpStatus.OK); 
@@ -78,10 +68,10 @@ public class PersonneController {
 //
     @CrossOrigin(origins = "*")
     @PostMapping("/api/login")
-    public String login(HttpServletRequest req, HttpSession session) {
+    public String login(@RequestBody PersonneModel personne, HttpSession session) {
         
-        String email = req.getParameter("email");
-        String pwd = req.getParameter("pwd");
+        String email = personne.getEmail();
+        String pwd = personne.getPwd();
 
         PersonneModel user = new PersonneModel();
         PersonneModel p = user.select_user(email, pwd);

@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
@@ -31,14 +32,13 @@ public class TypeController {
     @CrossOrigin(origins = "*")
     @PostMapping("/api/Type/insert_types")
    
-    public  ResponseEntity<TypeModel> insert_type_culture(
-        @RequestParam String nom_type)
+    public  ResponseEntity<TypeModel> insert_type_culture(@RequestBody TypeModel type)
     {
-        TypeModel t = new TypeModel();
-        t.setNom_type(nom_type);
+        String nom_type = type.getNom_type();
 
-        t.insert_type(nom_type);
-        return ResponseEntity.ok(t);
+
+        type.insert_type(nom_type);
+        return ResponseEntity.ok(type);
     }
 
 }

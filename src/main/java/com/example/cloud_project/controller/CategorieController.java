@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -17,6 +18,8 @@ import com.example.cloud_project.Models.PersonneModel;
 import com.example.cloud_project.Models.CategorieModel;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import jakarta.servlet.http.HttpServletRequest;
  
 @RestController
 @RequestMapping("/api")
@@ -34,41 +37,33 @@ public class CategorieController {
 
     @CrossOrigin(origins = "*")
     @PostMapping("/insert_categorie")
-    public ResponseEntity<CategorieModel> insertCategorie(
-            @RequestParam int rendementParPieds,
-            @RequestParam double prixUnitaire,
-            @RequestParam String nomCategorie) {
+    public ResponseEntity<CategorieModel> insertCategorie(@RequestBody CategorieModel categorie) {
 
-        // Récupération des valeurs des paramètres
-        CategorieModel categorie = new CategorieModel();
-        categorie.setRendement_par_pieds(rendementParPieds);
-        categorie.setPrix_unitaire(prixUnitaire);
-        categorie.setNom_categorie(nomCategorie);
+        // Vous pouvez accéder aux propriétés directement depuis l'objet categorie
+        int rendementParPieds = categorie.getRendement_par_pieds();
+        Double prix_unitaire = categorie.getPrix_unitaire();
+        String nomCategorie = categorie.getNom_categorie();
 
         // Appel de la fonction `update_categorie()`
-        categorie.insert_categorie(rendementParPieds, prixUnitaire, nomCategorie);
+        categorie.insert_categorie(rendementParPieds, prix_unitaire, nomCategorie);
 
         // Retour de la catégorie mise à jour
         return ResponseEntity.ok(categorie);
     }
 
     @CrossOrigin(origins = "*")
-    @PostMapping("/update_categorie")
-    public ResponseEntity<CategorieModel> updateCategorie(
-            @RequestParam int rendementParPieds,
-            @RequestParam double prixUnitaire,
-            @RequestParam String nomCategorie,
-            @RequestParam int idCategorie) {
+    @PutMapping("/update_categorie")
+    public ResponseEntity<CategorieModel> updateCategorie(@RequestBody CategorieModel categorie) {
 
-        // Récupération des valeurs des paramètres
-        CategorieModel categorie = new CategorieModel();
-        categorie.setRendement_par_pieds(rendementParPieds);
-        categorie.setPrix_unitaire(prixUnitaire);
-        categorie.setNom_categorie(nomCategorie);
-        categorie.setId_categorie(idCategorie);
+        int rendement_par_pieds = categorie.getRendement_par_pieds();
+        double prix_unitaire = categorie.getPrix_unitaire();
+        String nom_categorie = categorie.getNom_categorie();
+        int id_categorie = categorie.getId_categorie();
+
+        
 
         // Appel de la fonction `update_categorie()`
-        categorie.update_categorie(rendementParPieds, prixUnitaire, nomCategorie, idCategorie);
+        categorie.update_categorie(rendement_par_pieds, prix_unitaire, nom_categorie, id_categorie);
 
         // Retour de la catégorie mise à jour
         return ResponseEntity.ok(categorie);

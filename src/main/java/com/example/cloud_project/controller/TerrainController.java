@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
@@ -34,39 +35,26 @@ public class TerrainController {
     }
     @CrossOrigin(origins = "*")
     @PostMapping("/api/Terrain/insertTerrain")
-    public ResponseEntity<TerrainModel> insertTerrain(
-        @RequestParam String description , 
-        @RequestParam String latitude , 
-        @RequestParam String longitude , 
-        @RequestParam String photo)
+    public ResponseEntity<TerrainModel> insertTerrain(@RequestBody TerrainModel terrain)
     {
-        TerrainModel terrain = new TerrainModel();  
-        terrain.setDescription(description);
-        terrain.setLatitude(latitude);
-        terrain.setLongitude(longitude);
-        terrain.setPhoto(photo);
+        String description = terrain.getDescription();
+        String longitude = terrain.getLongitude();
+        String latitude = terrain.getLatitude();
+        String photo = terrain.getPhoto();
         terrain.insert_terrain(description, latitude, longitude, photo);
         return ResponseEntity.ok(terrain);
     }
     @CrossOrigin(origins = "*")
     @PostMapping("/api/Terrain/insert_parcelle_terrain")
-    public ResponseEntity<TerrainModel> insert_parcelle_terrain(
-        @RequestParam int id_utilisateur,
-        @RequestParam int id_parcelle , 
-        @RequestParam int id_terrain , 
-        @RequestParam int id_categorie,
-        @RequestParam int id_type,
-        HttpSession session)    
+    public ResponseEntity<TerrainModel> insert_parcelle_terrain(@RequestBody TerrainModel terrain,HttpSession session)    
     {
         Integer loggedInUserId = (Integer) session.getAttribute("loggedInUserId");
-        TerrainModel terrain = new TerrainModel();
-        terrain.setId_utilisateur(id_utilisateur);
-        terrain.setId_parcelle(id_parcelle);
-        terrain.setId_terrain(id_terrain);
-        terrain.setId_categorie(id_categorie);
-        terrain.setId_type(id_type);
+        int id_parcelle = terrain.getId_parcelle();
+        int id_terrain = terrain.getId_terrain();
+        int id_categorie = terrain.getId_categorie();
+        int id_type = terrain.getId_type();
     
-       terrain.insert_parcelle_terrain(id_utilisateur,id_parcelle, id_terrain ,id_categorie,id_type);
+       terrain.insert_parcelle_terrain(loggedInUserId,id_parcelle, id_terrain ,id_categorie,id_type);
        return ResponseEntity.ok(terrain);
     }
    

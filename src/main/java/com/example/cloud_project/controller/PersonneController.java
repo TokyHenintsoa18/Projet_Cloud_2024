@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
@@ -60,7 +61,7 @@ public class PersonneController {
         return ResponseEntity.ok().body(p); 
     }
     @CrossOrigin(origins = "*")
-    @PostMapping("/api/Personne/updatePwd")
+    @PutMapping("/api/Personne/updatePwd")
     public ResponseEntity<PersonneModel> updatePwd(
         @RequestParam String pwd, 
         @RequestParam int id_utilisateur,

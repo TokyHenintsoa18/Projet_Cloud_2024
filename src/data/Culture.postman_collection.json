@@ -191,8 +191,8 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://projetcloud2024-production.up.railway.app/api/list_categorie",
-							"protocol": "http",
+							"raw": "https://projetcloud2024-production.up.railway.app/api/list_categorie",
+							"protocol": "https",
 							"host": [
 								"projetcloud2024-production",
 								"up",
@@ -249,8 +249,8 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://projetcloud2024-production.up.railway.app/api/Parcelle/lists_parcelle",
-							"protocol": "http",
+							"raw": "https://projetcloud2024-production.up.railway.app/api/Parcelle/lists_parcelle",
+							"protocol": "https",
 							"host": [
 								"projetcloud2024-production",
 								"up",
@@ -272,8 +272,8 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://projetcloud2024-production.up.railway.app/api/Parcelle/information_parcelle_par_terrain_utilisateur?id_utlisateur=1",
-							"protocol": "http",
+							"raw": "https://projetcloud2024-production.up.railway.app/api/Parcelle/information_parcelle_par_terrain_utilisateur?id_utlisateur=1",
+							"protocol": "https",
 							"host": [
 								"projetcloud2024-production",
 								"up",
@@ -301,8 +301,8 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://projetcloud2024-production.up.railway.app/api/Parcelle/information_parcelle_par_terrain_parcelle?id_parcelle=1",
-							"protocol": "http",
+							"raw": "https://projetcloud2024-production.up.railway.app/api/Parcelle/information_parcelle_par_terrain_parcelle?id_parcelle=1",
+							"protocol": "https",
 							"host": [
 								"projetcloud2024-production",
 								"up",
@@ -330,8 +330,8 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://projetcloud2024-production.up.railway.app/api/Parcelle/information_parcelle_par_terrain_categorie?id_categorie=1",
-							"protocol": "http",
+							"raw": "https://projetcloud2024-production.up.railway.app/api/Parcelle/information_parcelle_par_terrain_categorie?id_categorie=1",
+							"protocol": "https",
 							"host": [
 								"projetcloud2024-production",
 								"up",
@@ -359,8 +359,8 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://projetcloud2024-production.up.railway.app/api/Parcelle/stat_parcelle",
-							"protocol": "http",
+							"raw": "https://projetcloud2024-production.up.railway.app/api/Parcelle/stat_parcelle",
+							"protocol": "https",
 							"host": [
 								"projetcloud2024-production",
 								"up",
@@ -414,8 +414,8 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://projetcloud2024-production.up.railway.app/api/Parcelle/listParcelleterrain",
-							"protocol": "http",
+							"raw": "https://projetcloud2024-production.up.railway.app/api/Parcelle/listParcelleterrain",
+							"protocol": "https",
 							"host": [
 								"projetcloud2024-production",
 								"up",
@@ -442,8 +442,8 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://projetcloud2024-production.up.railway.app/api/Rendement/v_prix_rendement_prevision?id_utilisateur=1",
-							"protocol": "http",
+							"raw": "https://projetcloud2024-production.up.railway.app/api/Rendement/v_prix_rendement_prevision?id_utilisateur=1",
+							"protocol": "https",
 							"host": [
 								"projetcloud2024-production",
 								"up",
@@ -471,8 +471,8 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://projetcloud2024-production.up.railway.app/api/Rendement/v_sum_prix_rendement_prevision?id_utilisateur=1",
-							"protocol": "http",
+							"raw": "https://projetcloud2024-production.up.railway.app/api/Rendement/v_sum_prix_rendement_prevision?id_utilisateur=1",
+							"protocol": "https",
 							"host": [
 								"projetcloud2024-production",
 								"up",
@@ -500,8 +500,8 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://projetcloud2024-production.up.railway.app/api/Rendement/v_rendement_par_qte?id_utilisateur=1",
-							"protocol": "http",
+							"raw": "https://projetcloud2024-production.up.railway.app/api/Rendement/v_rendement_par_qte?id_utilisateur=1",
+							"protocol": "https",
 							"host": [
 								"projetcloud2024-production",
 								"up",

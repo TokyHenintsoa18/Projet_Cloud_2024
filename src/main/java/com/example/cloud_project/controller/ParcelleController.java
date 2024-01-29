@@ -68,6 +68,51 @@ public class ParcelleController {
         ParcelleModel stat[]=p.v_information_parcelle_par_terrain_par_categorie(id_categorie);
         return ResponseEntity.ok().body(stat);
     }
+
+    @CrossOrigin(origins = "*")
+    @GetMapping("/api/Parcelle/filtre_nom")
+    public ResponseEntity<ParcelleModel[]> v_information_parcelle_par_terrain_par_nom(
+        @RequestParam String nom){
+        ParcelleModel p = new ParcelleModel();
+        ParcelleModel stat[]=p.v_information_parcelle_par_terrain_par_nom(nom);
+        System.out.println("test nom bien");
+        return ResponseEntity.ok().body(stat);
+    }
+
+    @CrossOrigin(origins = "*")
+    @GetMapping("/api/Parcelle/filtre")
+    public ResponseEntity<ParcelleModel[]> filtre_v_information_parcelle_par_terrain(@RequestParam Integer id_categorie,@RequestParam Integer id_type){
+        ParcelleModel p = new ParcelleModel();
+        // ParcelleModel stat[]=p.v_information_parcelle_par_terrain_par_categorie(id_categorie);
+        // return ResponseEntity.ok().body(stat);
+
+        if(id_type == null && id_categorie == null || id_type == 0 && id_categorie == 0)
+        {
+            
+            ParcelleModel stat[] = p.v_information_parcelle_par_terrain();
+            System.out.println("test");
+            return ResponseEntity.ok().body(stat);
+        }
+        if(id_categorie ==null || id_categorie == 0)
+        {
+            ParcelleModel stat[]=p.v_information_parcelle_par_terrain_par_type(id_type);
+            System.out.println("test1");
+            return ResponseEntity.ok().body(stat);
+        }
+        if(id_type ==null || id_type ==0)
+        {
+            ParcelleModel stat[]=p.v_information_parcelle_par_terrain_par_categorie(id_categorie);
+            System.out.println("test2");
+            return ResponseEntity.ok().body(stat);
+        }
+
+        else
+        {
+            // Autres cas non pris en charge
+            return ResponseEntity.badRequest().body(new ParcelleModel[0]);
+        }
+    }
+
   @CrossOrigin(origins = "*")
     @GetMapping("/api/Parcelle/stat_parcelle")
     public ResponseEntity<ParcelleModel[]> stat_parcelle()

@@ -44,6 +44,9 @@ public class TerrainController {
         terrain.insert_terrain(description, latitude, longitude, photo);
         return ResponseEntity.ok(terrain);
     }
+
+    
+
     @CrossOrigin(origins = "*")
     @PostMapping("/api/Terrain/insert_parcelle_terrain")
     public ResponseEntity<TerrainModel> insert_parcelle_terrain(@RequestBody TerrainModel terrain,HttpSession session)    

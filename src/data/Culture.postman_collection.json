@@ -208,7 +208,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://projetcloud2024-production.up.railway.app/api/Categorie/list_categorie",
+							"raw": "http://projetcloud2024-production.up.railway.app/api/categorie/list_categorie",
 							"protocol": "http",
 							"host": [
 								"projetcloud2024-production",
@@ -218,7 +218,7 @@
 							],
 							"path": [
 								"api",
-								"Categorie",
+								"categorie",
 								"list_categorie"
 							]
 						}

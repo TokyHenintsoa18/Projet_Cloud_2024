@@ -35,9 +35,9 @@ public class CategorieController {
     @CrossOrigin(origins = "*")
     @PostMapping("/insertCategorie")
     public ResponseEntity<CategorieModel> insertCategorie(
-            @RequestParam int rendementParPieds,
-            @RequestParam double prixUnitaire,
-            @RequestParam String nomCategorie) {
+            @RequestParam("rendementParPieds") int rendementParPieds,
+            @RequestParam("prixUnitaire") double prixUnitaire,
+            @RequestParam("nomCategorie") String nomCategorie) {
 
         // Récupération des valeurs des paramètres
         CategorieModel categorie = new CategorieModel();

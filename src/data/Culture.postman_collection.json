@@ -208,16 +208,17 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/Parcelle/listParcelleterrain",
+							"raw": "http://projetcloud2024-production.up.railway.app/api/list_categorie",
 							"protocol": "http",
 							"host": [
-								"localhost"
+								"projetcloud2024-production",
+								"up",
+								"railway",
+								"app"
 							],
-							"port": "8080",
 							"path": [
 								"api",
-								"Parcelle",
-								"listParcelleterrain"
+								"list_categorie"
 							]
 						}
 					},
@@ -226,78 +227,8 @@
 				{
 					"name": "insert categorie",
 					"request": {
-						"method": "POST",
-						"header": [],
-						"url": {
-							"raw": "http://projetcloud2024-production.up.railway.app/api/categories/insert_categorie?rendementParPieds=30&prixUnitaire=3444&nomCategorie=Cat test",
-							"protocol": "http",
-							"host": [
-								"projetcloud2024-production",
-								"up",
-								"railway",
-								"app"
-							],
-							"path": [
-								"api",
-								"categories",
-								"insert_categorie"
-							],
-							"query": [
-								{
-									"key": "rendementParPieds",
-									"value": "30"
-								},
-								{
-									"key": "prixUnitaire",
-									"value": "3444"
-								},
-								{
-									"key": "nomCategorie",
-									"value": "Cat test"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "New Request",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"url": {
-							"raw": "http://projetcloud2024-production.up.railway.app/api/categories/update_categorie?rendementParPieds=9000&prixUnitaire=1010&nomCategorie=cat10&idCategorie=6",
-							"protocol": "http",
-							"host": [
-								"projetcloud2024-production",
-								"up",
-								"railway",
-								"app"
-							],
-							"path": [
-								"api",
-								"categories",
-								"update_categorie"
-							],
-							"query": [
-								{
-									"key": "rendementParPieds",
-									"value": "9000"
-								},
-								{
-									"key": "prixUnitaire",
-									"value": "1010"
-								},
-								{
-									"key": "nomCategorie",
-									"value": "cat10"
-								},
-								{
-									"key": "idCategorie",
-									"value": "6"
-								}
-							]
-						}
+						"method": "GET",
+						"header": []
 					},
 					"response": []
 				}

@@ -24,7 +24,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class CategorieController {
     
     @CrossOrigin(origins = "*")
-    @GetMapping("categorie/list_categorie")
+    @GetMapping("/list_categorie")
     public ResponseEntity<CategorieModel[]> listCategories()
     {
        CategorieModel categorie = new CategorieModel();
@@ -33,7 +33,7 @@ public class CategorieController {
     }
 
     @CrossOrigin(origins = "*")
-    @PostMapping("/categories/insert_categorie")
+    @PostMapping("/insert_categorie")
     public ResponseEntity<CategorieModel> insertCategorie(
             @RequestParam int rendementParPieds,
             @RequestParam double prixUnitaire,
@@ -53,7 +53,7 @@ public class CategorieController {
     }
 
     @CrossOrigin(origins = "*")
-    @PutMapping("/categories/update_categorie")
+    @PutMapping("/update_categorie")
     public ResponseEntity<CategorieModel> updateCategorie(
             @RequestParam int rendementParPieds,
             @RequestParam double prixUnitaire,

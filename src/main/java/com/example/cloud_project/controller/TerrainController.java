@@ -24,7 +24,7 @@ import com.example.cloud_project.Models.PersonneModel;
 @RestController
 @CrossOrigin(origins = "*")
 public class TerrainController {
-    
+    @CrossOrigin(origins = "*")
     @GetMapping("/api/Terrain/listsTerrain")
     public ResponseEntity<TerrainModel[]> list_terrain()
     {
@@ -32,7 +32,7 @@ public class TerrainController {
         TerrainModel list_terrain[]=t.select_terrain();
         return ResponseEntity.ok().body(list_terrain);
     }
-
+    @CrossOrigin(origins = "*")
     @GetMapping("/api/Terrain/insertTerrain")
     public ResponseEntity<TerrainModel> insertTerrain(
         @RequestParam String description , 
@@ -48,7 +48,7 @@ public class TerrainController {
         terrain.insert_terrain(description, latitude, longitude, photo);
         return ResponseEntity.ok(terrain);
     }
-
+    @CrossOrigin(origins = "*")
     @GetMapping("/api/Terrain/insert_parcelle_terrain")
     public ResponseEntity<TerrainModel> insert_parcelle_terrain(
         @RequestParam int id_utilisateur,

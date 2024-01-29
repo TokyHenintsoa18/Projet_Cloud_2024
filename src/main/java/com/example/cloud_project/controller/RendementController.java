@@ -18,6 +18,7 @@ import jakarta.servlet.http.HttpSession;
 @CrossOrigin(origins = "*")
 public class RendementController {
     
+    @CrossOrigin(origins = "*")
     @GetMapping("/api/Rendement/v_prix_rendement_prevision")
     public ResponseEntity<RendementModel[]> select_v_parcelle_where(@RequestParam("id_utilisateur") int id_utilisateur,HttpSession session)
     {
@@ -26,6 +27,7 @@ public class RendementController {
         RendementModel rend_Model[] = r.v_prix_rendement_prevision_where(loggedInUserId);
         return ResponseEntity.ok().body(rend_Model);
     }
+    @CrossOrigin(origins = "*")
     @GetMapping("/api/Rendement/v_sum_prix_rendement_prevision")
     public ResponseEntity<RendementModel[]> v_sum_prix_rendement_prevision(@RequestParam("id_utilisateur") int id_utilisateur,HttpSession session)
     {
@@ -34,7 +36,8 @@ public class RendementController {
         RendementModel rend_Model[] = r.v_sum_prix_rendement_prevision(loggedInUserId);
         return ResponseEntity.ok().body(rend_Model);
     }
-
+    
+    @CrossOrigin(origins = "*")
     @GetMapping("/api/Rendement/v_rendement_par_qte")
     public ResponseEntity<RendementModel[]> v_rendement_par_qte(@RequestParam("id_utilisateur") int id_utilisateur,HttpSession session)
     {

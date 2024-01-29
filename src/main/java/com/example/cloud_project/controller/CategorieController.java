@@ -5,7 +5,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,11 +33,11 @@ public class CategorieController {
     }
 
     @CrossOrigin(origins = "*")
-    @PostMapping("/insertCategorie")
+    @GetMapping("/insert_categorie")
     public ResponseEntity<CategorieModel> insertCategorie(
-            @PathVariable("rendementParPieds") int rendementParPieds,
-            @PathVariable("prixUnitaire") double prixUnitaire,
-            @PathVariable("nomCategorie") String nomCategorie) {
+            @RequestParam int rendementParPieds,
+            @RequestParam double prixUnitaire,
+            @RequestParam String nomCategorie) {
 
         // Récupération des valeurs des paramètres
         CategorieModel categorie = new CategorieModel();
@@ -54,7 +53,7 @@ public class CategorieController {
     }
 
     @CrossOrigin(origins = "*")
-    @PostMapping("/updateCategorie")
+    @GetMapping("/update_categorie")
     public ResponseEntity<CategorieModel> updateCategorie(
             @RequestParam int rendementParPieds,
             @RequestParam double prixUnitaire,

@@ -22,7 +22,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @CrossOrigin(origins = "*")
 public class CategorieController {
     
-
+    @CrossOrigin(origins = "*")
     @GetMapping("categorie/list_categorie")
     public ResponseEntity<CategorieModel[]> listCategories()
     {
@@ -30,7 +30,8 @@ public class CategorieController {
        CategorieModel[] list_cat = categorie.list_categorie();
        return ResponseEntity.ok().body(list_cat);
     }
-//
+
+    @CrossOrigin(origins = "*")
     @GetMapping("categories/insert_categorie")
     public ResponseEntity<CategorieModel> insertCategorie(
             @RequestParam int rendementParPieds,
@@ -49,7 +50,8 @@ public class CategorieController {
         // Retour de la catégorie mise à jour
         return ResponseEntity.ok(categorie);
     }
-
+    
+    @CrossOrigin(origins = "*")
     @PostMapping("categories/update_categorie")
     public ResponseEntity<CategorieModel> updateCategorie(
             @RequestParam int rendementParPieds,

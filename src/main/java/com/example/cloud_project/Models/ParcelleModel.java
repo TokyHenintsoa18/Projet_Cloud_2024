@@ -294,6 +294,69 @@ public class ParcelleModel {
         return resultatList.toArray(new ParcelleModel[resultatList.size()]);
     }
 
+    public ParcelleModel[] v_information_parcelle_par_terrain()
+    {
+        List<ParcelleModel> resultatList = new ArrayList<>();
+        
+         try{
+                 
+                    Conn c = new Conn();
+                    Connection conn = c.getConnex();
+                        
+                    String sql = "select * from v_information_parcelle_par_terrain";
+                    System.out.println(sql);
+                    PreparedStatement pstmt = conn.prepareStatement(sql);
+                   
+                    ResultSet result = pstmt.executeQuery();
+                    while (result.next()) 
+                    {
+                        
+                        int id_tp = result.getInt(1);
+                        int id_user = result.getInt(2);
+                        String nom = result.getString(3);
+                        int id_parcelle = result.getInt(4);
+                        int id_terrain = result.getInt(5);
+                        int id_categorie = result.getInt(6);
+                        String nom_categorie = result.getString(7);
+                        int id_type = result.getInt(8);
+                        String nom_tpye = result.getString(9);
+                        int rendement_par_pieds = result.getInt(10);
+                        double prix_unitaire = result.getDouble(11);
+                        double dimension = result.getDouble(12);
+                        int nb_pieds = result.getInt(13);
+                        double prix_parcelle = result.getDouble(14);
+
+                        ParcelleModel parcelle = new ParcelleModel();
+                        parcelle.setId_tp(id_tp);
+                        parcelle.setId_utilisateur(id_user);
+                        parcelle.setNom(nom);
+                        parcelle.setId_parcelle(id_parcelle);
+                        parcelle.setId_terrain(id_terrain);
+                        parcelle.setId_categorie(id_categorie);
+                        parcelle.setNom_categorie(nom_categorie);
+                        parcelle.setId_type(id_type);
+                        parcelle.setNom_type(nom_tpye);
+                        parcelle.setRendement_par_pieds(rendement_par_pieds);
+                        parcelle.setPrix_unitaire(prix_unitaire);
+                        parcelle.setDimension(dimension);
+                        parcelle.setNb_pieds(nb_pieds);
+                        parcelle.setPrix_parcelle(prix_parcelle);
+
+                        resultatList.add(parcelle);
+                    }
+
+                    result.close();
+                    pstmt.close();
+                    conn.close();
+                
+            }catch (Exception e) {
+                // TODO: handle exception
+                e.printStackTrace();
+            }
+
+        return resultatList.toArray(new ParcelleModel[resultatList.size()]);
+    }
+
     public ParcelleModel[] v_information_parcelle_par_terrain_par_parcelle(int id_parcelle)
     {
         List<ParcelleModel> resultatList = new ArrayList<>();

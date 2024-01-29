@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @CrossOrigin(origins = "*")
 public class PersonneController {
-    
+    @CrossOrigin(origins = "*")
     @GetMapping("/api/Personne/listsPersonne")
     public ResponseEntity<PersonneModel[]> listPersonnes() {
         // Get the list of personnes
@@ -33,7 +33,7 @@ public class PersonneController {
         // Return a ResponseEntity with the JSON response
         return ResponseEntity.ok().body(personnes);
     }
-
+    @CrossOrigin(origins = "*")
     @GetMapping("/api/Personne/insertPersonne")  
     public ResponseEntity<PersonneModel> insert_personne(
         String nom , 
@@ -51,7 +51,7 @@ public class PersonneController {
         p.insert_user(nom, sexe, dtn, email, pwd);
         return ResponseEntity.ok(p);
     }
-
+    @CrossOrigin(origins = "*")
     @GetMapping("/api/Personne/selectPersonnewhere")
     public ResponseEntity<PersonneModel> listPersonnes(@RequestParam String email, @RequestParam String pwd) 
     {
@@ -59,7 +59,7 @@ public class PersonneController {
         p = p.select_user(email, pwd);
         return ResponseEntity.ok().body(p); 
     }
-
+    @CrossOrigin(origins = "*")
     @GetMapping("/api/Personne/updatePwd")
     public ResponseEntity<PersonneModel> updatePwd(
         @RequestParam String pwd, 

@@ -33,7 +33,7 @@ public class CategorieController {
     }
 
     @CrossOrigin(origins = "*")
-    @PostMapping("categories/insert_categorie")
+    @PostMapping("/categories/insert_categorie")
     public ResponseEntity<CategorieModel> insertCategorie(
             @RequestParam int rendementParPieds,
             @RequestParam double prixUnitaire,
@@ -53,7 +53,7 @@ public class CategorieController {
     }
 
     @CrossOrigin(origins = "*")
-    @PutMapping("categories/update_categorie")
+    @PutMapping("/categories/update_categorie")
     public ResponseEntity<CategorieModel> updateCategorie(
             @RequestParam int rendementParPieds,
             @RequestParam double prixUnitaire,

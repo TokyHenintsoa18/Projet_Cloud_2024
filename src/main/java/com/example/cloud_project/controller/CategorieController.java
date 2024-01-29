@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,10 +17,11 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RestController
+@RequestMapping("/api")
 public class CategorieController {
     
 
-    @GetMapping("api/Categorie/list_categorie")
+    @GetMapping("categorie/list_categorie")
     public ResponseEntity<CategorieModel[]> listCategories()
     {
        CategorieModel categorie = new CategorieModel();
@@ -27,7 +29,7 @@ public class CategorieController {
        return ResponseEntity.ok().body(list_cat);
     }
 //
-    @GetMapping("/api/categories/insert_categorie")
+    @PostMapping("categories/insert_categorie")
     public ResponseEntity<CategorieModel> insertCategorie(
             @RequestParam int rendementParPieds,
             @RequestParam double prixUnitaire,
@@ -46,7 +48,7 @@ public class CategorieController {
         return ResponseEntity.ok(categorie);
     }
 
-    @GetMapping("/api/categories/update_categorie")
+    @PostMapping("categories/update_categorie")
     public ResponseEntity<CategorieModel> updateCategorie(
             @RequestParam int rendementParPieds,
             @RequestParam double prixUnitaire,

@@ -126,7 +126,9 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "https://projetcloud2024-production.up.railway.app/api/login?email=F@gmail.com&pwd=0000",
+
+							"raw": "https://projetcloud2024-production.up.railway.app/api/login?email=F@gmail.com&pwd=pid",
+
 							"protocol": "https",
 							"host": [
 								"projetcloud2024-production",
@@ -145,7 +147,7 @@
 								},
 								{
 									"key": "pwd",
-									"value": "0000"
+									"value": "pid"
 								}
 							]
 						}

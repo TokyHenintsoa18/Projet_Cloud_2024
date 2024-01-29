@@ -15,8 +15,8 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://projetcloud2024-production.up.railway.app/api/Personne/selectPersonnewhere?email=rak@gmail.com&pwd=bbbb",
-							"protocol": "http",
+							"raw": "https://projetcloud2024-production.up.railway.app/api/Personne/selectPersonnewhere?email=rak@gmail.com&pwd=cccc",
+							"protocol": "https",
 							"host": [
 								"projetcloud2024-production",
 								"up",
@@ -35,7 +35,7 @@
 								},
 								{
 									"key": "pwd",
-									"value": "bbbb"
+									"value": "cccc"
 								}
 							]
 						}
@@ -47,8 +47,17 @@
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nom\":\"Rakoto\",\r\n    \"sexe\":\"M\",\r\n    \"dtn\":\"2002-01-01\",\r\n    \"email\":\"rakoto@gmail.com\",\r\n    \"pwd\":\"1003\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "https://projetcloud2024-production.up.railway.app/api/Personne/insertPersonne?nom=huranus&sexe=F&dtn=2000-01-01&email=F@gmail.com&pwd=Natana ralambs",
+							"raw": "https://projetcloud2024-production.up.railway.app/api/Personne/insertPersonne",
 							"protocol": "https",
 							"host": [
 								"projetcloud2024-production",
@@ -60,28 +69,6 @@
 								"api",
 								"Personne",
 								"insertPersonne"
-							],
-							"query": [
-								{
-									"key": "nom",
-									"value": "huranus"
-								},
-								{
-									"key": "sexe",
-									"value": "F"
-								},
-								{
-									"key": "dtn",
-									"value": "2000-01-01"
-								},
-								{
-									"key": "email",
-									"value": "F@gmail.com"
-								},
-								{
-									"key": "pwd",
-									"value": "Natana ralambs"
-								}
 							]
 						}
 					},
@@ -92,29 +79,26 @@
 					"request": {
 						"method": "PUT",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"pwd\":\"2001\",\r\n    \"id_utilisateur\":8\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "https://projetcloud2024-production.up.railway.app/api/Personne/updatePwd?pwd=pid&id_utilisateur=8",
-							"protocol": "https",
+							"raw": "http://localhost:8080/api/Personne/updatePwd",
+							"protocol": "http",
 							"host": [
-								"projetcloud2024-production",
-								"up",
-								"railway",
-								"app"
+								"localhost"
 							],
+							"port": "8080",
 							"path": [
 								"api",
 								"Personne",
 								"updatePwd"
-							],
-							"query": [
-								{
-									"key": "pwd",
-									"value": "pid"
-								},
-								{
-									"key": "id_utilisateur",
-									"value": "8"
-								}
 							]
 						}
 					},
@@ -125,10 +109,17 @@
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"rakoto@gmail.com\",\r\n    \"pwd\":\"1003\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-
-							"raw": "https://projetcloud2024-production.up.railway.app/api/login?email=F@gmail.com&pwd=pid",
-
+							"raw": "https://projetcloud2024-production.up.railway.app/api/login",
 							"protocol": "https",
 							"host": [
 								"projetcloud2024-production",
@@ -139,16 +130,6 @@
 							"path": [
 								"api",
 								"login"
-							],
-							"query": [
-								{
-									"key": "email",
-									"value": "F@gmail.com"
-								},
-								{
-									"key": "pwd",
-									"value": "pid"
-								}
 							]
 						}
 					},
@@ -231,8 +212,17 @@
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"rendement_par_pieds\":5000,\r\n    \"prix_unitaire\":90000,\r\n    \"nom_categorie\":\"Categorie 9\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "https://projetcloud2024-production.up.railway.app/api/insert_categorie?rendementParPieds=3000&prixUnitaire=99999&nomCategorie=TestCategorie1",
+							"raw": "https://projetcloud2024-production.up.railway.app/api/insert_categorie",
 							"protocol": "https",
 							"host": [
 								"projetcloud2024-production",
@@ -243,20 +233,6 @@
 							"path": [
 								"api",
 								"insert_categorie"
-							],
-							"query": [
-								{
-									"key": "rendementParPieds",
-									"value": "3000"
-								},
-								{
-									"key": "prixUnitaire",
-									"value": "99999"
-								},
-								{
-									"key": "nomCategorie",
-									"value": "TestCategorie1"
-								}
 							]
 						}
 					},
@@ -405,8 +381,17 @@
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dimension\":900,\r\n    \"nb_pieds\":1000,\r\n    \"prix\":1000000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "https://projetcloud2024-production.up.railway.app/api/Parcelle/insert_parcelle?dimension=9000&nb_pieds=80&prix=90",
+							"raw": "https://projetcloud2024-production.up.railway.app/api/Parcelle/insert_parcelle",
 							"protocol": "https",
 							"host": [
 								"projetcloud2024-production",
@@ -418,20 +403,6 @@
 								"api",
 								"Parcelle",
 								"insert_parcelle"
-							],
-							"query": [
-								{
-									"key": "dimension",
-									"value": "9000"
-								},
-								{
-									"key": "nb_pieds",
-									"value": "80"
-								},
-								{
-									"key": "prix",
-									"value": "90"
-								}
 							]
 						}
 					},
@@ -583,11 +554,20 @@
 				{
 					"name": "insert parcelle terrain",
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_utilisateur\":3,\r\n    \"id_parcelle\":1,\r\n    \"id_terrain\":1,\r\n    \"id_categorie\":1,\r\n    \"id_type\":1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "http://projetcloud2024-production.up.railway.app/api/Terrain/insert_parcelle_terrain?id_utilisateur=3&id_parcelle=1&id_terrain=2&id_categorie=1&id_type=1",
-							"protocol": "http",
+							"raw": "https://projetcloud2024-production.up.railway.app/api/Terrain/insert_parcelle_terrain",
+							"protocol": "https",
 							"host": [
 								"projetcloud2024-production",
 								"up",
@@ -598,28 +578,6 @@
 								"api",
 								"Terrain",
 								"insert_parcelle_terrain"
-							],
-							"query": [
-								{
-									"key": "id_utilisateur",
-									"value": "3"
-								},
-								{
-									"key": "id_parcelle",
-									"value": "1"
-								},
-								{
-									"key": "id_terrain",
-									"value": "2"
-								},
-								{
-									"key": "id_categorie",
-									"value": "1"
-								},
-								{
-									"key": "id_type",
-									"value": "1"
-								}
 							]
 						}
 					},
@@ -630,8 +588,17 @@
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"description\":\"Terrain3\",\r\n    \"longitude\":750934,\r\n    \"latitude\":89453,\r\n    \"photo\":\"img.png\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "https://projetcloud2024-production.up.railway.app/api/Terrain/insertTerrain?description=Terrarin 7&latitude=589034&longitude=23948&photo=img.png",
+							"raw": "https://projetcloud2024-production.up.railway.app/api/Terrain/insertTerrain",
 							"protocol": "https",
 							"host": [
 								"projetcloud2024-production",
@@ -643,24 +610,6 @@
 								"api",
 								"Terrain",
 								"insertTerrain"
-							],
-							"query": [
-								{
-									"key": "description",
-									"value": "Terrarin 7"
-								},
-								{
-									"key": "latitude",
-									"value": "589034"
-								},
-								{
-									"key": "longitude",
-									"value": "23948"
-								},
-								{
-									"key": "photo",
-									"value": "img.png"
-								}
 							]
 						}
 					},
@@ -699,8 +648,17 @@
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nom_type\":\"grain3\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "https://projetcloud2024-production.up.railway.app/api/Type/insert_types?nom_type=type44",
+							"raw": "https://projetcloud2024-production.up.railway.app/api/Type/insert_types",
 							"protocol": "https",
 							"host": [
 								"projetcloud2024-production",
@@ -712,12 +670,6 @@
 								"api",
 								"Type",
 								"insert_types"
-							],
-							"query": [
-								{
-									"key": "nom_type",
-									"value": "type44"
-								}
 							]
 						}
 					},

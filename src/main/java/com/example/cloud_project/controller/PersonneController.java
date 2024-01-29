@@ -78,8 +78,11 @@ public class PersonneController {
 //
     @CrossOrigin(origins = "*")
     @PostMapping("/api/login")
-    public String login(@RequestParam String email, @RequestParam String pwd, HttpSession session) {
+    public String login(HttpServletRequest req, HttpSession session) {
         
+        String email = req.getParameter("email");
+        String pwd = req.getParameter("pwd");
+
         PersonneModel user = new PersonneModel();
         PersonneModel p = user.select_user(email, pwd);
        

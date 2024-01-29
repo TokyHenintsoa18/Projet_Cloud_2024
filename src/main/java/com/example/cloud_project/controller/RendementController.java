@@ -1,6 +1,7 @@
 package com.example.cloud_project.controller;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,6 +15,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpSession;
 
 @RestController
+@CrossOrigin(origins = "*")
 public class RendementController {
     
     @GetMapping("/api/Rendement/v_prix_rendement_prevision")

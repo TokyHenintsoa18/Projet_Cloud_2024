@@ -15,7 +15,7 @@ import com.example.cloud_project.Models.PersonneModel;
 import com.example.cloud_project.Models.CategorieModel;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
+ 
 @RestController
 @RequestMapping("/api")
 public class CategorieController {
@@ -48,7 +48,7 @@ public class CategorieController {
         return ResponseEntity.ok(categorie);
     }
 
-    @GetMapping("categories/update_categorie")
+    @PostMapping("categories/update_categorie")
     public ResponseEntity<CategorieModel> updateCategorie(
             @RequestParam int rendementParPieds,
             @RequestParam double prixUnitaire,

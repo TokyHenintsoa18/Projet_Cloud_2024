@@ -87,7 +87,7 @@ public class PersonneController {
     }
 
     @CrossOrigin(origins = "*")
-    @GetMapping("/api/logout")
+    @PostMapping("/api/logout")
     public String logout(HttpSession session) {
         // Supprimez l'id_utilisateur de la personne connectée de la session lors de la déconnexion
         session.invalidate();

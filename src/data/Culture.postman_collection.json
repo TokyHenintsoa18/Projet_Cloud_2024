@@ -579,7 +579,7 @@
 					"response": []
 				},
 				{
-					"name": "insert terrain",
+					"name": "insert parcelle terrain",
 					"request": {
 						"method": "GET",
 						"header": [],
